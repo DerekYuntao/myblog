@@ -1,6 +1,87 @@
-# CESM flux adjustment
+# CESM Restoring
  
-Based on fully coplued CESM model, I will restore model SST to observational seasonal climatology. In order to use "restoring" settings in a fully coupled run, the better way is to set pop2 interior forcing namelist instead of surface forcing namelist, which is only for ocean-alone model in regard to "restoring".
+To do surface ocean flux ajustment or flux correction in CESM, the first step is to restore model SST and SSS to observational seasonal climatology in a fully coupled setting. In order to use "restoring" settings in a fully coupled run, the better way is to set pop2 forcing_pt/s_interior_nml instead of forcing_shf/sfwf_nml, which is only for ocean-alone model in regard to "restoring". 
+
+Let's first check the defualt settings in a forcing_pt/s_interior_nml
+^^^fortran
+/
+&forcing_pt_interior_nml
+ pt_interior_data_inc = 24.
+ pt_interior_data_renorm = 20*1.
+ pt_interior_data_type = 'none'
+ pt_interior_file_fmt = 'bin'
+ pt_interior_filename = 'unknown-pt_interior'
+ pt_interior_formulation = 'restoring'
+ pt_interior_interp_freq = 'every-timestep'
+ pt_interior_interp_inc = 72.
+ pt_interior_interp_type = 'linear'
+ pt_interior_restore_file_fmt = 'bin'
+ pt_interior_restore_filename = 'unknown-pt_interior_restore'
+ pt_interior_restore_max_level = 0
+ pt_interior_restore_tau = 365.
+ pt_interior_surface_restore = .false.
+ pt_interior_variable_restore = .false.
+/
+&forcing_s_interior_nml
+ s_interior_data_inc = 24.
+ s_interior_data_renorm = 20*1.
+ s_interior_data_type = 'none'
+ s_interior_file_fmt = 'bin'
+ s_interior_filename = 'unknown-s_interior'
+ s_interior_formulation = 'restoring'
+ s_interior_interp_freq = 'every-timestep'
+ s_interior_interp_inc = 72.
+ s_interior_interp_type = 'linear'
+ s_interior_restore_file_fmt = 'bin'
+ s_interior_restore_filename = 'unknown-s_interior_restore'
+ s_interior_restore_max_level = 0
+ s_interior_restore_tau = 365.
+ s_interior_surface_restore = .false.
+ s_interior_variable_restore = .false.
+/
+^^^
+
+Explianation:
+http://mermaid.uconn.edu/cesm_climatology/CESM_code/cesm1_1_1/scripts/doc/modelnl/nl_pop2.html
+
+*pt_interior_data_renorm*
+Renormalization constants for components in interior potential temperature forcing file. Default: 20*1.. If the unit of the potenT forcing data is degC, then we set it as a defualt number or as 1.
+
+*pt_interior_formulation*
+Interior potential temperature formulation. Default: 'restoring'
+
+*pt_interior_data_type*
+Type or periodicity of interior potential temperature forcing.
+Valid Values: 'none', 'annual', 'monthly', 'monthly-equal', 'monthly-calendar', 'n-hour'
+Default: 'none'
+
+*pt_interior_restore_max_level*
+Maximum level for interior potential temperature restoring. (Default: 0)
+
+*pt_interior_restore_tau*
+Restoring timescale (days) if pt_interior_formulation='restoring'. (LANL Default: 1e20; CESM Default: 365)
+
+*pt_interior_interp_freq*
+How often to temporally interpolate interior potential temperature data to current time.
+Valid Values: 'never', 'n-hour', 'every-timestep'
+LANL Default: 'never'
+CESM Default: 'every-timestep'
+
+*pt_interior_interp_inc*
+Increment (hours) between interpolation times if interp_freq='n-hour'. (**Note that this is only for 'n-hour' type**)
+LANL Default: 1e20; CESM Default: 72
+
+*pt_interior_data_inc*
+Increment (hours) between forcing times if pt_interior_data_type='n-hour'. (**Note that this is only for 'n-hour' type**)
+LANL Default: 1e20; CESM Default: 24
+
+**e.g.** Setting *pt_interior_data_type = monthly-calendar* and *pt_interior_restore_max_level = 1* and *pt_interior_restore_tau = 10* means model **global** SST restored to observational monthly cliamtology with a restoring time scale (or e-floding time scale) of 10 days to a prescribed data settled in *pt_interior_filename*. 
+If one is to set different restoring time scales and levels in different regions, or to perform a regional restoring, **pt_interior_variable_restore = true* and *pt_interior_restore_filename* should be set. Note that data settled in *pt_interior_restore_filename* should be an integer corresponding to the restoring time scale and deepest level you want to mix at (for each point). For a gx3v7 grid, if you want to mix everywhere, you can set it to 60 at every point.
+ 
+**Note** 
+When I finished pre-processing forcing data and setting the nml, I start running the case but to my surprise, SST and SSS have no change in restoring run compared to the control run, even if I though I did restoring. It puzzled me until I touched someone who encountered the same problem. He told me to modify the one line of the code in forcing_pt/s_interior.F90 
+
+
 
 In order to perform the experiments, Let's read and understand what is code doing when restoring.
 
