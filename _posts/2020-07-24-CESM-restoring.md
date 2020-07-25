@@ -42,7 +42,7 @@ Let's first check the defualt settings in a forcing_pt/s_interior_nml
 ```
 
 Explianation:
-http://mermaid.uconn.edu/cesm_climatology/CESM_code/cesm1_1_1/scripts/doc/modelnl/nl_pop2.html
+[Check pop2 namelist here](http://mermaid.uconn.edu/cesm_climatology/CESM_code/cesm1_1_1/scripts/doc/modelnl/nl_pop2.html)
 
 *pt_interior_data_renorm*
 Renormalization constants for components in interior potential temperature forcing file. Default: 20*1.. If the unit of the potenT forcing data is degC, then we set it as a defualt number or as 1.
@@ -75,21 +75,30 @@ LANL Default: 1e20; CESM Default: 72
 Increment (hours) between forcing times if pt_interior_data_type='n-hour'. (**Note that this is only for 'n-hour' type**)
 LANL Default: 1e20; CESM Default: 24
 
-**e.g.** Setting *pt_interior_data_type = monthly-calendar* and *pt_interior_restore_max_level = 1* and *pt_interior_restore_tau = 10* means model **global** SST restored to observational monthly cliamtology with a restoring time scale (or e-floding time scale) of 10 days to a prescribed data settled in *pt_interior_filename*. 
+<font color=red>**e.g.**</font> Setting *pt_interior_data_type = monthly-calendar* and *pt_interior_restore_max_level = 1* and *pt_interior_restore_tau = 10* means model **global** SST restored to observational monthly cliamtology with a restoring time scale (or e-floding time scale) of 10 days to a prescribed data settled in *pt_interior_filename*. 
 If one is to set different restoring time scales and levels in different regions, or to perform a regional restoring, **pt_interior_variable_restore = true* and *pt_interior_restore_filename* should be set. Note that data settled in *pt_interior_restore_filename* should be an integer corresponding to the restoring time scale and deepest level you want to mix at (for each point). For a gx3v7 grid, if you want to mix everywhere, you can set it to 60 at every point.
  
-**Note:** 
-When I finished pre-processing forcing data and setting the nml, I start running the case but to my surprise, SST and SSS have no change in restoring run compared to the control run, even if I though I did restoring. It puzzled me until I touched someone who encountered the same problem. He told me to modify the one line of the code in forcing_pt/s_interior.F90 
+<font color=red>**Note:**</font>
+When I finished pre-processing forcing data and setting the nml, I start running the case but to my surprise, SST and SSS have no change in restoring run compared to the control run, even if I though I did restoring. It puzzled me until I touched someone who encountered the same problem. He told me to modify the one line of the code in *forcing_pt/s_interior.F90*. Thanks so much to him!
+For *forcing_pt_interior.F90*, 
+```fortran
+!-----------------------------------------------------------------------
+!
+!  do interior restoring if required (no surface restoring for any)
+!
+!-----------------------------------------------------------------------
 
+   if ((k > 1 .or.pt_interior_surface_restore).and.                    &
+        pt_interior_data_type.ne.'none') then
 
+      bid = this_block%local_id
+```
+<font color=red>This code segment indicates that the model only restore temperature with levels larger than 1. That's why restoring didn't work to surface level.</font> The first solution is to include the first level in code. Copy the scripts to *{case}/SourcemMods* directory and modify the code before compiling the model. 
+```fortran
+   if ((k >= 1 .or.pt_interior_surface_restore).and.                    &
+        pt_interior_data_type.ne.'none') then
+```
+The second solution is to set the nml from *s_interior_surface_restore = .false.* to *s_interior_surface_restore = .ture.*
+Now rebuild the model and running the case, we get the restored SST and SSS successfuly!
 
-In order to perform the experiments, Let's read and understand what is code doing when restoring.
-
-Here are some pre-assignment parameters and variables:
-
-module grid
-KMT            ,&! k index of deepest grid cell on T grid
-KMU            ,&! k index of deepest grid cell on U grid
-dz                ,&! thickness of layer k
-DZU, DZT               ! thickness of U,T cell for pbc
-
+Last update: 2020-07-25
