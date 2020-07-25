@@ -3,7 +3,7 @@
 To do surface ocean flux ajustment or flux correction in CESM, the first step is to restore model SST and SSS to observational seasonal climatology in a fully coupled setting. In order to use "restoring" settings in a fully coupled run, the better way is to set pop2 forcing_pt/s_interior_nml instead of forcing_shf/sfwf_nml, which is only for ocean-alone model in regard to "restoring". 
 
 Let's first check the defualt settings in a forcing_pt/s_interior_nml
-^^^fortran
+```fortran
 /
 &forcing_pt_interior_nml
  pt_interior_data_inc = 24.
@@ -39,7 +39,7 @@ Let's first check the defualt settings in a forcing_pt/s_interior_nml
  s_interior_surface_restore = .false.
  s_interior_variable_restore = .false.
 /
-^^^
+```
 
 Explianation:
 http://mermaid.uconn.edu/cesm_climatology/CESM_code/cesm1_1_1/scripts/doc/modelnl/nl_pop2.html
@@ -78,7 +78,7 @@ LANL Default: 1e20; CESM Default: 24
 **e.g.** Setting *pt_interior_data_type = monthly-calendar* and *pt_interior_restore_max_level = 1* and *pt_interior_restore_tau = 10* means model **global** SST restored to observational monthly cliamtology with a restoring time scale (or e-floding time scale) of 10 days to a prescribed data settled in *pt_interior_filename*. 
 If one is to set different restoring time scales and levels in different regions, or to perform a regional restoring, **pt_interior_variable_restore = true* and *pt_interior_restore_filename* should be set. Note that data settled in *pt_interior_restore_filename* should be an integer corresponding to the restoring time scale and deepest level you want to mix at (for each point). For a gx3v7 grid, if you want to mix everywhere, you can set it to 60 at every point.
  
-**Note** 
+**Note:** 
 When I finished pre-processing forcing data and setting the nml, I start running the case but to my surprise, SST and SSS have no change in restoring run compared to the control run, even if I though I did restoring. It puzzled me until I touched someone who encountered the same problem. He told me to modify the one line of the code in forcing_pt/s_interior.F90 
 
 
