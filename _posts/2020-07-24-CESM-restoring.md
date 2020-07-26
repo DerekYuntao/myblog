@@ -5,7 +5,7 @@ date: 2016-07-24
 description: POP2 surface forcing namelist and restoring problem
 share: true
 tags:
- - Numerical models
+ - CESM
  - Tech-accumulate
 ---
 
