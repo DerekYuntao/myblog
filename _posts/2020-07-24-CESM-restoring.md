@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "CESM Restoring"
-date: 2016-07-24
+date: 2020-07-24
 description: POP2 surface forcing namelist and restoring problem
 share: true
 tags:
