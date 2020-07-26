@@ -110,4 +110,4 @@ For *forcing_pt_interior.F90*,
 The second solution is to set the nml from *s_interior_surface_restore = .false.* to *s_interior_surface_restore = .ture.*
 Now rebuild the model and running the case, we get the restored SST and SSS successfuly!
 
-Last update: 2020-07-25
+Last update: 07/25/2020

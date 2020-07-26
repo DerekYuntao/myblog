@@ -30,7 +30,7 @@ Note that one should input *NCAR GLADE* in *Collection* blank to enter NCAR comp
 ### How to add directory to be transfered?
 Right-click the Globus Connect Personal icon in the taskbar and select "Options…​". Click "Access" tab and add the directory you want to add for file transfer and sharing. By default, the only folder listed is your home directory.
 
-Last update: 2020-07-25
+Last update: 07/25/2020
 
 
 
