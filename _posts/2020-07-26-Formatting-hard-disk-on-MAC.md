@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "Formatting-hard-disk-on-MAC"
+title: "Formatting and case-sensitve setting for a hard disk on MAC"
 date: 2016-07-26
-description: Formatting and setting case-sensitive for a new mobile hard disk on MAC before backup data 
+description: How to format and set a case-sensitive mobile hard disk on macOS before backing-up data 
 share: true
 tags:
  - MAC
