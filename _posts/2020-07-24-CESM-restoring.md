@@ -1,5 +1,14 @@
-# CESM Restoring
- 
+---
+layout: post
+title: "CESM Restoring"
+date: 2016-07-24
+description: POP2 surface forcing namelist and restoring problem
+share: true
+tags:
+ - Numerical models
+ - Tech-accumulate
+---
+
 To do surface ocean flux ajustment or flux correction in CESM, the first step is to restore model SST and SSS to observational seasonal climatology in a fully coupled setting. In order to use "restoring" settings in a fully coupled run, the better way is to set pop2 forcing_pt/s_interior_nml instead of forcing_shf/sfwf_nml, which is only for ocean-alone model in regard to "restoring". 
 
 Let's first check the defualt settings in a forcing_pt/s_interior_nml
@@ -41,7 +50,7 @@ Let's first check the defualt settings in a forcing_pt/s_interior_nml
 /
 ```
 
-Explianation:
+**Explianation:**
 [Check pop2 namelist here](http://mermaid.uconn.edu/cesm_climatology/CESM_code/cesm1_1_1/scripts/doc/modelnl/nl_pop2.html)
 
 *pt_interior_data_renorm*
