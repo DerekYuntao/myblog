@@ -13,7 +13,7 @@ tags:
 **How to find Disk settings on MAC**
 Entering ***Applications-Utilities-Disk Utility*** and click ***Erase*** in *Disk Utility* window. Follow the imagine below to set the format as ***Mac OS Extended (Case-sensitive, Journaled)***
 
-![img](/derekyuntao.github.io/jekyll-clean-dark/assets/images/2020-07-25-1.jpg)
+![img1]({{site.baseurl}}/assets/images/2020-07-25-1.jpg)
 
 For hard disks attached in MAC computers (e.g. Macintosh HD), we can set a volumn case-sensitive similarly through ***partition***. [Click here to Check (in Chinese)](https://zhuanlan.zhihu.com/p/35908178)
 
