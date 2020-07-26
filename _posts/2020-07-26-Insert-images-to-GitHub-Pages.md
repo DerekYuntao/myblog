@@ -17,6 +17,8 @@ baseurl: 'your project name'
 ```
 
 When inserting a image, we can use the variable *baseurl* defined below in an absolute path:
+```markdown
 ![img1]({{site.baseurl}}/assets/images/img1.gif)
+```
 
 Last update: 07/26/2020
