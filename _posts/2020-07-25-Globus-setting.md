@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Globus settings"
+title: "Globus Settings"
 date: 2016-07-25
 description: How to set globus before transfer data between two endpoints
 share: true
