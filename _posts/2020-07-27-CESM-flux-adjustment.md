@@ -14,10 +14,10 @@ tags:
 To quickly check CESM1.0 code online, [click here.](http://www.cesm.ucar.edu/models/cesm1.2/cesm/cesmBbrowser/)
 
 Temperature and salinity flux adjustment term can be written as follows:
-\begin{align}
+\begin{equation}
 F_T &= HρC_p(T^{obs}-T^{eq})/(HρC_p/μ_T )=μ_T(T^{obs}-T^{eq}) \\
 F_S &= H(S^{obs}-S^{eq})/(H/μ_S )=μ_S(S^{obs}-S^{eq})*86400
-\end{align}
+\end{equation}
 
 $F_T=HρC_p(T^{obs}-T^{eq})/(HρC_p/μ_T )=μ_T(T^{obs}-T^{eq})$      unit:w/m2
 $F_S=H(S^{obs}-S^{eq})/(H/μ_S )=μ_S(S^{obs}-S^{eq})*86400$      unit: mm/day
