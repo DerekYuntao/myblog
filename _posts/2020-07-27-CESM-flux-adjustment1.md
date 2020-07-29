@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "How Does POP Calculate Sea Surface Artificial Forcing (Restoring Term)"
+title: "How Does POP Calculate Restoring Term"
 date: 2020-07-27
 description: Explain POP code calculating sea surface artificial forcing or restoring term
 share: true
@@ -24,7 +24,7 @@ There are two ways to restore SST and SSS in POP2. The first one is to add a res
 
 ***module forcing_shf* or *forcing_shf.F90* is the heart of Temp restoring forcing!**
 
-### Some definions on variables in *module forcing_shf*
+### <span id = "jump">Some definions on variables in *module forcing_shf*</span>
 ```fortran
 ! !PUBLIC DATA MEMBERS:
    real (r8), dimension(nx_block,ny_block,max_blocks_clinic), &
@@ -73,8 +73,7 @@ There are two ways to restore SST and SSS in POP2. The first one is to add a res
       shf_data_num_fields   !number of input variables or terms that are used to calculate surface forcing      
 ```
 
-### Dimensional size of surface tracer flux (STF)
-
+### <span id = "jump">Dimensional size of surface tracer flux (STF)</span>
 ```fortran
 subroutine init_shf(STF)
 ! !DESCRIPTION:
@@ -311,7 +310,7 @@ STF(nx_block,ny_block,nt,max_blocks_clinic)
 *nt = 2* is the number of tracers including temp and salinity.
 *max_blocks_clinic* is the max number of blocks per processor in each distribution 
 
-### Initialize SHF data variables in *subroutine init_shf*
+### <span id = "jump">Initialize SHF data variables in *subroutine init_shf*</span>
 ```fortran
 subroutine init_shf(STF)
 ...
@@ -419,7 +418,7 @@ subroutine init_shf(STF)
 end subroutine init_shf
 ```      
 
-### Calculate and update SHF in *subroutine set_shf(STF)*
+### <span id = "jump">Calculate and update SHF in *subroutine set_shf(STF)*</span>
 ```fortran
 subroutine set_shf(STF)
 
