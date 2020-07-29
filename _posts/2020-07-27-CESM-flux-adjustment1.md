@@ -9,23 +9,22 @@ tags:
  - Tech-accumulate
 ---
 
-[Check POP2 Forcing namelists](http://www.cesm.ucar.edu/models/cesm1.2/pop2/doc/users/node67.html)
+Temperature and salinity restoring term in flux forms can be written as follows:
+$F_T = HρC_p\frac{T^{obs}-T^{eq}}{HρC_p/μ_T} = μ_T(T^{obs}-T^{eq})\quad    unit:w/m2$      
+$F_S = H\frac{S^{obs}-S^{eq}}{H/μ_S} = μ_S(S^{obs}-S^{eq})*86400\quad      unit: mm/day$    
 
-To quickly check CESM1.0 code online, [click here.](http://www.cesm.ucar.edu/models/cesm1.2/cesm/cesmBbrowser/)
-
-Temperature and salinity flux adjustment term can be written as follows:
-$F_T = HρC_p\frac{T^{obs}-T^{eq}}{HρC_p/μ_T} = μ_T(T^{obs}-T^{eq})      unit:w/m2$      
-$F_S = H\frac{S^{obs}-S^{eq}}{H/μ_S} = μ_S(S^{obs}-S^{eq})*86400        unit: mm/day$    
+Temperature and salinity restoring term in tendency forms are:
+$F_T^* = \frac{T^{obs}-T^{eq}}{τ_T}\quad    unit:K/s$      
+$F_S^* = \frac{S^{obs}-S^{eq}}{τ_S}\quad    unit: g/kg/s$    
 Note that $τ_T = HρC_p/μ_T$ and $τ_S = H/μ_S$
 
-Inspired by [CESM restoring experiment](https://derekyuntao.github.io/jekyll-clean-dark/2020/07/CESM-restoring/), we can use similar settings and modify code slightly for ocean surface flux adjustment. 
-
 There are two ways to restore SST and SSS in POP2. The first one is to add a restoring term (or artificial forcing) **in terms of flux** in heat and freshwater flux equations (forcing_shf/sfwf.F90). The second way is to add a restoring term **in terms of tendency** in temperature and salinity equations (forcing_shf/sfwf.F90). We want to make sure if we can get the same results. To understand what code is doing when restoring, we should first check what .
-# Way1: Starting from forcing_shf.F90
+
+## Way1: Starting from forcing_shf.F90
 
 ***module forcing_shf* or *forcing_shf.F90* is the heart of Temp restoring forcing!**
 
-## Some definions on variables in *module forcing_shf*
+### Some definions on variables in *module forcing_shf*
 ```fortran
 ! !PUBLIC DATA MEMBERS:
    real (r8), dimension(nx_block,ny_block,max_blocks_clinic), &
@@ -74,7 +73,7 @@ There are two ways to restore SST and SSS in POP2. The first one is to add a res
       shf_data_num_fields   !number of input variables or terms that are used to calculate surface forcing      
 ```
 
-## Dimensional size of surface tracer flux (STF)
+### Dimensional size of surface tracer flux (STF)
 
 ```fortran
 subroutine init_shf(STF)
@@ -312,7 +311,7 @@ STF(nx_block,ny_block,nt,max_blocks_clinic)
 *nt = 2* is the number of tracers including temp and salinity.
 *max_blocks_clinic* is the max number of blocks per processor in each distribution 
 
-## Initialize SHF data variables in *subroutine init_shf*
+### Initialize SHF data variables in *subroutine init_shf*
 ```fortran
 subroutine init_shf(STF)
 ...
@@ -420,7 +419,7 @@ subroutine init_shf(STF)
 end subroutine init_shf
 ```      
 
-## Calculate and update SHF in *subroutine set_shf(STF)*
+### Calculate and update SHF in *subroutine set_shf(STF)*
 ```fortran
 subroutine set_shf(STF)
 
@@ -528,7 +527,7 @@ subroutine calc_shf_partially_coupled(time_dim)
 ```
 <span style="color:red;">**Important clue**: *SHF_COMP* is the final variable for monthly mean climatology restoring flux term, which will be added to *shf_comp_cpl* component in *set_coupled_forcing (forcing_coupled.F90)* to form the total surface heat flux!!</span>
 
-# Way2: Starting from forcing_pt_interior.F90
+## Way2: Starting from forcing_pt_interior.F90
 ***module forcing_pt_interior* is the heart of interior Temp restoring forcing!**
 ```fortran
  module forcing_pt_interior
@@ -642,7 +641,7 @@ subroutine set_pt_interior(k,this_block,PT_SOURCE)
 ```
 <span style="color:red;">**Important clue**: *PT_SOURCE* is the final variable for monthly mean climatology restoring tendency term, which will be represented as *WORKN* in *subroutine tracer_update* in *module baroclinic* to form the total temperature tendency!!</span>
 
-# Appendix
+## Appendix
 **What are dz and KMT mean in subroutine set_shf(STF)?**
 ```fortran
 module grid
@@ -664,4 +663,8 @@ More info about restoring factors associcated with restoring time scale.
 !  tau = Inf  :    0.0
 !---------------------------------------------------------------------
 ```
+
+[Check POP2 Forcing namelists](http://www.cesm.ucar.edu/models/cesm1.2/pop2/doc/users/node67.html)
+To quickly check CESM1.0 code online, [click here.](http://www.cesm.ucar.edu/models/cesm1.2/cesm/cesmBbrowser/)
+
 Last update: 07/29/2020
