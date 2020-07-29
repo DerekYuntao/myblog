@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "Reading excerpt: The Consolations of Philosophy (哲学的慰藉)"
+title: "Reading excerpt: The Consolations of Philosophy 哲学的慰藉"
 date: 2020-07-28
-description: Author: Alain de Botton
+description: Alain de Botton
 share: true
 tags:
  - Reading

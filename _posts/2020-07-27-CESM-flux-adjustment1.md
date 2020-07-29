@@ -24,7 +24,7 @@ There are two ways to restore SST and SSS in POP2. The first one is to add a res
 
 ***module forcing_shf* or *forcing_shf.F90* is the heart of Temp restoring forcing!**
 
-### <span id = "jump">Some definions on variables in *module forcing_shf*</span>
+### Some definions on variables in *module forcing_shf*
 ```fortran
 ! !PUBLIC DATA MEMBERS:
    real (r8), dimension(nx_block,ny_block,max_blocks_clinic), &
@@ -73,7 +73,8 @@ There are two ways to restore SST and SSS in POP2. The first one is to add a res
       shf_data_num_fields   !number of input variables or terms that are used to calculate surface forcing      
 ```
 
-### <span id = "jump">Dimensional size of surface tracer flux (STF)</span>
+
+### Dimensional size of surface tracer flux (STF)
 ```fortran
 subroutine init_shf(STF)
 ! !DESCRIPTION:
@@ -310,7 +311,8 @@ STF(nx_block,ny_block,nt,max_blocks_clinic)
 *nt = 2* is the number of tracers including temp and salinity.
 *max_blocks_clinic* is the max number of blocks per processor in each distribution 
 
-### <span id = "jump">Initialize SHF data variables in *subroutine init_shf*</span>
+
+### Initialize SHF data variables in *subroutine init_shf*
 ```fortran
 subroutine init_shf(STF)
 ...
@@ -418,7 +420,8 @@ subroutine init_shf(STF)
 end subroutine init_shf
 ```      
 
-### <span id = "jump">Calculate and update SHF in *subroutine set_shf(STF)*</span>
+
+### Calculate and update SHF in *subroutine set_shf(STF)*
 ```fortran
 subroutine set_shf(STF)
 
@@ -525,6 +528,7 @@ subroutine calc_shf_partially_coupled(time_dim)
  end subroutine calc_shf_partially_coupled
 ```
 <span style="color:red;">**Important clue**: *SHF_COMP* is the final variable for monthly mean climatology restoring flux term, which will be added to *shf_comp_cpl* component in *set_coupled_forcing (forcing_coupled.F90)* to form the total surface heat flux!!</span>
+
 
 ## Way2: Starting from forcing_pt_interior.F90
 ***module forcing_pt_interior* is the heart of interior Temp restoring forcing!**
