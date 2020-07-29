@@ -1,0 +1,667 @@
+---
+layout: post
+title: "How Does POP Calculate Sea Surface Artificial Forcing (Restoring Term)"
+date: 2020-07-27
+description: Explain POP code calculating sea surface artificial forcing or restoring term
+share: true
+tags:
+ - CESM
+ - Tech-accumulate
+---
+
+[Check POP2 Forcing namelists](http://www.cesm.ucar.edu/models/cesm1.2/pop2/doc/users/node67.html)
+
+To quickly check CESM1.0 code online, [click here.](http://www.cesm.ucar.edu/models/cesm1.2/cesm/cesmBbrowser/)
+
+Temperature and salinity flux adjustment term can be written as follows:
+$F_T = HρC_p\frac{T^{obs}-T^{eq}}{HρC_p/μ_T} = μ_T(T^{obs}-T^{eq})      unit:w/m2$      
+$F_S = H\frac{S^{obs}-S^{eq}}{H/μ_S} = μ_S(S^{obs}-S^{eq})*86400        unit: mm/day$    
+Note that $τ_T = HρC_p/μ_T$ and $τ_S = H/μ_S$
+
+Inspired by [CESM restoring experiment](https://derekyuntao.github.io/jekyll-clean-dark/2020/07/CESM-restoring/), we can use similar settings and modify code slightly for ocean surface flux adjustment. 
+
+There are two ways to restore SST and SSS in POP2. The first one is to add a restoring term (or artificial forcing) **in terms of flux** in heat and freshwater flux equations (forcing_shf/sfwf.F90). The second way is to add a restoring term **in terms of tendency** in temperature and salinity equations (forcing_shf/sfwf.F90). We want to make sure if we can get the same results. To understand what code is doing when restoring, we should first check what .
+# Way1: Starting from forcing_shf.F90
+
+***module forcing_shf* or *forcing_shf.F90* is the heart of Temp restoring forcing!**
+
+## Some definions on variables in *module forcing_shf*
+```fortran
+! !PUBLIC DATA MEMBERS:
+   real (r8), dimension(nx_block,ny_block,max_blocks_clinic), &
+      public, target :: &
+      SHF_QSW,          & ! incoming short wave
+      SHF_QSW_RAW         ! no masking, no diurnal cycle
+
+   logical (log_kind), public :: &
+      lsw_absorb    ! true if short wave available as separate flux
+                    !  (use penetrative short wave)
+
+   !*** the following must be shared with sfwf forcing in
+   !*** bulk-NCEP option
+
+   real (r8), allocatable, dimension(:,:,:,:), public :: &
+      SHF_COMP
+
+   real (r8), allocatable, dimension(:,:,:), public :: &
+      OCN_WGT
+
+   integer (int_kind), allocatable, dimension(:,:,:), public :: &
+      MASK_SR    ! strong restoring mask for marginal seas      
+
+   real (r8), allocatable, dimension(:,:,:,:,:) :: &  
+   !Note that this is a dynamic array and the size is determined by input data
+      SHF_DATA        ! forcing data to use for computing SHF
+
+   real (r8), dimension(20) :: &
+      shf_data_renorm          ! **factors for converting to model units**
+
+   real (r8) ::          &
+      shf_data_inc,      &! time increment between values of forcing data
+      shf_data_next,     &! time that will be used for the next value of forcing data that is needed
+      shf_data_update,   &! time when the a new forcing value needs to be added to interpolation set
+      shf_interp_inc,    &! time increment between interpolation
+      shf_interp_next,   &! time when next interpolation will be done
+      shf_restore_tau,   &
+      shf_restore_rtau,  & 1/shf_restore_tau
+      shf_weak_restore,  &! heat flux weak restoring max time scale
+      shf_strong_restore,&! heat flux strong restoring max time scale
+      shf_strong_restore_ms  
+
+   integer (int_kind) ::     &
+      shf_interp_order,      &!  order of temporal interpolation
+      shf_data_time_min_loc, &!  time index for first shf_data point
+      shf_data_num_fields   !number of input variables or terms that are used to calculate surface forcing      
+```
+
+## Dimensional size of surface tracer flux (STF)
+
+```fortran
+subroutine init_shf(STF)
+! !DESCRIPTION:
+!  Initializes surface heat flux forcing by either calculating
+!  or reading in the surface heat flux.  Also do initial
+!  book-keeping concerning when new data is needed for the temporal
+!  interpolation and when the forcing will need to be updated.
+
+! !OUTPUT PARAMETERS:
+
+   real (r8), dimension(nx_block,ny_block,nt,max_blocks_clinic), &
+      intent(out) :: &
+      STF    ! surface tracer flux - this routine only modifies
+             ! the slice corresponding to temperature (tracer 1)
+```             
+STF is the surface trace flux which is the final result calculated and output by this script. What is each dimension of the STF means? 
+In ***module blocks***, there are several lines of code calculating *nx_block* and *ny_block*, which denotes the block size for each domain in x,y direction used for parallel processors.
+```fortran
+module blocks
+!BOP
+! !MODULE: blocks
+!
+! !DESCRIPTION: 
+!  This module contains data types and tools for decomposing a global
+!  horizontal domain into a set of blocks.  It contains a data type 
+!  for describing each block and contains routines for creating and 
+!  querying the block decomposition for a global domain.
+! !USES:
+
+   use kinds_mod
+   use exit_mod
+   use domain_size
+
+   implicit none
+   private
+   save
+...
+! !DEFINED PARAMETERS:
+
+   integer (int_kind), parameter, public :: &
+      nghost = 2       ! number of ghost cells around each block
+
+   integer (int_kind), parameter, public :: &! size of block domain in
+      nx_block = block_size_x + 2*nghost,   &!  x,y dir including ghost
+      ny_block = block_size_y + 2*nghost     !  cells 
+
+! !PUBLIC DATA MEMBERS:
+
+   integer (int_kind), public :: &
+      nblocks_tot      ,&! total number of blocks in decomposition
+      nblocks_x        ,&! tot num blocks in i direction
+      nblocks_y          ! tot num blocks in j direction
+```
+
+In ***module domain***, there is code uncover some info related to nx_block, ny_block, nx_global, nx_global, km and nt.
+```fortran
+!BOP
+! !MODULE: domain
+!
+! !DESCRIPTION:
+!  This module contains the model domain and routines for initializing
+!  the domain. It also initializes the decompositions and
+!  distributions across processors/threads by calling relevent
+!  routines in the block, distribution modules.
+
+! !USES:
+
+   use POP_KindsMod
+   use POP_ErrorMod
+   use POP_IOUnitsMod
+   use POP_DomainSizeMod
+   use POP_BlocksMod
+   use POP_DistributionMod
+   use POP_HaloMod
+
+   use kinds_mod
+   use constants
+   use communicate
+   use broadcast
+   use blocks
+   use distribution
+   use exit_mod
+   use io_types
+   use domain_size
+
+....
+! !PUBLIC DATA MEMBERS:
+
+   integer (int_kind), public :: &
+      nblocks_clinic   ,&! actual number of blocks on this processor
+      nblocks_tropic     !   in each distribution
+
+   integer (int_kind), dimension(:), pointer, public :: &
+      blocks_clinic    ,&! block ids for local blocks in baroclinic dist
+      blocks_tropic      ! block ids for local blocks in barotropic dist
+...      
+subroutine init_domain_blocks
+! !DESCRIPTION:
+!  This routine reads in domain information and calls the routine
+!  to set up the block decomposition.
+...
+!----------------------------------------------------------------------
+!
+!  Now we need grid info before proceeding further
+!  Print some domain information
+!
+!----------------------------------------------------------------------
+
+   if (my_task == master_task) then
+     write(stdout,delim_fmt)
+     write(stdout,blank_fmt)
+     write(stdout,'(a18)') 'Domain Information'
+     write(stdout,blank_fmt)
+     write(stdout,delim_fmt)
+     write(stdout,'(a26,i6)') '  Horizontal domain: nx = ',nx_global
+     write(stdout,'(a26,i6)') '                     ny = ',ny_global
+     write(stdout,'(a26,i6)') '  Vertical   domain: km = ',km
+     write(stdout,'(a26,i6)') '  Number of tracers: nt = ',nt
+     write(stdout,'(a26,i6)') '  Block size:  nx_block = ',nx_block
+     write(stdout,'(a26,i6)') '               ny_block = ',ny_block
+     write(stdout,'(a26,i6)') '      max_blocks_clinic = ', max_blocks_clinic
+     write(stdout,'(a26,i6)') '      max_blocks_tropic = ', max_blocks_tropic
+     write(stdout,'(a29,i6)') '  Processors for baroclinic: ', &
+                                 nprocs_clinic
+     write(stdout,'(a29,i6)') '  Processors for barotropic: ', &
+                                 nprocs_tropic
+     write(stdout,'(a31,a10)') '  Distribution for baroclinic: ', &
+                                 trim(clinic_distribution_type)
+     write(stdout,'(a31,a10)') '  Distribution for barotropic: ', &
+                                 trim(tropic_distribution_type)
+     write(stdout,'(a25,i2)') '  Number of ghost cells: ', nghost
+   endif
+```
+
+Backward to ***module domain_size*** we can find definitions of nt, km....
+```fortran
+ module domain_size
+
+!BOP
+! !MODULE: domain_size
+!
+! !DESCRIPTION:
+!  This module contains parameters for the global model domain size
+!  decomposition block size.  It is used by the domain and block
+!  modules for decomposing the model domain across processors.
+!  Variables are now set in POP\_DomainSizeMod and this routine
+!  only provide back compatibility.
+! !USES:
+
+   use kinds_mod
+   use POP_DomainSizeMod
+
+   implicit none
+   private
+   save
+
+! !DEFINED PARAMETERS:
+
+   integer (int_kind), parameter, public ::  &  ! model size parameters
+      nx_global = POP_nxGlobal, &
+      ny_global = POP_nyGlobal, &
+      km = POP_km,              &
+      nt = POP_nt
+
+   integer (int_kind), parameter, public :: &
+      block_size_x = POP_blockSizeX, &
+      block_size_y = POP_blockSizeY
+
+   integer (int_kind), parameter, public :: &
+      max_blocks_clinic = POP_maxBlocksClinic, &
+      max_blocks_tropic = POP_maxBlocksTropic
+
+!EOP
+!BOC
+!EOC
+!***********************************************************************
+ end module domain_size
+```
+Continue tracing back to ***module POP_DomainSizeMod*** we can find km, nt, nx_global, ny_global, and et al. defined as a constant.
+```fortran
+module POP_DomainSizeMod
+
+!BOP
+! !MODULE: POP_DomainSizeMod
+!
+! !DESCRIPTION:
+!  This module contains parameters for the global model domain size
+!  decomposition block size.  It is used by the domain and block
+!  modules for decomposing the model domain across processors.
+
+! !USES:
+
+   use POP_KindsMod
+
+   implicit none
+   private
+   save
+
+! !DEFINED PARAMETERS:
+
+   integer (POP_i4), parameter, public ::  &  ! model size parameters
+      POP_nxGlobal =  32 ,&! extent of horizontal axis in i direction
+      POP_nyGlobal =  32 ,&! extent of horizontal axis in j direction
+      POP_km = 20          ,&! number of vertical levels
+      POP_nt =  2            ! total number of tracers
+
+   integer (POP_i4), parameter, public :: &
+      POP_blockSizeX = 4, &! size of block in first  horizontal dimension
+      POP_blockSizeY = 4   ! size of block in second horizontal dimension
+
+   !*** The model will inform the user of the correct
+   !*** values for the parameters below.  A value higher than
+   !*** necessary will not cause the code to fail, but will
+   !*** allocate more memory than is necessary.  A value that
+   !*** is too low will cause the code to exit.  
+   !*** A good initial guess is found using
+   !*** max=(nx_global/block_size_x)*(ny_global/block_size_y)/
+   !***         num_procs
+ 
+   integer (POP_i4), parameter, public :: &
+      POP_maxBlocksClinic = 64,  &!  max number of blocks per processor
+      POP_maxBlocksTropic = 64    !   in each distribution
+
+!EOP
+!BOC
+!EOC
+!***********************************************************************
+ end module POP_DomainSizeMod 
+``` 
+
+Until now, we get the answer.
+STF(nx_block,ny_block,nt,max_blocks_clinic)
+*nx_block = 4+2\*2 = 8* and *ny_block = 8* are size for each domain in x,y direction used for parallel processors. 
+*nt = 2* is the number of tracers including temp and salinity.
+*max_blocks_clinic* is the max number of blocks per processor in each distribution 
+
+## Initialize SHF data variables in *subroutine init_shf*
+```fortran
+subroutine init_shf(STF)
+...
+!-----------------------------------------------------------------------
+!  set values based on shf_formulation
+!-----------------------------------------------------------------------
+
+   select case (shf_formulation)
+      case ('partially-coupled')
+      lsw_absorb = .false.
+      shf_data_num_fields = 1
+      allocate(shf_data_names(shf_data_num_fields), &
+               shf_bndy_loc  (shf_data_num_fields), &
+               shf_bndy_type (shf_data_num_fields))
+      shf_data_sst        = 1
+      shf_data_names(shf_data_sst)     = 'SST'
+      shf_bndy_loc  (shf_data_sst)     = field_loc_center
+      shf_bndy_type (shf_data_sst)     = field_type_scalar
+
+      shf_num_comps   = 4
+      shf_comp_wrest  = 1
+      shf_comp_srest  = 2
+      shf_comp_cpl    = 3
+      shf_comp_qsw    = 4
+
+   end select
+
+!-----------------------------------------------------------------------
+!  monthly mean climatological surface heat flux. all
+!  12 months are read in from a file. interpolation order
+!  (shf_interp_order) may be specified with namelist input.
+!-----------------------------------------------------------------------
+
+    case ('monthly-equal','monthly-calendar')
+
+      allocate(SHF_DATA(nx_block,ny_block,max_blocks_clinic, &
+                        shf_data_num_fields,0:12),           &
+               TEMP_DATA(nx_block,ny_block,12,max_blocks_clinic, &
+                         shf_data_num_fields))
+
+      SHF_DATA = c0
+
+      call find_forcing_times(shf_data_time, shf_data_inc,            &
+                              shf_interp_type, shf_data_next,         &
+                              shf_data_time_min_loc, shf_data_update, &
+                              shf_data_type)
+
+      forcing_file = construct_file(shf_file_fmt, &
+                                    full_name = trim(shf_filename), &
+                                    record_length = rec_type_dbl,   &
+                                    recl_words=nx_global*ny_global)
+
+      call data_set(forcing_file,'open_read')
+
+      i_dim = construct_io_dim('i',nx_global)
+      j_dim = construct_io_dim('j',ny_global)
+      month_dim = construct_io_dim('month',12)
+
+      select case (shf_formulation)      
+      ...
+      case ('partially-coupled')
+         io_sst = construct_io_field( &
+                      trim(shf_data_names(shf_data_sst)),       &
+                      dim1=i_dim, dim2=j_dim, dim3=month_dim,                  &
+                      field_loc = shf_bndy_loc(shf_data_sst),   &
+                      field_type = shf_bndy_type(shf_data_sst), &
+                      d3d_array=TEMP_DATA(:,:,:,:,shf_data_sst))
+         call data_set(forcing_file,'define',io_sst)
+         call data_set(forcing_file,'read'  ,io_sst)
+         call destroy_io_field(io_sst)
+
+         !$OMP PARALLEL DO PRIVATE(iblock, n)
+         do iblock=1,nblocks_clinic
+         do n=1,12
+            SHF_DATA (:,:,iblock,shf_data_sst,n) = &
+            TEMP_DATA(:,:,n,iblock,shf_data_sst)
+         end do
+         end do
+         !$OMP END PARALLEL DO
+
+         allocate(SHF_COMP(nx_block,ny_block,max_blocks_clinic,  &
+                                                 shf_num_comps), &
+                  OCN_WGT (nx_block,ny_block,max_blocks_clinic))
+
+         SHF_COMP = c0   ! initialize    
+         ...
+        end select
+         
+      !*** renormalize values if necessary to compensate for different
+      !*** units.
+
+      do n = 1,shf_data_num_fields
+         if (shf_data_renorm(n) /= c1) SHF_DATA(:,:,:,n,:) = &
+                    shf_data_renorm(n)*SHF_DATA(:,:,:,n,:)
+      enddo
+
+      if (my_task == master_task) then
+         write(stdout,blank_fmt)
+         write(stdout,'(a24,a)') ' SHF Monthly file read: ', &
+                                 trim(shf_filename)
+      endif     
+      ...
+    end select 
+    ...
+end subroutine init_shf
+```      
+
+## Calculate and update SHF in *subroutine set_shf(STF)*
+```fortran
+subroutine set_shf(STF)
+
+! !DESCRIPTION:
+!  Updates the current value of the surface heat flux array
+!  (shf) by interpolating to the current time or calculating
+!  fluxes based on states at current time.  If new data are
+!  required for interpolation, new data are read.
+select case(shf_data_type)
+   ...
+   case ('monthly-equal','monthly-calendar')
+   ...
+    select case (shf_formulation)
+      case ('restoring')
+         !$OMP PARALLEL DO PRIVATE(iblock)
+         do iblock=1,nblocks_clinic
+            STF(:,:,1,iblock) = (SHF_DATA(:,:,iblock,shf_data_sst,0) - &
+                                 TRACER(:,:,1,1,curtime,iblock))*      &
+                                shf_restore_rtau*dz(1)
+         end do
+         !$OMP END PARALLEL DO
+        ...
+        case ('partially-coupled')
+        call calc_shf_partially_coupled(12)
+       ...
+    end select
+   ...
+end select
+end subroutine set_shf
+
+subroutine calc_shf_partially_coupled(time_dim) 
+
+! !DESCRIPTION:
+!  Calculates weak and strong restoring components of surface heat flux
+!  for partially-coupled formulation. These components will later be 
+!  added to shf_comp_cpl component in set_coupled_forcing
+!  (forcing_coupled) to form the total surface heat flux.
+!
+!  The only forcing dataset (on t-grid) is 
+!  shf_data_sst, restoring SST
+   integer (int_kind) :: &
+      n, now, k, &
+      iblock              ! local address of current block
+
+   real (r8), dimension(nx_block,ny_block,max_blocks_clinic) :: &
+      WORK1              !  work array
+!----------------------------------------------------------------------
+!     compute ocean weights (fraction of ocean vs. ice) every timestep,
+!     if needed. **Note: OCN_WGT = 0 at land pts**
+!----------------------------------------------------------------------
+
+   if ( .not. luse_cpl_ifrac  ) then
+     call ocean_weights (now)
+     WORK1 = OCN_WGT*MASK_SR
+   else
+     WORK1 = MASK_SR
+   endif
+
+   do iblock=1,nblocks_clinic
+
+!----------------------------------------------------------------------
+!     weak temperature restoring term (note: MASK_SR = 0. at land and
+!     marginal sea points)
+!     note that weak restoring may be applied to every non-marginal-sea
+!     ocean point.**Note: WORK1 = OCN_WGT = 0 at land pts.**
+!----------------------------------------------------------------------
+
+      SHF_COMP(:,:,iblock,shf_comp_wrest) = shf_weak_restore*         &
+                              WORK1(:,:,iblock)*                      &
+                             (SHF_DATA(:,:,iblock,shf_data_sst,now) - &
+                              TRACER(:,:,1,1,curtime,iblock))
+
+!----------------------------------------------------------------------
+!     strong temperature restoring term
+!     note that strong restoring may be applied only in marginal seas.
+!     in under-ice regions, the ice formation term may replace the
+!     strong-restoring term.
+!----------------------------------------------------------------------
+      where (KMT(:,:,iblock) > 0)
+         SHF_COMP(:,:,iblock,shf_comp_srest) = shf_strong_restore*    &
+                             (c1-OCN_WGT(:,:,iblock))*                &
+                             (SHF_DATA(:,:,iblock,shf_data_sst,now) - &
+                              TRACER(:,:,1,1,curtime,iblock))
+      endwhere
+
+      where (KMT(:,:,iblock) > 0 .and. MASK_SR(:,:,iblock) == 0)
+         SHF_COMP(:,:,iblock,shf_comp_srest) = shf_strong_restore_ms* &
+                             (SHF_DATA(:,:,iblock,shf_data_sst,now) - &
+                              TRACER(:,:,1,1,curtime,iblock))
+      endwhere
+ 
+!----------------------------------------------------------------------
+!     convert to model units: (W/m^2) to (C*cm/s)
+!----------------------------------------------------------------------
+
+      SHF_COMP(:,:,iblock,shf_comp_wrest) =               &
+      SHF_COMP(:,:,iblock,shf_comp_wrest)*hflux_factor                    
+ 
+      SHF_COMP(:,:,iblock,shf_comp_srest) =               &
+      SHF_COMP(:,:,iblock,shf_comp_srest)*hflux_factor
+
+
+   end do
+ end subroutine calc_shf_partially_coupled
+```
+<span style="color:red;">**Important clue**: *SHF_COMP* is the final variable for monthly mean climatology restoring flux term, which will be added to *shf_comp_cpl* component in *set_coupled_forcing (forcing_coupled.F90)* to form the total surface heat flux!!</span>
+
+# Way2: Starting from forcing_pt_interior.F90
+***module forcing_pt_interior* is the heart of interior Temp restoring forcing!**
+```fortran
+ module forcing_pt_interior
+ ...
+ subroutine init_pt_interior
+ ...
+   select case (pt_interior_data_type)
+   ...
+      case ('monthly-equal','monthly-calendar')
+
+      !*** monthly mean climatological interior potential temperature.
+      !*** All 12 months are read in from a file. interpolation order
+      !*** may be specified with namelist input.
+
+      allocate(PT_INTERIOR_DATA(nx_block,ny_block,km,   &
+                                max_blocks_clinic,0:12))
+      ...                          
+    end select  
+    ...
+end subroutine init_pt_interior
+
+....
+
+subroutine set_pt_interior(k,this_block,PT_SOURCE)
+! !DESCRIPTION:
+!  Computes the potential temperature restoring term using updated data.
+! !INPUT PARAMETERS:
+
+! !INPUT PARAMETERS:
+
+   integer (int_kind), intent(in) :: &
+      k     ! vertical level index
+
+   type (block), intent(in) :: &
+      this_block   ! block information for this block
+
+! !OUTPUT PARAMETERS:
+
+   real (r8), dimension(nx_block,ny_block), intent(inout) :: &
+      PT_SOURCE    ! interior potential source term for this
+                   ! block and level - accumulate restoring term
+                   ! into this array
+
+!-----------------------------------------------------------------------
+!  local variables
+!-----------------------------------------------------------------------
+
+   integer (int_kind) ::  &
+      bid,                &! local block address for this block
+      now                  ! index for interpolated data
+
+   real (r8), dimension(nx_block,ny_block) :: &
+      DPT_INTERIOR    ! interior potential restoring for this
+                      ! block and level
+
+!-----------------------------------------------------------------------
+!  do interior restoring if required (no surface restoring for any)
+!-----------------------------------------------------------------------
+
+   if ((k > 1 .or.pt_interior_surface_restore).and.                    &
+        pt_interior_data_type.ne.'none') then
+
+      bid = this_block%local_id
+
+!-----------------------------------------------------------------------
+!     set index where interpolated data located
+!-----------------------------------------------------------------------
+
+      select case(pt_interior_data_type)
+
+      case('annual')
+         now = 1
+
+      case ('monthly-equal','monthly-calendar')
+         now = 0      
+         <span style="color:red;">**Q: In fortran, array index starts from 1, but here the index=0. What is the meaning here??**</span>
+
+      case('n-hour')
+         now = 0
+
+      end select
+
+!-----------------------------------------------------------------------
+!     now compute restoring
+!-----------------------------------------------------------------------
+
+      if (pt_interior_variable_restore) then
+         DPT_INTERIOR = PT_RESTORE_RTAU(:,:,bid)*                &
+                        merge((PT_INTERIOR_DATA(:,:,k,bid,now) - &
+                               TRACER(:,:,k,1,curtime,bid)),     &
+                               c0, k <= PT_RESTORE_MAX_LEVEL(:,:,bid))
+      else
+         if (k <= pt_interior_restore_max_level) then
+            DPT_INTERIOR = pt_interior_restore_rtau*         &
+                          (PT_INTERIOR_DATA(:,:,k,bid,now) - &
+                           TRACER(:,:,k,1,curtime,bid))
+         else
+            DPT_INTERIOR = c0
+         endif
+      endif
+
+      !*** add restoring to any other source terms
+
+      PT_SOURCE = PT_SOURCE + DPT_INTERIOR
+
+   endif ! k=1
+
+!-----------------------------------------------------------------------
+!EOC
+ end subroutine set_pt_interior
+```
+<span style="color:red;">**Important clue**: *PT_SOURCE* is the final variable for monthly mean climatology restoring tendency term, which will be represented as *WORKN* in *subroutine tracer_update* in *module baroclinic* to form the total temperature tendency!!</span>
+
+# Appendix
+**What are dz and KMT mean in subroutine set_shf(STF)?**
+```fortran
+module grid
+KMT            ,&! k index of deepest grid cell on T grid
+KMU            ,&! k index of deepest grid cell on U grid
+dz                ,&! thickness of layer k
+DZU, DZT               ! thickness of U,T cell for pbc
+```
+<span style="color:red;">**Q: Haven't find code where dz is assigned??**
+
+More info about restoring factors associcated with restoring time scale.
+```fortran
+!                Q (W/m2/C)
+!  tau =   6  :  386.0
+!  tau =  30  :   77.2
+!  tau = 182.5:   12.0
+!  tau = 365  :    6.0
+!  tau = 730  :    3.0
+!  tau = Inf  :    0.0
+!---------------------------------------------------------------------
+```
+Last update: 07/29/2020
