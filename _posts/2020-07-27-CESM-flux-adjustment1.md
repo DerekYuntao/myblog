@@ -18,7 +18,7 @@ $F_T^* = \frac{T^{obs}-T^{eq}}{τ_T}\quad    unit:K/s$
 $F_S^* = \frac{S^{obs}-S^{eq}}{τ_S}\quad    unit: g/kg/s$    
 Note that $τ_T = HρC_p/μ_T$ and $τ_S = H/μ_S$
 
-There are two ways to restore SST and SSS in POP2. The first one is to add a restoring term (or artificial forcing) **in terms of flux** in heat and freshwater flux equations (forcing_shf/sfwf.F90). The second way is to add a restoring term **in terms of tendency** in temperature and salinity equations (forcing_shf/sfwf.F90). We want to make sure if we can get the same results. To understand what code is doing when restoring, we should first check what .
+There are two ways to restore SST and SSS in POP2. The first one is to add a restoring term (or artificial forcing) **in terms of flux** in heat and freshwater flux equations (forcing_shf/sfwf.F90). The second way is to add a restoring term **in terms of tendency** in temperature and salinity equations (forcing_shf/sfwf.F90). We want to make sure if we can get the same results using arbitrary way to perform restoring or flux adjustment. Understanding the code is required!
 
 ## Way1: Starting from forcing_shf.F90
 
