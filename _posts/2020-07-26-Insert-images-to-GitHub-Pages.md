@@ -5,7 +5,7 @@ date: 2020-07-26
 description: How to insert images to GitHub Pages based on Jekyll
 share: true
 tags:
- - GitHub
+ - Web
  - Tech-accumulate
 ---
 
