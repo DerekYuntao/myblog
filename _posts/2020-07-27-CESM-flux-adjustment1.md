@@ -603,7 +603,6 @@ subroutine set_pt_interior(k,this_block,PT_SOURCE)
 
       case ('monthly-equal','monthly-calendar')
          now = 0      
-         <span style="color:red;">**Q: In fortran, array index starts from 1, but here the index=0. What is the meaning here??**</span>
 
       case('n-hour')
          now = 0
@@ -641,6 +640,8 @@ subroutine set_pt_interior(k,this_block,PT_SOURCE)
 ```
 <span style="color:red;">**Important clue**: *PT_SOURCE* is the final variable for monthly mean climatology restoring tendency term, which will be represented as *WORKN* in *subroutine tracer_update* in *module baroclinic* to form the total temperature tendency!!</span>
 
+<span style="color:red;">Q: In fortran, array index starts from 1, but here the index=0. What is the meaning here??</span>
+
 ## Appendix
 **What are dz and KMT mean in subroutine set_shf(STF)?**
 ```fortran
@@ -650,7 +651,7 @@ KMU            ,&! k index of deepest grid cell on U grid
 dz                ,&! thickness of layer k
 DZU, DZT               ! thickness of U,T cell for pbc
 ```
-<span style="color:red;">**Q: Haven't find code where dz is assigned??**
+<span style="color:red;">Q: Haven't find code where dz is assigned??
 
 More info about restoring factors associcated with restoring time scale.
 ```fortran
