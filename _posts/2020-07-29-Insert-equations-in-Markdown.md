@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Insert LaTex mathmetical sybols in markdown"
+title: "Insert LaTex Mathmetical Sybols in Markdown"
 date: 2020-07-27
 description: How to insert LaTex sybols in markdwon; Basic Latex commands
 share: true

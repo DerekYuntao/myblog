@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Insert images to GitHub Pages"
+title: "Insert Images to GitHub Pages"
 date: 2020-07-26
 description: How to insert images to GitHub Pages based on Jekyll
 share: true
