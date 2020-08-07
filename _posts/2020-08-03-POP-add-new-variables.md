@@ -115,4 +115,4 @@ examine your $CASE.pop.h.yyyy-mm.nc file, where you should find your new variabl
 !EOP
 !BOC
 ```
-## Instance: Diagnoise surface heat/freshwater flux terms and add then as new output variables (See next: Fluxadj 3)
+**Instance**: Diagnoise surface heat/freshwater flux terms and add then as new output variables (See next: Fluxadj 3)
