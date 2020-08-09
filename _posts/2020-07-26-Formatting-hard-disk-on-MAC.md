@@ -1,11 +1,11 @@
 ---
 layout: post
-title: "Case-sensitive Setting for a Hard Disk on MAC"
+title: "Case-sensitive Setting for a Hard Disk on MacOS"
 date: 2020-07-26
 description: How to format and set a case-sensitive mobile hard disk on macOS before backing-up data 
 share: true
 tags:
- - MAC
+ - MacOS
  - Tech-accumulate
 ---
 An initialization is always required before we use a new hard disk to backup data, which is called formatting or erasing the disk.<span style="color:red;"> One thing we should note is that macOS does not distinguish between upper and lower case in file paths by defualt, while Linux systems are generally case-sensitive</span>. In this case, if we backup data from Linux to hard disks through MAC, two data files with the same name and the only difference in its upper and lower cases will cause a problem. For exmaple, two files with the names of *"H2O_r.nc"* and *"H2O_R.nc"* are actually different. But macOS by default is case-insensitive and can not tell the difference, thus file *"H2O_R.nc"* would overwrite *"H2O_r.nc"*, which may destory our plan to backup the data.<span style="color:red;"> The solution is to set the disk quota as *case-sensitive* when we initialize the disk.

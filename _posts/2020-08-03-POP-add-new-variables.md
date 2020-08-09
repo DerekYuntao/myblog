@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Adding new variables in POP"
+title: "Add new variables in POP"
 date: 2020-08-03
 description: How to add new variables in POP
 share: true
@@ -84,8 +84,6 @@ examine your $CASE.pop.h.yyyy-mm.nc file, where you should find your new variabl
 !  in the available fields array for use in later tavg calls.
 ```
 
- subroutine accumulate_tavg_field(ARRAY,field_id,block,k,const) 291,2
-
 ## Exlplaination on subroutine accumulate_tavg_field
 ```fortran
  subroutine accumulate_tavg_field(ARRAY,field_id,block,k,const) 
@@ -116,3 +114,5 @@ examine your $CASE.pop.h.yyyy-mm.nc file, where you should find your new variabl
 !BOC
 ```
 **Instance**: Diagnoise surface heat/freshwater flux terms and add then as new output variables (See next: Fluxadj 3)
+
+Last update: 08/06/2020
