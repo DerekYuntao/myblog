@@ -24,8 +24,8 @@ df -hl [directory]
 ```
 output:
 ```powershell
-Filesystem      Size  Used Avail Use% Mounted on
-fs1             250T  224T   27T  90% /glade/p/...
+Filesystem      Size  Used Avail  Use%  Mounted on
+fs1             250T  224T   27T  90%   /glade/...
 ```
 
 Last update: 08/08/2020

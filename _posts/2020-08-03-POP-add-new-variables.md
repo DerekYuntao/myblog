@@ -10,7 +10,7 @@ tags:
 ---
 
 Reference:
-[http://www.cesm.ucar.edu/models/cesm1.2/pop2/doc/faq/]
+(http://www.cesm.ucar.edu/models/cesm1.2/pop2/doc/faq/)
 
 CESM POP2 model produces the following files:
 
