@@ -10,19 +10,19 @@ tags:
  - Tech-accumulate
 ---
 
-### CESM Timing, Performance and Load Balancing Data**
+## 1. CESM Timing, Performance and Load Balancing Data**
 Reference: <https://www2.cisl.ucar.edu/user-support/determining-computational-resource-needs>
 
-**PE(processer or MPI tasks) Layouts**
+### 1.1 PE(processer or MPI tasks) Layouts
 Each component is associated with a unique **MPI communicator**, the **driver** runs on the union of all processors and controls the sequencing and hardware partitioning. The component processor layout is via three settings: the number of MPI tasks, the number of OpenMP threads per task, and the root MPI processor number from the global set. The layout of components on processors has no impact on the science. Changing processor layouts does not change intrinsic coupling lags or coupling sequencing. 
 
 Reference: <https://csegweb.cgd.ucar.edu/timing/cgi-bin/timings.cgi>
 This information is constantly subject to change due to changes in the model or machine hardware and software.
 ```powershell
 Machine Compset Resolution	Compiler	mpilib	Total PEs	Cost pe-hrs/yr	ThruPut yrs/day	
-cheyenne	B1850	 f19_g17	   Intel	   mpt	   12636	      2094.42	      48.27	
+cheyenne	B1850	 f19_g17	   Intel	   mpt	   12636	    2094.42	      48.27	
 cheyenne	B1850	 f19_g17	   Intel	   mpt	   5472	      1410.69	      31.24	
-cheyenne	B1850	 f09_g17	   Intel	   mpt	   12960	      3543.22	      29.26	
+cheyenne	B1850	 f09_g17	   Intel	   mpt	   12960	    3543.22	      29.26	
 cheyenne	B1850	 f19_g17	   Intel	   mpt	   1368	      1233.17	      26.62	
 
 Component Total PEs	Root PE	Tasks x Threads
@@ -37,7 +37,8 @@ sesp       	3      	0	      1 X 3
 ww        	72	      1380   	24 X 3
 ```
 
-**e.g.1** In one of my CESM run, the PE layout is as follows. This can be read and modified from  *env_mach_pes.xml*. It cannot be modified after "./cesm_setup" has been invoked without first invoking "cesm_setup -clean".
+### 1.2 Example 1
+In one of my CESM run, the PE layout is as follows. This can be read and modified from  *env_mach_pes.xml*. It cannot be modified after "./cesm_setup" has been invoked without first invoking "cesm_setup -clean".
 ```powershell
  NTASKS_ATM=468,NTHRDS_ATM=2,ROOTPE_ATM=0
  NTASKS_CPL=468,NTHRDS_CPL=2,ROOTPE_CPL=0
@@ -58,7 +59,7 @@ NTASKS and ROOTPE are relatively independent of NTHRDS and they determine the la
 In this instance, **the ocean component would run on 180 hardware processors** with 180 MPI tasks using 2 thread per task starting from global MPI task 468. 
 **Note that** if all components have identical NTASKS, NTHRDS, and ROOTPE set, all components will run sequentially on the same hardware processors. 
 
-**e.g.2 ROOTPE_OCN** 
+### 1.3 Example 2: ROOTPE_OCN
 <entry id="NTASKS_ATM" value="16" />
 <entry id="NTHRDS_ATM" value="4" />
 <entry id="ROOTPE_ATM" value="0" />
@@ -68,10 +69,10 @@ In this instance, **the ocean component would run on 180 hardware processors** w
 the atmosphere and ocean are running concurrently, each on 64 processors with the atmosphere running on MPI tasks 0-15 and the ocean running on MPI tasks 16-79. The first 16 tasks are each threaded 4 ways for the atmosphere. **The batch submission script ($CASE.run) should automatically request 128 hardware processors**, and **the first 16 MPI tasks will be laid out on the first 64 hardware processors with a stride of 4**. The next 64 MPI tasks will be laid out on the second set of 64 hardware processors.
 *ROOTPE_OCN = 48* means a total of 176 processors (128+48) would have been requested and the atmosphere would have been laid out on the first 64 hardware processors in 16x4 fashion, and the ocean model would have been laid out on hardware processors 113-176. Hardware processors 65-112 would have been allocated but completely idle(空闲).
 
-**A very important examples given the model timing performance based on different settings of PE layout**s:
+**A very important examples given the model timing performance based on different settings of PE layouts**:
 [BASICS: How do I change processor counts and component layouts on processors?](http://www.cesm.ucar.edu/models/cesm1.2/cesm/doc/usersguide/x1927.html)
 
-### Estimating Cheyenne core-hours
+## Estimating Cheyenne core-hours
 The computational cost of CESM experiments typically is expressed in core-hours (also known as processor element-hours or "pe-hrs") per simulated year. The core-hours used for a job (a benchmark run) are calculated by **multiplying the number of processor cores used by the wall-clock duration in hours**. Cheyenne core-hour calculations should assume that all jobs will run in the regular queue and that they are charged for use of all 36 cores on each node (Exclusive nodes).
 
 Jobs that run in the exclusive-use queues are charged for use of the all of the cores on each node by this formula:
@@ -104,7 +105,7 @@ Refers to the jobs current state:
    Q – Job is queued.
    R – Job is running.
 
-### Appendix
+## Appendix
 Reference: 
 进程、线程、服务和任务的区别以及多线程与超线程的概念 <https://www.cnblogs.com/Lxk0825/p/9797867.html>
 从硬件角度理解进程与线程 <https://www.jianshu.com/p/f79b877c9611?utm_campaign=maleskine&utm_content=note&utm_medium=seo_notes&utm_source=recommendation>
