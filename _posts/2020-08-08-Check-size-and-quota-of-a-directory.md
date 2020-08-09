@@ -13,6 +13,7 @@ tags:
 ```powershell
 du -sh [directory]
 du -sm [directory]  #size in unit M
+du -sh * [directory]  #check the size of each directory, not file!
 ```
 
 ## Check quota size ##
