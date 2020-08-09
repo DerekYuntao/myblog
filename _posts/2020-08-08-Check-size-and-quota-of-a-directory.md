@@ -9,16 +9,21 @@ tags:
  - Tech-accumulate
 ---
 
-##Check directory size##
+## Check directory size ##
+```powershell
 du -sh [directory]
 du -sm [directory]  #size in unit M
+```
 
-##Check quota size##
+## Check quota size ##
+Check the quota size of the **root path** of a directory:
+```powershell
 df -h [directory]
 or 
 df -hl [directory]
-Check the quota size of the root path of [directory]
+```
 
+output:
 Filesystem      Size  Used Avail Use% Mounted on
 fs1             250T  224T   27T  90% /glade/p/...
 
