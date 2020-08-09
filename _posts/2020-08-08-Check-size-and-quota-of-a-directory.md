@@ -5,6 +5,7 @@ date: 2020-08-08
 description: How to check directory size and quota size on Linux
 share: true
 tags:
+ - Linux
  - Tech-accumulate
 ---
 

@@ -6,6 +6,7 @@ description: How to eastimate CESM code performance and storage
 share: true
 tags:
  - CESM
+ - Linux
  - Tech-accumulate
 ---
 
