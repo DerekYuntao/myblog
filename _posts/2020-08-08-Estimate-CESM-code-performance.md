@@ -9,8 +9,6 @@ tags:
  - Tech-accumulate
 ---
 
-Reference: [https://www2.cisl.ucar.edu/chap/submission]
-
 ### Estimating Cheyenne core-hours
 Cheyenne allocations are made in core-hours. The core-hours used for a job (a benchmark run) are calculated by multiplying the number of processor cores used by the wall-clock duration in hours. Cheyenne core-hour calculations should assume that all jobs will run in the regular queue and that they are charged for use of all 36 cores on each node.
 
