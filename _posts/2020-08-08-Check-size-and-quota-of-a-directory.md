@@ -19,12 +19,13 @@ du -sm [directory]  #size in unit M
 Check the quota size of the **root path** of a directory:
 ```powershell
 df -h [directory]
-or 
+# or 
 df -hl [directory]
 ```
-
 output:
+```powershell
 Filesystem      Size  Used Avail Use% Mounted on
 fs1             250T  224T   27T  90% /glade/p/...
+```
 
 Last update: 08/08/2020
