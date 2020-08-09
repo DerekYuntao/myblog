@@ -10,7 +10,7 @@ tags:
  - Tech-accumulate
 ---
 
-## 1. CESM Timing, Performance and Load Balancing Data**
+## 1. CESM Timing, Performance and Load Balancing Data
 Reference: <https://www2.cisl.ucar.edu/user-support/determining-computational-resource-needs>
 
 ### 1.1 PE(processer or MPI tasks) Layouts
