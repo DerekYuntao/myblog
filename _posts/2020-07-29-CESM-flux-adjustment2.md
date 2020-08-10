@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Total Surface Heat Flux and Temp Tendency calculated in POP"
+title: "!!Pending: Total Surface Heat Flux and Temp Tendency calculated in POP"
 date: 2020-07-29
 description: Explain POP code calculating total sea surface heat flux and temperature tendency in POP
 share: true
@@ -141,7 +141,7 @@ subroutine ocn_export_mct(o2x_o, errorCode)
    enddo
 ```
 Where are *index_o2x_So_t* and *index_o2x_So_s* meaing? Trace back to ***subroutine pop_sum_buffer*** to get:
-````fortran
+```fortran
  subroutine pop_sum_buffer 
 ! !DESCRIPTION:
 !  This routine accumulates sums for averaging fields to
@@ -530,6 +530,7 @@ program ccsm_driver
 ```
 
 ## 3. ***module shr_flux_mod***
+```fortran
 !-------------------------------------------------------------------------------
 ! PURPOSE:
 !   computes atm/ocn surface fluxes
@@ -547,3 +548,4 @@ program ccsm_driver
 !   o Neutral 10m dalton number:  cen = .0346 sqrt(cdn)
 !   o The saturation humidity of air at T(K): qsat(T)  (kg/m^3)
 !-------------------------------------------------------------------------------
+```
