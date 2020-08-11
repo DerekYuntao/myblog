@@ -9,12 +9,14 @@ tags:
 ---
 
 Isotopic ratios of the most of the elements for light stable isotope geochemistry are written conventionally as the ratio of the heavy (and rare) isotope to the light (and more abundant) isotope as in 18O/16O, 34S/32S, etc.
+
 Since heavier water has a lower vapor pressure so they evaporate more slowly and condense more readily; heavier water has higher freezing and boiling point, which means it solidify easier and gasify slower. 
+
 Isotopically light molecules will preferentially diffuse out of a system and leave the reservoir enriched in the heavy isotope. In the case of evaporation, the greater average translational velocities of isotopically lighter water molecules allow them to break through the liquid surface preferentially and diffuse across a boundary layer, resulting in an isotopic fractionation between vapor and liquid. It is the fact that water vapor in atmosphere over the oceans or over a large lake has 18O/16O and D/H ratios that are significantly lower than the ratios that would obtain at equilibrium due to evaporation.
 
 Relative differences in isotopic ratios, the delta value is given by:
-$δ=[(R_x-R_std)/R_std ]×1000$
-$δO^18=[(O^18/O^16 )/(O^18/O^16 )_SMOW -1]×1000$
+$δ = [(R_x-R_{std})/R_{std}]×1000$
+$δO^{18} = [(O^{18}/O^{16} )/(O^{18}/O^{16} )_{SMOW} -1]×1000$
 
 Based on model output, the d18Op is calculated as this :
 P16 = PRECRC_H216Or + PRECSC_H216Os + PRECRL_H216OR + PRECSL_H216OS
