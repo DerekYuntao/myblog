@@ -14,7 +14,7 @@ Since heavier water has a lower vapor pressure so they evaporate more slowly and
 
 Isotopically light molecules will preferentially diffuse out of a system and leave the reservoir enriched in the heavy isotope. In the case of evaporation, the greater average translational velocities of isotopically lighter water molecules allow them to break through the liquid surface preferentially and diffuse across a boundary layer, resulting in an isotopic fractionation between vapor and liquid. It is the fact that water vapor in atmosphere over the oceans or over a large lake has 18O/16O and D/H ratios that are significantly lower than the ratios that would obtain at equilibrium due to evaporation.
 
-Relative differences in isotopic ratios, the delta value is given by:
+Relative differences in isotopic ratios, the delta value is given by (unit: permil or ‰):
 $δ = [(R_x-R_{std})/R_{std}]×1000$
 $δO^{18} = [(O^{18}/O^{16} )/(O^{18}/O^{16} )_{SMOW} -1]×1000$
 
