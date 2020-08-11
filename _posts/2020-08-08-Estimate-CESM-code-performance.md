@@ -78,6 +78,15 @@ The computational cost of CESM experiments typically is expressed in core-hours 
 Jobs that run in the exclusive-use queues are charged for use of the all of the cores on each node by this formula:
 **wall-clock hours × nodes used × cores per node × queue factor**
 
+**important: how to check the model cost?**
+Entering ${case}/timing, and check the *cesm_timing* file of a job.
+
+```powershell
+Overall Metrics:
+   Model Cost:             703.17   pe-hrs/simulated_year
+   Model Throughput:        44.23   simulated_years/day
+```
+
 **Check the number of nodes and cores**
 ```powershell
 qstat
