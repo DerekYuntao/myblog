@@ -16,10 +16,10 @@ where 𝐸 is the enthalpy or heat content of the total system.
 Note: any internal exchanges of energy between different reservoirs do not appear in this budget – because 𝐸 is the sum of all reservoirs.
 
 Specifically,
-**Flux in**:
+*Flux in*:
 The radiative fluxes to and from space, the incoming solar radiation Q. 
 
-**Flux-out**:
+*Flux-out*:
 Including reflected solar radiation and emitted terrestrial (longwave) radiation.
 *Note that OLR = outgoing longwave radiation or terrestrial emissions to space
 
@@ -33,8 +33,8 @@ Finally gives the climate system energy budget equation, the starting point for 
 **CAM variables**
 ```powershell
     # OLR:
-	float FLUT(time, lat, lon) ;
-		FLUT:Sampling_Sequence = "rad_lwsw" ;
+    float FLUT(time, lat, lon) ;
+	    FLUT:Sampling_Sequence = "rad_lwsw" ;
 		FLUT:units = "W/m2" ;
 		FLUT:long_name = "Upwelling longwave flux at top of model" ;
 		FLUT:cell_methods = "time: mean" 
@@ -48,7 +48,7 @@ Finally gives the climate system energy budget equation, the starting point for 
 
     # Reflected shortwave flux:
 	float FSUTOA(time, lat, lon) ;
-		FSUTOA:Sampling_Sequence = "rad_lwsw" ;
+	    FSUTOA:Sampling_Sequence = "rad_lwsw" ;
 		FSUTOA:units = "W/m2" ;
 		FSUTOA:long_name = "Upwelling solar flux at top of atmosphere" ;
 		FSUTOA:cell_methods = "time: mean" ;
