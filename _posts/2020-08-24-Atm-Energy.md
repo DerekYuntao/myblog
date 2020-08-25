@@ -33,25 +33,25 @@ Finally gives the climate system energy budget equation, the starting point for 
 **CAM variables**
 ```powershell
     # OLR:
-    float FLUT(time, lat, lon) ;
-	    FLUT:Sampling_Sequence = "rad_lwsw" ;
-		FLUT:units = "W/m2" ;
-		FLUT:long_name = "Upwelling longwave flux at top of model" ;
-		FLUT:cell_methods = "time: mean" 
+float FLUT(time, lat, lon) ;
+    FLUT:Sampling_Sequence = "rad_lwsw" ;
+    FLUT:units = "W/m2" ;
+    FLUT:long_name = "Upwelling longwave flux at top of model" ;
+    FLUT:cell_methods = "time: mean" 
 
-    # Incoming solar flux:
-    float SOLIN(time, lat, lon) ;
-        SOLIN:Sampling_Sequence = "rad_lwsw" ;
-        SOLIN:units = "W/m2" ;
-        SOLIN:long_name = "Solar insolation" ;
-        SOLIN:cell_methods = "time: mean" ;
+# Incoming solar flux:
+float SOLIN(time, lat, lon) ;
+    SOLIN:Sampling_Sequence = "rad_lwsw" ;
+    SOLIN:units = "W/m2" ;
+    SOLIN:long_name = "Solar insolation" ;
+    SOLIN:cell_methods = "time: mean" ;
 
-    # Reflected shortwave flux:
-	float FSUTOA(time, lat, lon) ;
-	    FSUTOA:Sampling_Sequence = "rad_lwsw" ;
-		FSUTOA:units = "W/m2" ;
-		FSUTOA:long_name = "Upwelling solar flux at top of atmosphere" ;
-		FSUTOA:cell_methods = "time: mean" ;
+# Reflected shortwave flux:
+float FSUTOA(time, lat, lon) ;
+    FSUTOA:Sampling_Sequence = "rad_lwsw" ;
+    FSUTOA:units = "W/m2" ;
+    FSUTOA:long_name = "Upwelling solar flux at top of atmosphere" ;
+    FSUTOA:cell_methods = "time: mean" ;
 ```
 Based on CAM output, the energy budget of the climate system is calculated as follows.
 ASR = SOLIN - FSUTOA
