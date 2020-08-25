@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Case-sensitive Setting for a directory on WIN10"
+title: "Case-sensitive Setting for a Directory on WIN10"
 date: 2020-08-25
 description: How to set a case-sensitive directory on Windows10
 share: true

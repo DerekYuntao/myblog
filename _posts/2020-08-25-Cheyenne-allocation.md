@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Explaination on Cheyenne large allocation"
+title: "Explaination on Cheyenne Resource Allocation"
 date: 2020-08-25
 description: Compostion of Cheyenne resource allocation
 share: true
