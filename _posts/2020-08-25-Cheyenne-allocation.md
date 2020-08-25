@@ -22,13 +22,13 @@ The NCAR Campaign Storage file system is available to the NCAR labs and to unive
 The Globally Accessible Data Environment is centralized disk storage that is accessible from the NCAR's production HPC and analysis clusters. Usually large-scale model output is placed here.
 
 Log in to CIS with two-factor authentication:
-[https://guide.duo.com/append-mode]
+<https://guide.duo.com/append-mode>
 
 Log in to help center:
-[https://helpdesk.ucar.edu/plugins/servlet/desk/portal/3]
+<https://helpdesk.ucar.edu/plugins/servlet/desk/portal/3>
 
 Log in to resource allocation system:
-[https://xras-submit.ucar.edu/login]
+<https://xras-submit.ucar.edu/login>
 
 Reference:
 https://www2.cisl.ucar.edu/resources/computational-systems/cheyenne
