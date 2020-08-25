@@ -6,7 +6,6 @@ description: Atmospheric energy variables e.g. ASR, OLR...
 share: true
 tags:
  - Research
- - CESM
 ---
 
 **Concepts**
@@ -32,7 +31,7 @@ Finally gives the climate system energy budget equation, the starting point for 
 
 **CAM variables**
 ```powershell
-    # OLR:
+# OLR:
 float FLUT(time, lat, lon) ;
     FLUT:Sampling_Sequence = "rad_lwsw" ;
     FLUT:units = "W/m2" ;
