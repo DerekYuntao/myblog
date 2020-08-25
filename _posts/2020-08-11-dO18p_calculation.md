@@ -5,7 +5,7 @@ date: 2020-08-11
 description: How to calculate precipitation weighted d18Op
 share: true
 tags:
- - research
+ - Research
 ---
 
 Isotopic ratios of the most of the elements for light stable isotope geochemistry are written conventionally as the ratio of the heavy (and rare) isotope to the light (and more abundant) isotope as in 18O/16O, 34S/32S, etc.

@@ -41,10 +41,10 @@ Finally gives the climate system energy budget equation, the starting point for 
 
     # Incoming solar flux:
     float SOLIN(time, lat, lon) ;
-    SOLIN:Sampling_Sequence = "rad_lwsw" ;
-    SOLIN:units = "W/m2" ;
-    SOLIN:long_name = "Solar insolation" ;
-    SOLIN:cell_methods = "time: mean" ;
+        SOLIN:Sampling_Sequence = "rad_lwsw" ;
+        SOLIN:units = "W/m2" ;
+        SOLIN:long_name = "Solar insolation" ;
+        SOLIN:cell_methods = "time: mean" ;
 
     # Reflected shortwave flux:
 	float FSUTOA(time, lat, lon) ;
@@ -65,5 +65,5 @@ Reference:
 Ascough, J., H. Maier, J. Ravalico, and M. Strudley (2008), Future research challenges for incorporation of uncertainty in environmental and ecological decision‐making, Ecol. Modell., 219(3–4), 383–399.
 https://agupubs.onlinelibrary.wiley.com/doi/full/10.1002/jame.20040
 
-
+Last update: 08/25/2020
 
