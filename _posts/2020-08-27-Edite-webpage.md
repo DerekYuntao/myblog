@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "A case of Editing a Webpage"
+title: "A Case of Editing a Webpage"
 date: 2020-08-27
 description: How to edite a GitHub blog webpage
 share: true
