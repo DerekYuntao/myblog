@@ -6,7 +6,9 @@ title: About Me
 
 # About me
 
-This is Yuntao's technical blogs.
+Welcome to Parallel Universe of Yuntao. This is my technical blogs.
+
+CV:
 
 2019-Now: Ph.D. student at Ohio State University, atmospheric science program
 
