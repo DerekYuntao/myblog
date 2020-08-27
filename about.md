@@ -6,7 +6,7 @@ title: About Me
 
 # About me
 
-Welcome to Parallel Universe of Yuntao. This is my technical blogs.
+Welcome to Parallel Universe of Yuntao. This is my technical blog.
 
 CV:
 
