@@ -16,7 +16,7 @@ First, we need to find where to modify the code. Since this demand is associated
 ```html
 <h1><a href="{{ page.url | relative_url }}">{{ page.title }}</a></h1>
 ```
-"<a>.....</a>" denotes the hyperlink to page tile. The solution is simple since we just need to delete "<a>.....</a>" to make it a pure text. We can also designate the color of the text.
+"<a..>...</a>" denotes the hyperlink to page tile. The solution is simple since we just need to delete "<a..>...</a>" to make it a pure text. We can also designate the color of the text.
 
 ```html
 <h1 style="color: rgb(7, 119, 224)">{{ page.title }}</h1>
