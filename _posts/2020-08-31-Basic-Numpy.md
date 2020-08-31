@@ -5,7 +5,7 @@ date: 2020-08-31
 description: Array, Matrix, Broadcasting...
 share: true
 tags:
- - Python
+- Python
 ---
 
 ## e.g. 1 Print arrays
