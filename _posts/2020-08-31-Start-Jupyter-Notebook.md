@@ -2,7 +2,7 @@
 layout: post
 title: "Start an existing Jupyter Notebook"
 date: 2020-08-31
-description: Start an existing Jupyter Notebook from a directory
+description: Start an existing Jupyter Notebook from a directory on Windows
 share: true
 tags:
  - Python
