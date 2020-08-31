@@ -6,7 +6,6 @@ description: How to insert images to GitHub Pages based on Jekyll
 share: true
 tags:
  - Web
- - Tech-accumulate
 ---
 
 To insert imges in a markdown file, we should build a new directory save images that should be inserted to your blog articales (e.g. /assets/images/). <span style="color:red;">An absolute path is required</span>. Note if a relative path is being used, the image can not be found and displayed in your webpage.

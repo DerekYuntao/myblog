@@ -7,7 +7,6 @@ share: true
 tags:
  - CESM
  - Linux
- - Tech-accumulate
 ---
 
 ## 1. CESM Timing, Performance and Load Balancing Data

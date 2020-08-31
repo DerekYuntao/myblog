@@ -6,7 +6,6 @@ description: Explain POP code calculating total sea surface heat flux and temper
 share: true
 tags:
  - CESM
- - Tech-accumulate
 ---
 
 There are two ways to calculate sea surface temperature artificial forcing (restoring term): [in form of flux or in form of tendency](https://derekyuntao.github.io/jekyll-clean-dark/2020/07/CESM-flux-adjustment1/). Correspondingly, total **sea surface heat flux** is calculated by adding restoring flux term, or total temperature tendency is calculated by adding **SST restoring tendency**. We want to make sure if we can get the same results using arbitrary way to perform restoring or flux adjustment. 

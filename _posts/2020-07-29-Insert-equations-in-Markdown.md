@@ -6,7 +6,6 @@ description: How to insert LaTex sybols in markdwon; Basic Latex commands
 share: true
 tags:
  - Web
- - Tech-accumulate
 ---
 
 [GitHub博客markdown文章插入LateX公式](https://gongenbo.github.io/2020/07/17/github_page_add_latex_formula/)

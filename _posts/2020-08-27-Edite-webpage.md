@@ -6,7 +6,6 @@ description: How to edite a GitHub blog webpage
 share: true
 tags:
  - Web
- - Tech-accumulate
 ---
 
 In my default template of the GitHub blog, the title of a post weabpage is set to be a hyperlink. Now I don't need the title to be a hyperlink but a pure text, how should I do?

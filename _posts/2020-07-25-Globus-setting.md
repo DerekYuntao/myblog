@@ -6,7 +6,6 @@ description: How to set globus before transfer data between two endpoints
 share: true
 tags:
  - Big data
- - Tech-accumulate
 ---
 
 Globus is really a good tool to effectively transfer and share files with multiple an endpoint.

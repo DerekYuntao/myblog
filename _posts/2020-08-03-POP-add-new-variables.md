@@ -6,7 +6,6 @@ description: How to add new variables in POP
 share: true
 tags:
  - CESM
- - Tech-accumulate
 ---
 
 Reference:

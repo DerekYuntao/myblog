@@ -5,7 +5,7 @@ date: 2020-08-25
 description: How to set a case-sensitive directory on Windows10
 share: true
 tags:
- - Tech-accumulate
+ - Windows
 ---
 
 We can't enable a case-sensitive disk on Windows but can enable for a directory. 
