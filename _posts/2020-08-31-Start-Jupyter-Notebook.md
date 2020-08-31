@@ -5,7 +5,7 @@ date: 2020-08-31
 description: Start an existing Jupyter Notebook from a directory on Windows
 share: true
 tags:
-- Python
+ - Python
 ---
 
 Step1: Run *Anaconda Prompt*
