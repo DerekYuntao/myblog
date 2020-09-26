@@ -9,7 +9,7 @@ tags:
 ---
 
 Function time2calendar is written in a single NCL script.
-```NCL
+```powershell
 load "$NCARG_ROOT/lib/ncarg/nclscripts/csm/gsn_code.ncl"
 load "$NCARG_ROOT/lib/ncarg/nclscripts/csm/gsn_csm.ncl"
 load "$NCARG_ROOT/lib/ncarg/nclscripts/csm/contributed.ncl"
@@ -32,11 +32,14 @@ end
 ```
 
 In a script, we can call this function as follows
-```NCL
+```powershell
 load "time2calendar.ncl"  
+begin
 ...
 date=time2calendar(u_obs&time)
 print(date1)
+...
+end
 ```
 
 Last update: 09/26/2020
