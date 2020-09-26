@@ -10,7 +10,7 @@ tags:
 
 A latest new finding to run NCL stramlined!
 Reference:
-[NCL command line options and arguments](https://www.ncl.ucar.edu/Document/Manuals/Ref_Manual/NclCLO.shtmlz)
+[NCL command line options and arguments](https://www.ncl.ucar.edu/Document/Manuals/Ref_Manual/NclCLO.shtml)
 
 ```powershell
 ;*************************************************
