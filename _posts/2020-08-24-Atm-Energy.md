@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Outputed Energy Variables from CAM"
+title: "Output Energy Variables from CAM"
 date: 2020-08-24
 description: Atmospheric energy variables e.g. ASR, OLR...
 share: true
