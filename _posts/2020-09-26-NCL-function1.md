@@ -8,7 +8,7 @@ tags:
  - NCL
 ---
 
-Function time2calendar is written in a single NCL script.
+A self-defined function *time2calendar* can be written in a single NCL script and it can be called by another script.
 ```powershell
 load "$NCARG_ROOT/lib/ncarg/nclscripts/csm/gsn_code.ncl"
 load "$NCARG_ROOT/lib/ncarg/nclscripts/csm/gsn_csm.ncl"
@@ -41,5 +41,7 @@ print(date1)
 ...
 end
 ```
+
+See it is a very good way to perform objectification in NCL!
 
 Last update: 09/26/2020
