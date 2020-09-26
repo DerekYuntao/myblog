@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Calclulation of d18Op"
+title: "Calculation of d18Op"
 date: 2020-08-11
 description: How to calculate precipitation weighted d18Op
 share: true
