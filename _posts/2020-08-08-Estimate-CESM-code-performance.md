@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Estimate CESM Code Performace: Parallel processes"
+title: "Estimate CESM Code Performance: Parallel processes"
 date: 2020-08-09
 description: How to eastimate CESM code performance
 share: true
