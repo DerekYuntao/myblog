@@ -6,6 +6,7 @@ description: Compostion of Cheyenne resource allocation
 share: true
 tags:
  - Big data
+ - CESM
 ---
 
 **Cheyenne** (SGI ICE XA Cluster) 
@@ -29,6 +30,9 @@ Log in to help center:
 
 Log in to resource allocation system:
 <https://xras-submit.ucar.edu/login>
+
+NCAR account manager:
+<https://sam.ucar.edu/app/home>
 
 Reference:
 https://www2.cisl.ucar.edu/resources/computational-systems/cheyenne
