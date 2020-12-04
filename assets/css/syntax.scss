@@ -22,6 +22,7 @@ $comments: #75715e;
 $linenos: #A9B7C6;
 .highlight {
   margin-bottom: 1.5em;
+  font-size: .8125em; 
   color: $foreground;
   background-color: $background;
   @include rounded(4px);
