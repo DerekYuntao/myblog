@@ -22,10 +22,9 @@ $comments: #75715e;
 $linenos: #A9B7C6;
 .highlight {
   margin-bottom: 1.5em;
-  font-family: "fontawesome";
-  font-size: .8125em; 
-  color: $lighter-gray;
-  background-color: $background;
+  font-size: $type-size-4; 
+  color: $foreground;
+  background-color: $lighter-gray;
   @include rounded(4px);
   pre {
     position: relative;
