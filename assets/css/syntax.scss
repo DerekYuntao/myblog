@@ -23,7 +23,7 @@ $linenos: #A9B7C6;
 .highlight {
   margin-bottom: 1.5em;
   color: $foreground;
-  background-color: $lighter-gray;
+  background-color: $background;
   @include rounded(4px);
   pre {
     position: relative;
