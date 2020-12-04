@@ -28,12 +28,13 @@ $linenos: #A9B7C6;
   pre {
     position: relative;
     margin: 0;
+    font-size: .8125em;
     padding: 1em;
     overflow-x: auto;
     word-wrap: normal;
     border: none;
     white-space: pre;
-    background-color: #333;
+    background-color: rgb(92, 91, 91);
     color: #ddd !important;
     code {
       white-space: pre;
