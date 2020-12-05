@@ -28,7 +28,7 @@ $linenos: #A9B7C6;
   pre {
     position: relative;
     margin: 0;
-    font-size: 1.125em;
+    font-size: 1.0625em;
     padding: 1em;
     overflow-x: auto;
     word-wrap: normal;
@@ -39,16 +39,16 @@ $linenos: #A9B7C6;
     code {
       white-space: pre;
       color: #ddd;
-      font-size: 1.125em;
+      font-size: 1.0625em;
     }
   }
   pre::-webkit-scrollbar {
     height: 10px;
-    background-color: #ffffff;
+    background-color: #34362e;
     border-radius: 0 0 4px 4px;
   }
   pre::-webkit-scrollbar-thumb {
-    background-color: rgb(255, 255, 255);
+    background-color: #555;
     @include rounded(4px);
   }
   ::selection {
