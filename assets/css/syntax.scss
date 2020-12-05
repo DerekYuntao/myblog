@@ -48,7 +48,7 @@ $linenos: #A9B7C6;
     border-radius: 0 0 4px 4px;
   }
   pre::-webkit-scrollbar-thumb {
-    background-color: #555;
+    background-color: rgb(255, 255, 255);
     @include rounded(4px);
   }
   ::selection {
