@@ -124,6 +124,7 @@ h6:before {
             counter(h6counter) ".\0000a0\0000a0";
 }
 ```
+Reference: <https://yanwei.github.io/misc/markdown-auto-number-title.html>
 
 **Appendix**
 
