@@ -125,6 +125,6 @@ h6:before {
 }
 ```
 
-Last update: 08/27/2020
+Last update: 12/04/2020
 
 <link rel="stylesheet" type="text/css" href="/jekyll-clean-dark/assets/css/auto-number-title.css"/>
