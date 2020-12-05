@@ -60,7 +60,7 @@ Add two lines to adjust font size: `font-size: .9375em;`
   pre {
     position: relative;
     margin: 0;
-    font-size: .9375em;
+    font-size: 14px;
     padding: 1em;
     overflow-x: auto;
     word-wrap: normal;
@@ -71,7 +71,7 @@ Add two lines to adjust font size: `font-size: .9375em;`
     code {
       white-space: pre;
       color: #ddd;
-      font-size: .9375em;
+      font-size: 14px;
     }
 ```
 
