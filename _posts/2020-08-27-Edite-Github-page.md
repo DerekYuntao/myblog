@@ -125,6 +125,30 @@ h6:before {
 }
 ```
 
+**Appendix**
+
+    font-size: .625em;            = 10px 
+    font-size: .6875em;           = 11px 
+    font-size: .75em;             = 12px 
+    font-size: .8125em;           = 13px 
+    font-size: .875em;            = 14px
+    font-size: .9375em;           = 15px
+    font-size: 1.0625em;          = 17px
+    font-size: 1.125em;           = 18px     
+    font-size: 1.188em;           = 19px      
+    font-size: 1.25em;            = 20px   
+        
+    font-size: 1.313em;           = 21px        
+    font-size: 1.375em;           = 22px         
+    font-size: 1.438em;           = 23px         
+    font-size: 1.5em;             = 24px
+    font-size: 1.563em;           = 25px         
+    font-size: 1.625em;           = 26px          
+    font-size: 1.688em;           = 27px         
+    font-size: 1.75em;            = 28px         
+    font-size: 1.813em;           = 29px          
+    font-size: 1.875em;           = 30px  
+
 Last update: 12/04/2020
 
 <link rel="stylesheet" type="text/css" href="/jekyll-clean-dark/assets/css/auto-number-title.css"/>
