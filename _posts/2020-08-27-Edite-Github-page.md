@@ -1,6 +1,6 @@
 ---
 layout: post
-title: " Editing a Github page"
+title: "Editing a Github Page"
 date: 2020-08-27
 description: How to edite a GitHub blog webpage
 share: true

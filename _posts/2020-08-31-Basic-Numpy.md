@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Basic tips of Numpy"
+title: "Basic Tips of Numpy"
 date: 2020-08-31
 description: Array, Matrix, Broadcasting...
 share: true

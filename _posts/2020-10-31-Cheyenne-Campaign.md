@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Load data to or download data from Campaign"
+title: "Load Data to or Download Data from Campaign"
 date: 2020-10-31
 description: How to process or migrate data storage in Campaign 
 share: true

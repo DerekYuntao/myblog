@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Sync a random directory to OneDrive"
+title: "Sync a Random Directory to OneDrive"
 date: 2020-11-13
 description: How to link and sync a random directory outside OneDrive to OneDrive
 share: true

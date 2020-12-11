@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "NCL time2calendar function"
+title: "NCL time2calendar Function"
 date: 2020-09-26
 description: A self-defined NCL function to convert numerical time to calendar
 share: true
