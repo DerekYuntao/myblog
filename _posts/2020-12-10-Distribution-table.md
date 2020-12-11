@@ -27,4 +27,5 @@ print np.array([f.isf(alpha, df1, df2) for df1 in range(1, 11) for df2 in range(
 # normal distribution
 print norm.ppf(np.arange(0, 0.99, 0.001).reshape(-1, 10))
 ```
+
  Last update: 12/10/2020
