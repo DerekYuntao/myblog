@@ -5,7 +5,7 @@ date: 2020-11-24
 description: Forward: 37 Reasons why your Neural Network is not working
 share: true
 tags:
- - machine learning
+ - Machine Learning
 ---
 
 Referece: 37 Reasons why your Neural Network is not working:
