@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Generate dynamic variable names in python"
+title: "Generate Dynamic Variable Names in Python"
 date: 2021-01-07
 description: How to generate dynamic variable names in python
 share: true

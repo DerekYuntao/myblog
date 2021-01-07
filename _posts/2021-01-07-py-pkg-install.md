@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Use anaconda to install python package locally"
+title: "Use Anaconda to Install Python Package Locally"
 date: 2021-01-07
 description: Ways to install python package to anaconda
 share: true
@@ -9,15 +9,15 @@ tags:
 ---
 
 There are 3 ways to install python packges. 
-Way 1 - Anaconda installation:
+## Way 1 - Anaconda installation:
 
     conda install -c conda-forge <pkg_name>
 
-Way 2 - Pip installation:
+## Way 2 - Pip installation:
 
     pip install <pkg_name>
 
-Way 3 - Install locally:
+## Way 3 - Install locally:
 Step1: clone package from Github
 Step2: Unzip package to directory `~anaconda3/pkgs/`    
 Step3: Entering `~anaconda3/pkgs/` and install pakage by:

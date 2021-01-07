@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Concatenante NC files"
+title: "Concatenante Multiple NC Files"
 date: 2021-01-07
 description: Several ways to concatenate NC files
 share: true
@@ -9,11 +9,11 @@ tags:
 ---
 
 There are several ways to concatenante NectCDF files into a time series:
-Way1 - CDO:
+## Way1 - CDO:
 
     cdo cat b.e13.Bi1850C5.f19_g16.TS.0001-0999.ANN.nc b.e13.Bi1850C5.f19_g16.TS.1000-1999.ANN.nc b.e13.Bi1850C5.f19_g16.TS.2000-2999.ANN.nc ... b.e13.Bi1850C5.f19_g16.TS.TS.8000-8999.ANN.nc TS.test.cdo.merge.nc
 
-Way2 - pycdo:
+## Way2 - pycdo:
 To install this package with conda run one of the following:
 
     conda install -c conda-forge python-cdo 
@@ -31,11 +31,11 @@ cdo.cat(input = [x for x in fname],output = fout_name)
 ```
 Unfortunately, pycdo is not applicable for variable like MOC in pop.
 
-Way3 - NCO:
+## Way3 - NCO:
 
     ncrcat -h b.e13.Bi1850C5.f19_g16.TS.0001-0999.ANN.nc b.e13.Bi1850C5.f19_g16.TS.1000-1999.ANN.nc b.e13.Bi1850C5.f19_g16.TS.2000-2999.ANN.nc ... b.e13.Bi1850C5.f19_g16.TS.TS.8000-8999.ANN.nc TS.test.cdo.merge.nc
 
-Way4 - pynco:
+## Way4 - pynco:
 ```python
 from nco import Nco
 nco = Nco()
@@ -44,7 +44,7 @@ nco.ncrcat(input = [x for x in fname],output = fout_name)
 ```
 Unfortunately, pynco is not applicable for variable like MOC in pop.
 
-Way5 - xarray: 
+## Way5 - xarray: 
 
 `open_mfdataset` open multiple files as a single dataset.
 ```python
@@ -58,10 +58,12 @@ Way5 - xarray:
     merged_ds.to_netcdf(path = fout_name, encoding = {'TS': {'dtype':'float32'}})
 ```    
 
+
 If all the data is loaded to workspace from input file list, then how do we concatenates these data in to a single array?
-参考blog:
+
+转载自blog:
 **从xarray走向netCDF处理：合并与计算**
-Reference: http://www.meteoai.cn/post/%E4%BB%8Exarray%E8%B5%B0%E5%90%91netcdf%E5%A4%84%E7%90%86%E5%90%88%E5%B9%B6%E4%B8%8E%E8%AE%A1%E7%AE%97/
+Reference: <http://www.meteoai.cn/post/%E4%BB%8Exarray%E8%B5%B0%E5%90%91netcdf%E5%A4%84%E7%90%86%E5%90%88%E5%B9%B6%E4%B8%8E%E8%AE%A1%E7%AE%97/>
 
 数据合并主要是两种形式
 
