@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "Tools Good for Coding and Research"
+title: "A Collection of Tools for Coding and Research"
 date: 2021-01-07
-description: A collection of tools for coding and research
+description: A collection of tools that is good for coding and research
 share: true
 tags:
  - Research
