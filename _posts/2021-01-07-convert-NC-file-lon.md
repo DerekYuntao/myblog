@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Convert longitude from 0~360 to -180~180 for a NC file"
+title: "Convert Longitude from 0~360 to -180~180 for a NC File"
 date: 2021-01-07
 description: How to convert longitude from 0~360 to -180~180 for a NC file
 share: true
