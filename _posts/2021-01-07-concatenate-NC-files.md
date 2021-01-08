@@ -6,6 +6,7 @@ description: Several ways to concatenate NC files
 share: true
 tags:
  - python
+ - Big data
 ---
 
 There are several ways to concatenante NectCDF files into a time series:
