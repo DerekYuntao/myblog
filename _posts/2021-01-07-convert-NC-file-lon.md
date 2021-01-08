@@ -12,6 +12,7 @@ If longitude of a NetCDF file is in a form of 0~360 and one want to convert it t
 ## Way1 - CDO:
 
     cdo sellonlatbox,-180,180,-90,90 input.nc output.nc 
+    
 `sellonlatbox` is also used for selecting regions in with specified lon and lat. 
 
 ## Way2 - pycdo:
