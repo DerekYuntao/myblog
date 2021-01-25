@@ -8,6 +8,8 @@ tags:
  - Research
 ---
 
+https://www.jianshu.com/p/b4a41caa0c8d
+
 [**Climate Modeling Alliance**](https://github.com/CliMA)
 
 An alliance of scientists, engineers and applied mathematicians, dedicated to pioneering a new, data-informed approach to climate modeling. Most of the models are written in Julia.
