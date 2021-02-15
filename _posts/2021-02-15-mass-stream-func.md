@@ -16,7 +16,7 @@ Keyser et al. (1989) et al. developed a method to partition a three-dimensional 
 ## Derivation of the regional mass stream function
 
 Since only the divergent component of wind produce the vertical motion, the local mass continuity equation can be written as:
-$\frac{∂u_D}{∂x} + \frac{∂v_D}{∂x} + \frac{∂ω}{∂p} = 0$   (1)
+$\frac{∂u_D}{∂x}\quad + \frac{∂v_D}{∂x}\quad + \frac{∂ω}{∂p}\quad = 0$   (1)
 Subscript D represents for divergent wind. 
 The continuity equation can be decomposed into zonal and meridional parts:
 (∂u_D)/∂x+(∂ω_x)/∂p=0   (2.1)

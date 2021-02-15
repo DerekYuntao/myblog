@@ -22,8 +22,8 @@ contact:
 bao.291@osu.edu
 
 ``` python
-print("It's a far way to be a specialist. Step by step!")
-print("Be Hhalthy and positive")
+print("It's a far way to be a specialist. Step by step...")
+print("Be halthy and positive")
 ```
 
 Last updated: 2020/07/25
