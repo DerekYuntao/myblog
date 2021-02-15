@@ -5,7 +5,7 @@ date: 2021-02-15
 description: Derivation and calculation of local mass stream function
 share: true
 tags:
- - Research
+ - research
  - python
 ---
 
@@ -16,7 +16,7 @@ Keyser et al. (1989) et al. developed a method to partition a three-dimensional 
 ## Derivation of the regional mass stream function
 
 Since only the divergent component of wind produce the vertical motion, the local mass continuity equation can be written as:
-$\frac{∂u_D}{∂x}\quad + \frac{∂v_D}{∂x}\quad + \frac{∂ω}{∂p}\quad = 0$   (1)
+(∂u_D)/∂x+(∂v_D)/∂x+∂ω/∂p=0   (1)
 Subscript D represents for divergent wind. 
 The continuity equation can be decomposed into zonal and meridional parts:
 (∂u_D)/∂x+(∂ω_x)/∂p=0   (2.1)
@@ -33,7 +33,7 @@ where ψ=(ψ_x, ψ_y) and ∇=(∂/∂x, ∂/∂y).
 ***Note:*** There is a problem that either u_D=(∂ψ_x)/∂p;  ω_x=-(∂ψ_x)/∂x and u_D=-(∂ψ_x)/∂p;  ω_x=(∂ψ_x)/∂x are solutions for Eq 2.1. **How to check which is the solution?? I don't know yet...**
 
 Meridional mass stream function ψ_y is defined as the northward mass flux above a particular pressure P. In sphere coordinate, the zonal mean meridional mass stream function ψ_ϕ is:
-ψ_ϕ=∫_z^∞▒dz ∫_(λ_1)^(λ_2)▒〖ρ[v_D]acosϕdλ〗
+$ψ_ϕ = \int_z^\inftydz \int_{λ_1}^{λ_2}[ρ[v_D]acosϕdλ] $ 
 =acosϕ/g ∫_0^p▒dp ∫_(λ_1)^(λ_2)▒[v_D ]dλ
 =acosϕ∆λ/g ∫_0^p▒[v_D ]dp     (4)
 where [v_D] is zonal mean meridional divergent wind; ϕ is latitude in radian and λ is longitude in radian; ∆λ is the width of the regional zonal belt in radian.
@@ -64,7 +64,6 @@ for k in range(N):
 
 #%% calculate mass stream function   
 # length in radius
-delta_theta = np.zeros(3, "float")
 delta_phi = np.zeros(3, "float")
 vconst = []
 for k in range(N):
