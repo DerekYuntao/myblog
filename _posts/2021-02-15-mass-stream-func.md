@@ -14,24 +14,6 @@ tags:
 Keyser et al. (1989) et al. developed a method to partition a three-dimensional divergent flow into an independent pair of orthogonal, two-dimensional circulations, with both satisfying continuities. This method is possible to uniquely attribute part of the vertical motion to the circulation in the zonal direction and part to that in the meridional direction. Schwendike et al. (2014) decomposed the divergent overturning circulation into the meridional and zonal components. The stream function of the Hadley circulation is derived from the divergent meridional wind and the stream function for the Walker circulation was derived from the divergent zonal wind. This approach is proved to be useful for defining regionally averaged overturning circulations.
 
 ## Derivation of the regional mass stream function
-
-Since only the divergent component of wind produce the vertical motion, the local mass continuity equation can be written as:
-(∂u_D)/∂x+(∂v_D)/∂x+∂ω/∂p=0   (1)
-Subscript D represents for divergent wind. 
-The continuity equation can be decomposed into zonal and meridional parts:
-(∂u_D)/∂x+(∂ω_x)/∂p=0   (2.1)
-(∂v_D)/∂y+(∂ω_y)/∂p=0   (2.2)
-Subscripts x and y represents for vertical wind deduced by zonal and meridional circulations. 
-The zonal continuity equation indicates a stream function on x-z plan:
-u_D=(∂ψ_x)/∂p and ω_x=-(∂ψ_x)/∂x   (3.1)
-The meridional continuity equation indicates a stream function on y-z plan:
-v_D=(∂ψ_y)/∂p and ω_y=-(∂ψ_y)/∂y   (3.2)
-The corresponding vectors form of Eq.3.1 and Eq.3.2 is:
-v_D=∂ψ/∂p and ω=-∇ψ   (3.3)
-where ψ=(ψ_x, ψ_y) and ∇=(∂/∂x, ∂/∂y).
-
-***Note:*** There is a problem that either u_D=(∂ψ_x)/∂p;  ω_x=-(∂ψ_x)/∂x and u_D=-(∂ψ_x)/∂p;  ω_x=(∂ψ_x)/∂x are solutions for Eq 2.1. **How to check which is the solution?? I don't know yet...**
-
 Meridional mass stream function ψ_y is defined as the northward mass flux above a particular pressure P. In sphere coordinate, the zonal mean meridional mass stream function ψ_ϕ is:
 $ψ_ϕ = \int_z^\inftydz \int_{λ_1}^{λ_2}[ρ[v_D]acosϕdλ] $ 
 =acosϕ/g ∫_0^p▒dp ∫_(λ_1)^(λ_2)▒[v_D ]dλ
