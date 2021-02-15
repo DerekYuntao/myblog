@@ -20,8 +20,8 @@ $$
 \begin{align}
 ψ_ϕ = \int_z^\infty dz \int_{λ_1}^{λ_2}ρ[v_D]acosϕdλ\\
 =acosϕ/g \int_0^p dp \int_{λ_1}^{λ_2}[v_D]dλ\\
-=acosϕ∆λ/g \int_0^p[v_D] dp
-\end{align}\\
+=acosϕ∆λ/g \int_0^p[v_D] dp\\
+\end{align}
 $$     
 
 where [$v_D$] is zonal mean meridional divergent wind; ϕ is latitude in radian and λ is longitude in radian; ∆λ is the width of the regional zonal belt in radian.
