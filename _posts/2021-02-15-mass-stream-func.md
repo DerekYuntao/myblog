@@ -16,9 +16,13 @@ Keyser et al. (1989) et al. developed a method to partition a three-dimensional 
 ## Derivation of the regional mass stream function
 Meridional mass stream function $ψ_y$ is defined as the northward mass flux above a particular pressure P. In sphere coordinate, the zonal mean meridional mass stream function $ψ_ϕ$ is:
 
-$ψ_ϕ = \int_z^\infty dz \int_{λ_1}^{λ_2}ρ[v_D]acosϕdλ $ 
-=acosϕ/g \int_0^p dp int_{λ_1}^{λ_2}[v_D]dλ $ 
-=acosϕ∆λ/g \int_0^p[v_D] dp     (1)
+$$
+\begin{align}
+ψ_ϕ = \int_z^\infty dz \int_{λ_1}^{λ_2}ρ[v_D]acosϕdλ \\
+=acosϕ/g \int_0^p dp \int_{λ_1}^{λ_2}[v_D]dλ \\
+=acosϕ∆λ/g \int_0^p[v_D] dp$
+\end{align}
+$$     (1)
 
 where [$v_D$] is zonal mean meridional divergent wind; ϕ is latitude in radian and λ is longitude in radian; ∆λ is the width of the regional zonal belt in radian.
 
