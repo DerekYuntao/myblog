@@ -14,20 +14,22 @@ tags:
 Keyser et al. (1989) et al. developed a method to partition a three-dimensional divergent flow into an independent pair of orthogonal, two-dimensional circulations, with both satisfying continuities. This method is possible to uniquely attribute part of the vertical motion to the circulation in the zonal direction and part to that in the meridional direction. Schwendike et al. (2014) decomposed the divergent overturning circulation into the meridional and zonal components. The stream function of the Hadley circulation is derived from the divergent meridional wind and the stream function for the Walker circulation was derived from the divergent zonal wind. This approach is proved to be useful for defining regionally averaged overturning circulations.
 
 ## Derivation of the regional mass stream function
-Meridional mass stream function ψ_y is defined as the northward mass flux above a particular pressure P. In sphere coordinate, the zonal mean meridional mass stream function ψ_ϕ is:
-$ψ_ϕ = \int_z^\infty dz \int_{λ_1}^{λ_2}ρ[v_D]acosϕdλ $ 
-     =acosϕ/g \int_0^pdp ∫_(λ_1)^(λ_2)▒[v_D ]dλ
-=acosϕ∆λ/g ∫_0^p▒[v_D ]dp     (4)
-where [v_D] is zonal mean meridional divergent wind; ϕ is latitude in radian and λ is longitude in radian; ∆λ is the width of the regional zonal belt in radian.
+Meridional mass stream function $ψ_y$ is defined as the northward mass flux above a particular pressure P. In sphere coordinate, the zonal mean meridional mass stream function $ψ_ϕ$ is:
 
-Zonal mass stream function ψ_y is defined as the eastward mass flux above a particular pressure P. In sphere coordinate, the meridional mean zonal mass stream function ψ_λ is:
-ψ_λ=∫_z^∞▒dz ∫_(ϕ_1)^(ϕ_2)▒ρ〈u_D 〉adϕ
-=a∆ϕ/g ∫_0^p▒〈u_D 〉dp    (5)
-where 〈u_D 〉 is meridional mean zonal divergent wind, ∆ϕ is the width of the regional meridional belt in radian.
+$ψ_ϕ = \int_z^\infty dz \int_{λ_1}^{λ_2}ρ[v_D]acosϕdλ $ 
+=acosϕ/g \int_0^p dp int_{λ_1}^{λ_2}[v_D]dλ $ 
+=acosϕ∆λ/g \int_0^p[v_D] dp     (1)
+
+where [$v_D$] is zonal mean meridional divergent wind; ϕ is latitude in radian and λ is longitude in radian; ∆λ is the width of the regional zonal belt in radian.
+
+Zonal mass stream function $ψ_x$ is defined as the eastward mass flux above a particular pressure P. In sphere coordinate, the meridional mean zonal mass stream function $ψ_λ$ is:
+ψ_λ=\int_z^\infty dz \int_{λ_1}^{λ_2}ρ[u_D]adλ $ 
+=a∆ϕ/g \int_0^p[u_D] dp    (2)
+where <[$u_D$]> is meridional mean zonal divergent wind, ∆ϕ is the width of the regional meridional belt in radian.
 
 The vertical velocity in sphere coordinate is:
-(ω_λ,〖 ω〗_ϕ )=-((∂ψ_λ)/acosϕ∂λ,(∂(ψ_ϕ cosϕ))/acosϕ∂ϕ)   (6)
-Regional mass stream function (MSF) can depict the thermodynamic circulation. The vertical motion of the partitioned zonal and meridional overturning circulations can be retrieved from the gradient of the partitioned MSF (Eq.6).   
+(ω_λ,〖 ω〗_ϕ )=-(\frac{∂ψ_λ}{acosϕ∂λ}\quad,(\frac{∂(ψ_ϕ cosϕ)}{acosϕ∂ϕ}\quad   (3)
+Regional mass stream function (MSF) can depict the thermodynamic circulation. The vertical motion of the partitioned zonal and meridional overturning circulations can be retrieved from the gradient of the partitioned MSF (Eq.3).   
 
 ## Part of code
 ```python
