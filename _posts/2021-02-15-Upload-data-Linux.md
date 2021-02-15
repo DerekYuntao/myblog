@@ -24,7 +24,7 @@ This is equivalent to -rlptgoD. It is a quick way of saying you want recursion a
 Its purpose is to make it much easier to specify these two options for a long transfer that may be interrupted.
 
  Reference:
- https://linux.die.net/man/1/rsync
- http://www.ruanyifeng.com/blog/2020/08/rsync.html   
+ <https://linux.die.net/man/1/rsync>
+ <http://www.ruanyifeng.com/blog/2020/08/rsync.html>
 
  Last update: 2021/02/15

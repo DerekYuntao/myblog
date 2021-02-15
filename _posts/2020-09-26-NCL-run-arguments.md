@@ -27,6 +27,7 @@ begin
 ;var = var0(index)
 var = var0     ;var0 is from command argument!
 isextrap = isextrap0
+interp_case = vertical_range   ;vertical_range only these two case are acceptable: 1000-1 or 1000-100
 print(var)
 
 inf = addfile("b.e13.Bi1850C5.f19_g16.fluxadj.PI.ctl.cam.h0.0131-01.nc","r")  ;info data
@@ -45,9 +46,11 @@ hybm = inf->hybm                             ; get b coefficiants
 PS   = in_ps->PS                             ; get surface pressure: Pa
 
 ; create an array of desired pressure levels:
-;pnew = (/100., 125., 150., 175., 200., 225., 250., 300., 350., 400., 450., 500., 550., 600., 650., 700., 750., 775., 800., 825., 850., 875., 900., 925., 950., 975., 1000./)         
-
+if (interp_case .eq. "1000-100") then
+pnew = (/100., 125., 150., 175., 200., 225., 250., 300., 350., 400., 450., 500., 550., 600., 650., 700., 750., 775., 800., 825., 850., 875., 900., 925., 950., 975., 1000./)         
+else
 pnew = (/1.,2.,3.,5.,7.,10.,20.,30.,50.,70.,100.,125.,150.,175.,200.,225.,250.,300.,350.,400.,450.,500.,550.,600.,650.,700.,750.,775.,800.,825.,850.,875.,900.,925.,950.,975.,1000./)         
+end if
 pnew@long_name = "pressure"           
 pnew@units     = "hPa"
 ;print(pnew)
@@ -73,14 +76,24 @@ dataP@long_name = data_orig@long_name
 printVarSummary(dataP)
 
 ;************************************************
-;output new files
-;fout = addfile ("b.e13.Bi1850C5CN.f19_g16.alpha01b.09.cam.h0.pressurelev."+var+".050001-060312.nc", "c")
+;output data to new files
+if interp_case .eq. "1000-100" then
+fout_name = "b.e13.Bi1850C5CN.f19_g16.alpha01b.09.cam.h0.pressurelev."+var+".050001-060312.nc"
+else
+fout_name = "b.e13.Bi1850C5CN.f19_g16.alpha01b.09.cam.h0.pressurelev.1000-1hPa."+var+".050001-060312.nc"
+end if
+
+; remove existing file
+if fileexists(fout_name) then
+    system("rm -rf " + fout_name)
+end if   
+
+setfileoption("nc","Format","NetCDF4Classic")
+fout = addfile(fout_name, "c")
 
 ;In order to write large (> 2 GB) variables to a NC file, we have to set the NetCDF "Format" option to 
 ;"LargeFile" or to "NetCDF4Classic". 
 ; below is a large NC file to output
-setfileoption("nc","Format","NetCDF4Classic")
-fout = addfile ("b.e13.Bi1850C5CN.f19_g16.alpha01b.09.cam.h0.pressurelev.1000-1hPa."+var+".050001-060312.nc", "c")
 fout->$var$ = dataP
 fout->lon = indat->lon
 fout->lat = indat->lat

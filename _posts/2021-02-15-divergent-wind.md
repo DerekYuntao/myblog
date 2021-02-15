@@ -191,10 +191,10 @@ fout->chi = chi
 fout->sp = sp
 
 else
-if fileexists(out_dir + "itrace.PI.ctl.divwnd.ltm.mon.nc") then
-    system("rm -rf "+out_dir + "itrace.PI.ctl.divwnd.ltm.mon.nc")
+if fileexists(out_dir + "PI.ctl.divwnd.ltm.mon.nc") then
+    system("rm -rf "+out_dir + "PI.ctl.divwnd.ltm.mon.nc")
 end if    
-fout = addfile (out_dir + "itrace.PI.ctl.divwnd.ltm.mon.nc", "c")
+fout = addfile (out_dir + "PI.ctl.divwnd.ltm.mon.nc", "c")
 fout->ud = ud
 fout->vd = vd
 fout->chi = chi
