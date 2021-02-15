@@ -19,6 +19,10 @@ An alliance of scientists, engineers and applied mathematicians, dedicated to pi
 climt (Climate Modelling and Diagnostics Toolkit) is a Python based library which provides a modular and intuitive approach to writing numerical models of the climate system. climt provides state-of-the art components and an easy-to-use interface to allow writing research quality models without the hassle of modifying Fortran code.
 The modular nature of climt allows re-use of model code, allowing users to build progressively complicated models without having to rewrite the same code at each level of complexity.
 
+[**MetPy**](https://unidata.github.io/MetPy/latest/api/generated/metpy.calc.html)
+
+MetPy is a collection of tools in Python for reading, visualizing, and performing calculations with weather data. 
+
 [**MeteoLab**](<https://meteo.unican.es/trac/MLToolbox/>)
 
 Meteolab is an open-source Matlab toolbox for statistical analysis and data mining in Meteorology, focusing on statistical downscaling methods.
@@ -28,6 +32,38 @@ Meteolab is an open-source Matlab toolbox for statistical analysis and data mini
 xclim is a library of functions to compute climate indices from observations or model simulations. It is built using xarray and can benefit from the parallelization handling provided by dask. Its objective is to make it as simple as possible for users to compute indices from large climate datasets and for scientists to write new indices with very little boilerplate.
 
 [**OGGM**](https://github.com/OGGM/oggm)
+paper:
+https://gmd.copernicus.org/articles/12/909/2019/
 
 OGGM is a modular open source model for glacier dynamics.
 The model accounts for glacier geometry (including contributory branches) and includes an explicit ice dynamics module. It can simulate past and future mass-balance, volume and geometry of (almost) any glacier in the world in a fully automated and extensible workflow. We rely exclusively on publicly available data for calibration and validation.
+
+[**Earth and Environmental Data Science**](https://earth-env-data-science.github.io/lectures/working_with_gcm_data.html)
+
+[**Cartopy教程**](https://mp.weixin.qq.com/s?__biz=MzIxODQxODQ4NQ==&mid=2247483865&idx=1&sn=7a6e074aa46696f6c5ca1256d01cce01&chksm=97eb9d83a09c14951192b844a88e559c6736e19552240204c04011996b6149133746f9ebf122&token=2040227055&lang=zh_CN#rd)
+
+**Good blogs:**
+[**LZN's Blog**](https://novarizark.github.io/)
+
+[**Yi in Jeju (NIMS, Korea)**](https://yidongwonyi.wordpress.com/)
+
+[**Feng Zhu**](https://fzhu.work/blog/)
+
+[**RQL's Blog**](https://renqlsysu.github.io/)
+
+[**摸鱼咯**](https://www.jianshu.com/u/9293eb1f7254)
+
+[**ZSYXY Meteorological workshop**](https://yxy-biubiubiu.github.io/)
+
+[**cyzzym000的博客**](https://blog.csdn.net/cyzzym000)
+
+**Axes 和 GeoAxes 大小不一致的问题解决方案**
+mpl_toolkits.axes_grid1:
+https://mp.weixin.qq.com/s?__biz=MzIxODQxODQ4NQ==&mid=2247484289&idx=1&sn=4b5f0662cfa41ef2969851dba5ef8389&chksm=97eb9fdba09c16cd6165d8592d72bd9bddfb36e0113de49459eaff90982be93e812457bf62a1&scene=178&cur_album_id=1342411062854991873#rd
+
+https://mp.weixin.qq.com/s?__biz=MzIxODQxODQ4NQ==&mid=2247483968&idx=1&sn=c992f961827b4787c729d6c14c7c66be&chksm=97eb9e1aa09c170c945e366e9db501e38742fc3369204f090a3653fb1076fb572c626d17b500&scene=178&cur_album_id=1342411062854991873#rd
+
+**Some notes for POP develop**
+<https://scienceweb.whoi.edu/net/cesm-bgc/notebooks/>
+<https://github.com/WHOIGit/1dpop-aux>
+
