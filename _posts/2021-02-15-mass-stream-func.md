@@ -21,18 +21,23 @@ $$
 ψ_ϕ = \int_z^\infty dz \int_{λ_1}^{λ_2}ρ[v_D]acosϕdλ \\
 =acosϕ/g \int_0^p dp \int_{λ_1}^{λ_2}[v_D]dλ \\
 =acosϕ∆λ/g \int_0^p[v_D] dp
-\end{align}
+\end{align}\\
 $$     (1)
 
 where [$v_D$] is zonal mean meridional divergent wind; ϕ is latitude in radian and λ is longitude in radian; ∆λ is the width of the regional zonal belt in radian.
 
 Zonal mass stream function $ψ_x$ is defined as the eastward mass flux above a particular pressure P. In sphere coordinate, the meridional mean zonal mass stream function $ψ_λ$ is:
-ψ_λ=\int_z^\infty dz \int_{λ_1}^{λ_2}ρ[u_D]adλ $ 
-=a∆ϕ/g \int_0^p[u_D] dp    (2)
+
+$$
+\begin{align}
+ψ_λ=\int_z^\infty dz \int_{λ_1}^{λ_2}ρ[u_D]adλ \\
+=a∆ϕ/g \int_0^p[u_D] dp \\
+\end{align}
+$$    (2)
 where <[$u_D$]> is meridional mean zonal divergent wind, ∆ϕ is the width of the regional meridional belt in radian.
 
 The vertical velocity in sphere coordinate is:
-(ω_λ,〖 ω〗_ϕ )=-(\frac{∂ψ_λ}{acosϕ∂λ}\quad,(\frac{∂(ψ_ϕ cosϕ)}{acosϕ∂ϕ}\quad   (3)
+$(ω_λ, ω_ϕ )=-(\frac{∂ψ_λ}{acosϕ∂λ}\quad,(\frac{∂(ψ_ϕ cosϕ)}{acosϕ∂ϕ}\quad$   (3)
 Regional mass stream function (MSF) can depict the thermodynamic circulation. The vertical motion of the partitioned zonal and meridional overturning circulations can be retrieved from the gradient of the partitioned MSF (Eq.3).   
 
 ## Part of code
