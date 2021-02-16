@@ -20,6 +20,6 @@ e.g.
     fout = addfile ("TEMP_large.nc", "c")
 
 Reference:
-https://www.ncl.ucar.edu/Document/Functions/Built-in/setfileoption.shtml
+<https://www.ncl.ucar.edu/Document/Functions/Built-in/setfileoption.shtml>
 
 Last update: 02/15/2021
