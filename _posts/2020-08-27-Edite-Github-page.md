@@ -126,6 +126,15 @@ h6:before {
 ```
 Reference: <https://yanwei.github.io/misc/markdown-auto-number-title.html>
 
+
+## Add page view to the blog
+
+<http://ibruce.info/2015/04/04/busuanzi/>
+
+简简单单给个人博客增加访问统计
+<https://longzeping.github.io/2018/08/03/%E7%AE%80%E7%AE%80%E5%8D%95%E5%8D%95%E7%BB%99%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E5%A2%9E%E5%8A%A0%E8%AE%BF%E9%97%AE%E7%BB%9F%E8%AE%A1/>
+
+
 **Appendix**
 
     font-size: .625em;            = 10px 
@@ -151,5 +160,6 @@ Reference: <https://yanwei.github.io/misc/markdown-auto-number-title.html>
     font-size: 1.875em;           = 30px  
 
 Last update: 12/04/2020
+Last update: 02/15/2021
 
 <link rel="stylesheet" type="text/css" href="/jekyll-clean-dark/assets/css/auto-number-title.css"/>
