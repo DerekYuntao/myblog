@@ -16,6 +16,10 @@ tags:
 
 [How to safely insert dollor sing?](https://meta.stackexchange.com/questions/263343/is-the-dollar-sign-used-for-markdown-if-yes-then-how-can-i-safely-insert-i)
 
+Type
+
+    $\text{&xyz}$
+to get  
 $\text{&xyz}$
 
 ## Markdown fundation
