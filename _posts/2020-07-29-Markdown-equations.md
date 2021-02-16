@@ -19,6 +19,7 @@ tags:
 Type
 
     $\text{&xyz}$
+    
 to get  
 $\text{&xyz}$
 
