@@ -8,6 +8,10 @@ tags:
  - Web
 ---
 
+**在字符间加入空格**
+有四种宽度的空格可以使用： \,、\;、\quad 和 \qquad，灵活使用 \text{n个空格} 也可以在任意位置实现空格。
+同时存在一种负空格 \! 用来减小字符间距，一般在物理单位中使用。
+
 ## Markdown fundation
 [Markdown 语法整理](https://symphonyh.github.io/cloudblog/2017/01/27/used-markdown/)
 
