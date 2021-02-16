@@ -14,6 +14,12 @@ tags:
 
 [Markdown 常用转义字符表](https://www.jianshu.com/p/1dd8633f3f5e)
 
+[How to safely insert dollor sing?](https://meta.stackexchange.com/questions/263343/is-the-dollar-sign-used-for-markdown-if-yes-then-how-can-i-safely-insert-i)
+
+\$xyz
+or
+$\text{xyz} 
+
 ## Markdown fundation
 [Markdown 语法整理](https://symphonyh.github.io/cloudblog/2017/01/27/used-markdown/)
 
