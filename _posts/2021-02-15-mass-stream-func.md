@@ -20,7 +20,7 @@ $$
 \begin{align}
 ψ_ϕ = \int_z^\infty dz \int_{λ_1}^{λ_2}ρ[v_D]acosϕdλ\\
 =acosϕ/g \int_0^p dp \int_{λ_1}^{λ_2}[v_D]dλ\\
-=acosϕ∆λ/g \int_0^p[v_D] dp\\
+=acosϕ∆λ/g \int_0^p[v_D] dp      (1)
 \end{align}
 $$     
 
