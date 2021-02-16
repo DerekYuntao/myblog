@@ -20,8 +20,8 @@ Type "manage app execution aliases" into the Windows search prompt and disable t
 **Step2**:
 Add python location or anaconda to *.bashrc*:
 
-    export PATH="\&#36PATH:/D:/Anaconda3/Scripts"
-    export PATH="\&#36PATH:/D:/Anaconda3:/D:/Anaconda3/Scripts"
+    export PATH="$text{PATH:/D:/Anaconda3/Scripts}"
+    export PATH="$text{PATH:/D:/Anaconda3:/D:/Anaconda3/Scripts}"
 
 That's it. Oh Windows, you make me trouble!
 
