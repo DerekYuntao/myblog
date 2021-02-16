@@ -20,7 +20,7 @@ $$
 \begin{align}
 ψ_ϕ = \int_z^\infty dz \int_{λ_1}^{λ_2}ρ[v_D]acosϕdλ\\
 =acosϕ/g \int_0^p dp \int_{λ_1}^{λ_2}[v_D]dλ\\
-=acosϕ∆λ/g \int_0^p[v_D] dp      (1)
+=acosϕ∆λ/g \int_0^p[v_D] dp     (1)
 \end{align}
 $$     
 
@@ -29,9 +29,10 @@ where [$v_D$] is zonal mean meridional divergent wind; ϕ is latitude in radian 
 Zonal mass stream function $ψ_x$ is defined as the eastward mass flux above a particular pressure P. In sphere coordinate, the meridional mean zonal mass stream function $ψ_λ$ is:
 
 $$\begin{align}
-ψ_λ=\int_z^\infty dz \int_{λ_1}^{λ_2}ρ[u_D]adλ \\
-=a∆ϕ/g \int_0^p[u_D] dp \\
-\end{align}$$    (2)
+ψ_λ=\int_z^\infty dz \int_{λ_1}^{λ_2}ρ[u_D]adλ\\
+=a∆ϕ/g \int_0^p[u_D] dp      (2)
+\end{align}$$    
+
 where <[$u_D$]> is meridional mean zonal divergent wind, ∆ϕ is the width of the regional meridional belt in radian.
 
 The vertical velocity in sphere coordinate is:
