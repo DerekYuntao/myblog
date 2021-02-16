@@ -16,9 +16,7 @@ tags:
 
 [How to safely insert dollor sing?](https://meta.stackexchange.com/questions/263343/is-the-dollar-sign-used-for-markdown-if-yes-then-how-can-i-safely-insert-i)
 
-\$xyz
-or
-$\text{xyz} 
+$\text{&xyz}$
 
 ## Markdown fundation
 [Markdown 语法整理](https://symphonyh.github.io/cloudblog/2017/01/27/used-markdown/)
