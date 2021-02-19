@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Set python location for Gitshell"
+title: "Set Python Location for Gitshell"
 date: 2021-02-15
 description: How to set and run python in Gitshell
 share: true

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Upload big data to a Linux server"
+title: "Upload Big Data to a Linux Server"
 date: 2021-02-15
 description: How to upload big data to a Linux server using rsync
 share: true

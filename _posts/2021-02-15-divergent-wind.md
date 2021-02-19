@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Calculate divergent wind and potential velocity in NCL"
+title: "Calculate Divergent Wind and Potential Velocity in NCL"
 date: 2021-02-15
 description: How to calculate divergent wind and potential velocity in NCL
 share: true

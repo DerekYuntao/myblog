@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Calculate local mass stream function"
+title: "Calculate Local Mass Stream Function"
 date: 2021-02-15
 description: Derivation and calculation of local mass stream function
 share: true

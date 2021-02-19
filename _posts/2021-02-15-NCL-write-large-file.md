@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Write large NC file in NCL"
+title: "Write Large NC File in NCL"
 date: 2021-02-15
 description: How to output a large NC file (>2GB) in NCL
 share: true

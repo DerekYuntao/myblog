@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Self-defined colormap in matplotlib"
+title: "Self-defined Colormap in Matplotlib"
 date: 2021-02-15
 description: Define a self-made colormap in matplotlib
 share: true

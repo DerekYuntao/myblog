@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "Fundational tips of python"
+title: "Fundational Tips for Python"
 date: 2021-01-08
-description: Fundational tips of python
+description: Fundational tips for python
 share: true
 tags:
  - python

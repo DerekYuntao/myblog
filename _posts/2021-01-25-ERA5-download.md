@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Download ERA5 in batch"
+title: "Download ERA5 in Batch"
 date: 2021-01-25
 description: Download ERA5 data in batch using python
 share: true
