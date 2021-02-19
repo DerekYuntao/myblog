@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Read Shape fileS in Python"
+title: "Read Shape Files in Python"
 date: 2021-01-25
 description: How to read shape file in python
 share: true
