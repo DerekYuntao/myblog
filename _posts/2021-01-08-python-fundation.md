@@ -21,3 +21,16 @@ tags:
 15
 >>> np.finfo(np.float128).precision
 ```
+
+## Numpy slicing array ##
+***Note*: In numpy and NCL, rule of slicing array is: **
+
+aa[i_start: i_end: slicing_step]
+
+aa(i_start: i_end: slicing_step)
+
+** But in MATLAB, it is different: **
+
+aa(i_start: slicing_step: i_end)
+
+** Do remeber it clearly or it will make mistakes!! **

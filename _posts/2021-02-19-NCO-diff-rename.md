@@ -34,7 +34,7 @@ Create netCDF out.nc identical to in.nc except the attribute _FillValue is chang
 ## Extract a level of NC data: ncks ##
 -d <variable of the level>, <number of the level>: extract data at “n”th level from depth coordinate.
 
-    ncks -F d z_t,1 b.e13.Bi1850C5CN.f19_g16.alpha01b.09.pop.h.TEMP.050001-060312.nc  b.e13.Bi1850C5CN.f19_g16.alpha01b.09.pop.h.potenSST5m.050001-060312.nc
+    ncks -F -d z_t,1 b.e13.Bi1850C5CN.f19_g16.alpha01b.09.pop.h.TEMP.050001-060312.nc  b.e13.Bi1850C5CN.f19_g16.alpha01b.09.pop.h.potenSST5m.050001-060312.nc
 
 ## Calculate difference for variables between two NC files: ncdiff ##
 The difference variables must be the same name in two NC files.

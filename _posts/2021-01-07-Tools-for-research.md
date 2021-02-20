@@ -45,6 +45,8 @@ The model accounts for glacier geometry (including contributory branches) and in
 **Good blogs:**
 [**LZN's Blog**](https://novarizark.github.io/)
 
+[**MeteoAI**](https://cloud.tencent.com/developer/column/78994)
+
 [**Yi in Jeju (NIMS, Korea)**](https://yidongwonyi.wordpress.com/)
 
 [**Feng Zhu**](https://fzhu.work/blog/)
