@@ -89,19 +89,23 @@ x=[2. 3. 4. 5.]
 x=[0.08604006 1.5        4.         5.        ]
 ```
 
-## e.g. 5 Indexing and slicing vectors
+## e.g. 5 Indexing and slicing vectors (important!)
 ```python
 x = np.random.rand(10)  # 10 random elements uniformly distributed in [0,1]
 x1 = x[2:5]             # Elements 2 thru 5 (not including 5, indexing starts at 0)
 x2 = x[:4]              # Elements thru 4 (not including 4, indexing starts at 0)
 x3 = x[7:]              # Elements 7 to end (indexing starts at 0)
 xlast = x[-1]           # The last element (i.e., index=length-1)
+xslice = x[0:10:2]      # Slicing the array every 2 elements
+xslice2 = x[0::2]       # Slicing the array every 2 elements
 
 print("x=      "+np.array_str(x,precision=3))    #!!control the output array precision!
 print("x[2:5]= "+np.array_str(x1,precision=3))
 print("x[:4]=  "+np.array_str(x2,precision=3))
 print("x[7:]=  "+np.array_str(x3,precision=3))
 print("xlast=  {0:5.3f}".format(xlast))
+print("xslice" + np.array_str(xslice,precision=3))
+print("xslice2" + np.array_str(xslice2,precision=3))
 
 #output
 x=      [0.979 0.816 0.135 0.315 0.557 0.672 0.403 0.279 0.113 0.326]
@@ -109,6 +113,8 @@ x[2:5]= [0.135 0.315 0.557]
 x[:4]=  [0.979 0.816 0.135 0.315]
 x[7:]=  [0.279 0.113 0.326]
 xlast=  0.326
+xslice = [0.979 0.135 0.557 0.403 0.113]
+xslice2 = [0.979 0.135 0.557 0.403 0.113]
 ```
 
 **Note: Array slicing does not copy!**
