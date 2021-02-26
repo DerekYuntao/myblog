@@ -43,9 +43,13 @@ The model accounts for glacier geometry (including contributory branches) and in
 [**Cartopy教程**](https://mp.weixin.qq.com/s?__biz=MzIxODQxODQ4NQ==&mid=2247483865&idx=1&sn=7a6e074aa46696f6c5ca1256d01cce01&chksm=97eb9d83a09c14951192b844a88e559c6736e19552240204c04011996b6149133746f9ebf122&token=2040227055&lang=zh_CN#rd)
 
 **Good blogs:**
+[**风中飞舞**](https://blog.perillaroc.wang/page/2/)  气象信息
+
 [**LZN's Blog**](https://novarizark.github.io/)
 
 [**MeteoAI**](https://cloud.tencent.com/developer/column/78994)
+
+[**气象杂货铺**](https://cloud.tencent.com/developer/column/86468)
 
 [**Yi in Jeju (NIMS, Korea)**](https://yidongwonyi.wordpress.com/)
 
