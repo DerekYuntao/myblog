@@ -299,4 +299,11 @@ z1         ndarray    10: 10 elems, type `int32`, 40 bytes
 z2         ndarray    11: 11 elems, type `int32`, 44 bytes
 ```
 
+**e.g. 12 Initializing a numpy array of string data** 
+The numpy string array is limited by its fixed length (default: length of 1). If the length of the strings are unsure or not equal, we can initialize the numpy string array by setting the data type as `dtype=object`:
+```python
+    newstr_array = numpy.empty((N, M), dtype=object)
+```
+
 Last update: 08/31/2020
+Last update: 02/27/2021

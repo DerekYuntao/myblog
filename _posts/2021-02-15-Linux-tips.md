@@ -1,14 +1,14 @@
 ---
 layout: post
-title: "Upload Big Data to a Linux Server"
+title: "Linux Tips"
 date: 2021-02-15
-description: How to upload big data to a Linux server using rsync
+description: Useful tips for Linux 
 share: true
 tags:
  - Linux
- - Big data
 ---
 
+## Upload Big Data to a Linux Server
 **rsync**: a fast, versatile, remote (and local) file-copying tool
 
 e.g transfer directory *amwg* to a Linux server *directory diagpkg_data*
@@ -27,4 +27,23 @@ Its purpose is to make it much easier to specify these two options for a long tr
  <https://linux.die.net/man/1/rsync>
  <http://www.ruanyifeng.com/blog/2020/08/rsync.html>
 
- Last update: 2021/02/15
+## Create recursive (multi-level) directory 
+    mkdir -p /a/aa/aaa/aaaa
+
+## Create multiple directories
+    mkdir a1 a2 a3 
+    
+## Find strings in Vim
+Reference:
+<https://harttle.land/2016/08/08/vim-search-in-file.html>
+
+```powershell
+    /{string}    
+# case-insesitive
+    /{string}\c
+```
+**set case sensitive/insensitive mode for Vim**
+    set ignorecase
+    set smartcase     
+
+
