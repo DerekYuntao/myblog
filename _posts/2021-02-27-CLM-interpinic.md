@@ -30,7 +30,7 @@ Parts of shell code:
 set casename=f.e13.IiSP.f19.PI.CLMrun
 
 cd .../CESM/scripts
-/create_newcase -case /glade/u/home/yttp/cesm_case/{$casename} -res f19_f19 -mach cheyenne -compset IiSP
+/create_newcase -case /cesm_case/{$casename} -res f19_f19 -mach cheyenne -compset IiSP
 
 cd ~/cesm_case/{$casename}
 
