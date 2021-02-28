@@ -44,7 +44,7 @@ sed -i '/HAS_F2008_CONTIGUOUS/c\HAS_F2008_CONTIGUOUS:=FALSE' Macros
 ./{$casename}.build
 ```
 
-**step2: Use interpinic to interpolate CLM initial conditions
+**step2: Use interpinic to interpolate CLM initial conditions**
 
 Command line options to interpinic:
 -i = Input filename to interpolate from
