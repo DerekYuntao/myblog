@@ -18,46 +18,39 @@ PyCharm is a Python IDE, the integrated functions include：
 - 框架和库
 
 ### create project
-
-[Create New Project] -- 选择项目根目录和解释器版本 -- [Create]
+    [Create New Project] -- 选择项目根目录和解释器版本 -- [Create]
 
 
 ### create code file
-
-项目根目录或根目录内部任意位置 — 右键 -- [New] -- [Python File]
+    项目根目录或根目录内部任意位置 — 右键 -- [New] -- [Python File]
 
 ### run
-
-文件打开状态 -- 空白位置 — 右键 -- Run 
+    文件打开状态 -- 空白位置 — 右键 -- Run 
 
 
 ### PyCharm settings
-
-[file] -- [Settings]/[Default Settings]。
+    [file] -- [Settings]/[Default Settings]
 
 **修改主题**
-
-[Appearance & Behavior] -- [Appearance]
+    [Appearance & Behavior] -- [Appearance]
 
 - Theme：修改主题
 - Name：修改主题字体
 - Size：修改主题字号
 
 **修改代码文字**
-
-[Editor] -- [Font]
+    [Editor] -- [Font]
 
 - Font：修改字体
 - Size：修改字号
 - Line Spacing：修改行间距
 
 **修改解释器**
-
-[Project: name] -- [Project Interpreter] 
+    [Project: name] -- [Project Interpreter] 
 
 **项目管理**
 ***open project***
-[File] -- [Open] -- 浏览选择目标项目根目录 -- [OK] -- 选择打开项目方式
+    [File] -- [Open] -- 浏览选择目标项目根目录 -- [OK] -- 选择打开项目方式
 
 三种打开方式：
 
@@ -72,8 +65,7 @@ PyCharm is a Python IDE, the integrated functions include：
 一个PyCharm下同时打开两个项目
 
 ***close project***
-
-[File] -- [Close Project]/[Close Projects in current window]
+    [File] -- [Close Project]/[Close Projects in current window]
 
 ## 2 Comments
 1. 单行注释 # {contests}. 快捷键 ctrl+/
@@ -189,6 +181,7 @@ print(type(f))
 
 **格式化字符串除了%s，在3.6+的python版本还可以写为更简单的`f'{表达式}'`**
 e.g.
+
 ```python
 age = 18 
 name = 'TOM'
@@ -224,6 +217,7 @@ print('Hellow earth', end="\n")
 - `input`接收用户输入后，一般存储到一个字符串变量，方便后续使用
 - `input`会把接收到的输入的数据都当做字符串处理
 e.g.
+
 ```python
 password = input('Entering your password：')
 print(f'Your password is: {password}')
@@ -250,6 +244,7 @@ print(type(password))
 |        bin(x )         |          将一个整数转换为一个二进制字符串           |
 
 e.g.
+
 ``` python
 # to list
 t1 = (100, 200, 300)
@@ -269,8 +264,8 @@ print(type(eval(str3)))  #tuple
 运算符分类:
 - 算数运算符
 
-| 运算符 |  描述  | 实例                                                  |
-| :----: | :----: | ----------------------------------------------------- |
+| 运算符 |  描述  | 实例                                               |
+| :----: | :----: | :------------------------------------------------:|
 |   +    |   加   | 1 + 1 输出 2                                    |
 |   -    |   减   | 1-1 输出 0                                      |
 |   *    |   乘   | 2 * 2 输出 4                                    |
@@ -285,6 +280,7 @@ print(type(eval(str3)))  #tuple
 将`=`右侧的结果赋值给左侧的变量 
 多变量赋值:
 e.g.
+
 ```python
 num1, num2, str1 = 10, 0.5, 'hello world'
 print(num1)
@@ -297,7 +293,7 @@ a = b = 10
 - 复合赋值运算符
 
 | 运算符 |  实例                       |
-| ------ | -------------------------- |
+| :------: | :--------------------------:|
 | +=     | c += a 等价于 c = c + a    |
 | -=     | c -= a 等价于 c = c- a     |
 | *=     | c *= a 等价于 c = c * a    |
@@ -311,6 +307,7 @@ a = b = 10
  3. 最后算赋值运算
 
 e.g.
+
 ```python
 a = 100
 a += 1
@@ -336,11 +333,13 @@ print(c)
 | <=     | 运算符左侧操作数结果是否小于等于右侧操作数结果，如果小于，则条件为真，否则为假 |  
 
 - 逻辑运算符
+
 | 运算符 | 逻辑表达式 | 描述                                                         | 实例                                     |
 | ------ | ---------- | ------------------------------------------------------------ | ---------------------------------------- |
 | and    | x and y    | Bool "与"：如 x 为 False，x and y 返回 False，否则它返回 y 的值 | True and False， 返回 False            |
 | or     | x or y     | Bool "或"：如 x 是 True，它返回 True，否则它返回 y 的值   | False or True， 返回 True              |
 | not    | not x      | Bool "非"：如 x 为 True，返回 False; 如果 x 为 False，返回 True | not True 返回 False, not False 返回 True |
+
 e.g.
 ```python
 a, b, c = 1, 2, 3
@@ -348,6 +347,7 @@ print((a < b) and (b < c))  # True
 print(not (a > b))          # True
 ```
 e.g. **易错：数字之间的逻辑运算**
+
 ```python
 a = 0
 b = 1
