@@ -32,6 +32,7 @@ PyCharm is a Python IDE, the integrated functions include：
     [file] -- [Settings]/[Default Settings]
 
 **修改主题**
+
     [Appearance & Behavior] -- [Appearance]
 
 - Theme：修改主题
@@ -39,6 +40,7 @@ PyCharm is a Python IDE, the integrated functions include：
 - Size：修改主题字号
 
 **修改代码文字**
+
     [Editor] -- [Font]
 
 - Font：修改字体
@@ -46,10 +48,12 @@ PyCharm is a Python IDE, the integrated functions include：
 - Line Spacing：修改行间距
 
 **修改解释器**
+
     [Project: name] -- [Project Interpreter] 
 
 **项目管理**
 ***open project***
+
     [File] -- [Open] -- 浏览选择目标项目根目录 -- [OK] -- 选择打开项目方式
 
 三种打开方式：
@@ -65,6 +69,7 @@ PyCharm is a Python IDE, the integrated functions include：
 一个PyCharm下同时打开两个项目
 
 ***close project***
+
     [File] -- [Close Project]/[Close Projects in current window]
 
 ## 2 Comments
@@ -164,9 +169,9 @@ print(type(f))
 
 | 格式符号 |          转换          |
 | :------: | :--------------------: |
-|  ==%s==  |         字符串         |
-|  ==%d==  |   有符号的十进制整数   |
-|  ==%f==  |         浮点数         |
+|  %s      |         字符串         |
+|  %d      |   有符号的十进制整数   |
+|  %f      |         浮点数         |
 |    %c    |          字符          |
 |    %u    |    无符号十进制整数    |
 |    %o    |       八进制整数       |
@@ -176,6 +181,7 @@ print(type(f))
 |    %E    | 科学计数法（大写'E'）  |
 |    %g    |      %f和%e的简写      |
 |    %G    |      %f和%E的简写      |
+
 - %06d，表示输出的整数显示位数，不足位数的左侧以0补全，超出当前位数则以原样的数据输出
 - %.2f，表示小数点后显示的小数位数
 
@@ -274,7 +280,8 @@ print(type(eval(str3)))  #tuple
 |   %    |  取余  | 9 % 4 输出 1                                    |
 |   **   |  指数  | 2 ** 4 输出 16                                  |
 |   ()   | 小括号 | 小括号提高运算优先级，即 (1 + 2) * 3 输出结果为 9 |
-混合运算优先级顺序：`()`高于 `**` 高于 `*` `/` `//` `%` 高于 `+` `-`
+
+**混合运算优先级顺序：`()`高于 `**` 高于 `*` `/` `//` `%` 高于 `+` `-`
 
 - 赋值运算符`=`
 将`=`右侧的结果赋值给左侧的变量 
@@ -301,6 +308,7 @@ a = b = 10
 | //=    | c //= a 等价于 c = c // a  |
 | %=     | c %= a 等价于 c = c % a    |
 | **=    | c ** = a 等价于 c = c ** a |
+
  优先级:
  1. 先算复合赋值运算符右侧的表达式
  2. 再算复合赋值运算的算数运算
