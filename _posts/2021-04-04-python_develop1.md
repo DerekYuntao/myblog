@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "Development python - Level1"
+title: "Python Development - Level1"
 date: 2021-04-04
-description: Ways to develop a projet/program by python - Level1 
+description: Ways to develop a projet/program by python - Level1 fundamental python 
 share: true
 tags:
  - Python
