@@ -165,7 +165,8 @@ print(type(e))
 f = {'name': 'TOM', 'age': 18}
 print(type(f))
 ```
-## 5 Print
+
+## 6 Print
 格式化符号
 
 | 格式符号 |          转换          |
@@ -218,7 +219,7 @@ print('Hellow world', end="...")
 print('Hellow earth', end="\n")
 ```
 
-## 6 Input
+## 7 Input
 特点：
 - Python中程序执行到`input`，等待用户输入，输入完成之后继续执行
 - `input`接收用户输入后，一般存储到一个字符串变量，方便后续使用
@@ -232,7 +233,7 @@ print(f'Your password is: {password}')
 print(type(password))
 ```
 
-## 7 Data type conversion
+## 8 Data type conversion
 
 |          函数          |                        说明                         |
 | :--------------------: | :-------------------------------------------------: |
@@ -267,7 +268,7 @@ print(type(eval(str2)))  #list
 print(type(eval(str3)))  #tuple
 ```
 
-## 8 Operator
+## 9 Operator
 运算符分类:
 - 算数运算符
 
