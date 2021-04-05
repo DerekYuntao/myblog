@@ -79,20 +79,20 @@ PyCharm is a Python IDE, the integrated functions include：
 1. 单行注释 # {contests}. 快捷键 ctrl+/
 如在一行代码后面写**一行简单的注释**，通常打两个空格再写
 2. 多行注释 
-
+```python
     """
     a
     b
     c
     """
-or
+# or
 
     '''
     a
     b
     c
     '''
-
+```
  ## 3 variable
  变量是存储数据时,当前数据所在的**内存地址的名字**
  
@@ -345,7 +345,7 @@ print((a < b) and (b < c))  # True
 print(not (a > b))          # True
 ```
 e.g. **易错：数字之间的逻辑运算**
-``` python
+```python
 a = 0
 b = 1
 c = 2
