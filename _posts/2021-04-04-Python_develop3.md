@@ -2,7 +2,7 @@
 layout: post
 title: "Python Development - Level3"
 date: 2021-04-04
-description: Ways to develop a projet/program by python - OOP
+description: Ways to develop a projet/program by python - Leve3 OOP
 share: true
 tags:
  - python
