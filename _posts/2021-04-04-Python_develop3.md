@@ -5,7 +5,7 @@ date: 2021-04-04
 description: Ways to develop a projet/program by python - OOP
 share: true
 tags:
- - Python
+ - python
 ---
 
 ## 1. Python OOP 引入

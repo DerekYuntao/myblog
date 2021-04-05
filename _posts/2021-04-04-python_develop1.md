@@ -5,7 +5,7 @@ date: 2021-04-04
 description: Ways to develop a projet/program by python - Level1 fundamental python 
 share: true
 tags:
- - Python
+ - python
 ---
 
 ## 1 PyCharm IDE
