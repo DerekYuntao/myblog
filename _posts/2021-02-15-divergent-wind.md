@@ -6,7 +6,7 @@ description: How to calculate divergent wind and potential velocity in NCL
 share: true
 tags:
  - NCL
- - research
+ - Research
 ---
 
 ``` powershell
