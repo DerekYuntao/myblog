@@ -5,7 +5,7 @@ date: 2021-04-24
 description: Be punctual!!!
 share: false
 tags:
- - Research
+ - timanage
 ---
 
 **No longer procrastination**
