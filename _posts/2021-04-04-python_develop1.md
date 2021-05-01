@@ -171,9 +171,9 @@ print(type(f))
 
 | 格式符号 |          转换          |
 | :------: | :--------------------: |
-|  %s      |         字符串         |
-|  %d      |   有符号的十进制整数   |
-|  %f      |         浮点数         |
+|    %s    |         字符串         |
+|    %d    |   有符号的十进制整数    |
+|    %f    |         浮点数         |
 |    %c    |          字符          |
 |    %u    |    无符号十进制整数    |
 |    %o    |       八进制整数       |
@@ -197,13 +197,13 @@ weight = 75.5
 student_id = 1
 
 # My ID is 0001
-print('My ID is %4d' % student_id)
+print('My ID is %4d' %(student_id))
 
 # My name is Tom and will be 19 next year
-print('My name is%s and will be%d next year' % (name, age + 1))
+print('My name is%s and will be%d next year' %(name, age + 1))
 
 # 强大的%s: My name is Tom and will be 19 next year
-print('My name is%s and will be%s next year' % (name, age + 1))
+print('My name is%s and will be%s next year' %(name, age + 1))
 
 # 高效的f{}: My name is Tom and will be 19 next year
 print(f'My name is {name} and will be {age + 1} next year')
@@ -548,7 +548,7 @@ print(name[2:5:1]) # cde
 print(name[::2]) # aceg
 print(name[:-1]) # abcdef
 print(name[-4:-1]) # def
-print(name[::-1]) # gfedcba
+print(name[::-1]) # gfedcba #reverse
 ```
 
 - Find string
@@ -578,7 +578,7 @@ print(mystr.replace("and", "to"))  # Welcome to this blog to have a good time to
 print(mystr.replace("and", "to", 10))  # Welcome to this blog to have a good time to enjoy!
 repstr = mystr.replace("and","to", 1)
 print(repstr)  # Welcome to this blog to have a good time and enjoy!
-print(mystr)  # Welcome to this blog and have a good time and enjoy!
+print(mystr)   # Welcome to this blog and have a good time and enjoy!
 ```
 *从上例注意到，字符串本身并没有被修改，除非赋值给一个新的变量，这说明**字符串是不可变的数据类型**
 
@@ -667,7 +667,7 @@ print(alist)  # ['a', 'b', 'd', 'c', ['d', 'e'], 'd', 'e']
 
 - 删除
     del 目标
-    string.pop(): 删除指定索引的数据，默认为最后一个，并返回该删除的数据
+    string.pop(): 删除指定索引的数据，默认为最后一个，注意这里返回的是该删除的数据
     string.remove(数据)：移除列表中某个指定数据的第一个匹配项
     string.clear(): 清空列表 
 
@@ -695,11 +695,60 @@ print(alist)  # []
     string.reverse(): 逆置
     string.sort(key=None, reverse=False): 排序：reverse = True 降序， reverse = False 升序
 
+e.g.
 
+```python
+nlist = [1, 5, 2, 3, 6, 8]
+nlist.sort()
+print(nlist)  # [1, 2, 3, 5, 6, 8]
+```
 
+- 列表遍历
+e.g.
 
+```python
+    alist = ['a', 'b', 'c']
 
+    i = 0
+    while i < len(alist):
+        print(alist[i])
+        i += 1
 
+# or 
+    for i in alist:
+        print(i)
+```      
+
+## Tuple
+⼀个元组可以像一个列表那样存储多个数据，数据可以是不同的数据类型，但是元组内的数据元素是不能修改的, 因此元组数据只⽀持查找和访问。
+但是如果元组⾥⾯有列表，那么修改元组中列表元素⾥⾯的数据则是可以的。
+如果定义的元组只有⼀个数据，那么这个数据后⾯必须添加一个逗号，否则数据类型为这个唯一的数据元素数据类型。
+
+e.g.
+
+```python
+num1 = (100,)
+print(type(num1)) # tuple
+num2 = (100)
+print(type(num2)) # int
+```
+
+## Dictionary
+字典⾥的数据是以键值对形式出现，字典数据和数据顺序没有关系，即字典不⽀持下标，后期⽆论数据如何变化，只需要按照对应的键的名字就可以查找到数据。
+- 字典的遍历
+e.g.
+
+```python
+dlist = {'name': 'Lucky', 'age': 2, 'gender': 'male'}
+for key in dlist.keys():
+    print(key)
+
+for item in dlist.items():
+    print(item)
+
+for key, value in dlist.items():
+    print(f'{key} = {value}')
+```
 
 
 

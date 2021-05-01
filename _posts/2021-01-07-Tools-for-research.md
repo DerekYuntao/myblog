@@ -39,6 +39,7 @@ OGGM is a modular open source model for glacier dynamics.
 The model accounts for glacier geometry (including contributory branches) and includes an explicit ice dynamics module. It can simulate past and future mass-balance, volume and geometry of (almost) any glacier in the world in a fully automated and extensible workflow. We rely exclusively on publicly available data for calibration and validation.
 
 [**Earth and Environmental Data Science**](https://earth-env-data-science.github.io/lectures/working_with_gcm_data.html)
+[**An Introduction to Earth and Environmental Data Science**](https://earth-env-data-science.github.io/intro)
 
 [**Cartopy教程**](https://mp.weixin.qq.com/s?__biz=MzIxODQxODQ4NQ==&mid=2247483865&idx=1&sn=7a6e074aa46696f6c5ca1256d01cce01&chksm=97eb9d83a09c14951192b844a88e559c6736e19552240204c04011996b6149133746f9ebf122&token=2040227055&lang=zh_CN#rd)
 
@@ -59,11 +60,13 @@ The model accounts for glacier geometry (including contributory branches) and in
 
 [**摸鱼咯**](https://www.jianshu.com/u/9293eb1f7254)
 
+[**炸鸡人**](https://zhajiman.github.io/)
+
 [**ZSYXY Meteorological workshop**](https://yxy-biubiubiu.github.io/)
 
 [**cyzzym000的博客**](https://blog.csdn.net/cyzzym000)
 
-[**ZMonster's Blog**](https://www.zmonster.me/categories.html)   NLP & code & web      
+[**ZMonster's Blog**](https://www.zmonster.me/categories.html)   NLP & code & web   
 
 **Axes 和 GeoAxes 大小不一致的问题解决方案**
 mpl_toolkits.axes_grid1:
