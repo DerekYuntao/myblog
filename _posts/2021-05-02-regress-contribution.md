@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Relative contribution of each factor for a regression model (Dominance Analysis)"
+title: "Relative Contribution of Each Factor for a Regression Model (Dominance Analysis)"
 date: 2021-05-02
 description: How to calculate relative contribution of each factors for a regression model
 share: true
