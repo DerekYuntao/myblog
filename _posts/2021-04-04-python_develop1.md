@@ -183,6 +183,7 @@ print(type(f))
 |    %E    | 科学计数法（大写'E'）  |
 |    %g    |      %f和%e的简写      |
 |    %G    |      %f和%E的简写      |
+|    %%    |         百分数        |
 
 - %06d，表示输出的整数显示位数，不足位数的左侧以0补全，超出当前位数则以原样的数据输出
 - %.2f，表示小数点后显示的小数位数
@@ -207,6 +208,11 @@ print('My name is%s and will be%s next year' %(name, age + 1))
 
 # 高效的f{}: My name is Tom and will be 19 next year
 print(f'My name is {name} and will be {age + 1} next year')
+
+# print a value in percentage
+value = 0.20009
+# precp_MWF:20.0%
+print("precp_MWF" + ":" + " %.1f%%" %(value*100)
 ```
 
 **结束符**
@@ -753,7 +759,7 @@ for key, value in dlist.items():
 
 
 
-
+In Past Climate Variability in South America and Surrounding Regions
 
 
 
