@@ -38,6 +38,8 @@ https://gmd.copernicus.org/articles/12/909/2019/
 OGGM is a modular open source model for glacier dynamics.
 The model accounts for glacier geometry (including contributory branches) and includes an explicit ice dynamics module. It can simulate past and future mass-balance, volume and geometry of (almost) any glacier in the world in a fully automated and extensible workflow. We rely exclusively on publicly available data for calibration and validation.
 
+[**Digital Earth Australia (DEA) **](https://docs.dea.ga.gov.au/notebooks/Frequently_used_code/README.html)
+
 [**Earth and Environmental Data Science**](https://earth-env-data-science.github.io/lectures/working_with_gcm_data.html)
 [**An Introduction to Earth and Environmental Data Science**](https://earth-env-data-science.github.io/intro)
 
