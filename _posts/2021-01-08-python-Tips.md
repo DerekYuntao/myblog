@@ -99,5 +99,13 @@ with open("need_files.txt", "r") as f:
     need_data.append(i) for i in data[i][:-1]
 ```
 
+## Matplotlib colors
+[List of named colors](https://matplotlib.org/stable/gallery/color/named_colors.html)
+
+[Choosing Colormaps in Matplotlib](https://matplotlib.org/stable/tutorials/colors/colormaps.html)
+
+## Matplotlib special characters
+[Writing mathematical expressions](https://matplotlib.org/stable/tutorials/text/mathtext.html)
+
 
 

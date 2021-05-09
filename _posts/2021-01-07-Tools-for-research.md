@@ -45,7 +45,7 @@ The model accounts for glacier geometry (including contributory branches) and in
 
 [**Cartopy教程**](https://mp.weixin.qq.com/s?__biz=MzIxODQxODQ4NQ==&mid=2247483865&idx=1&sn=7a6e074aa46696f6c5ca1256d01cce01&chksm=97eb9d83a09c14951192b844a88e559c6736e19552240204c04011996b6149133746f9ebf122&token=2040227055&lang=zh_CN#rd)
 
-**Good blogs:**
+**Good blogs for reasearch:**
 [**风中飞舞**](https://blog.perillaroc.wang/page/2/)  气象信息
 
 [**LZN's Blog**](https://novarizark.github.io/)
@@ -79,4 +79,9 @@ https://mp.weixin.qq.com/s?__biz=MzIxODQxODQ4NQ==&mid=2247483968&idx=1&sn=c992f9
 **Some notes for POP develop**
 <https://scienceweb.whoi.edu/net/cesm-bgc/notebooks/>
 <https://github.com/WHOIGit/1dpop-aux>
+
+**Good blogs for development:**
+[**python疫情监控**](https://lfengting.gitee.io/blog/2020/03/24/python%E7%88%AC%E8%99%AB%E5%AE%9E%E6%88%98/)
+[**Flask搭建web/Echarts可视化/MySQL/Linux项目部署**](https://www.bilibili.com/video/BV177411j7qJ)
+[**WebGIS入门和进阶实战**](https://xiaozhuanlan.com/webgis)
 
