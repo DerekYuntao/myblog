@@ -305,5 +305,12 @@ The numpy string array is limited by its fixed length (default: length of 1). If
     newstr_array = numpy.empty((N, M), dtype=object)
 ```
 
-Last update: 08/31/2020
-Last update: 02/27/2021
+**e.g. 13 Sort N-D numpy array based on one column**
+e.g. sorting a 2-cloumn array based on value of the first column by `np.argsort`
+```python
+Z1=np.transpose(np.vstack((precp_Z1, d18Op_Z1)))
+Z2=np.transpose(np.vstack((precp_Z2, d18Op_Z2)))
+
+Z1_sort = HS1_Z1[np.argsort(Z1[:,0])]
+Z2_sort = LGM_Z2[np.argsort(Z2[:,0])]
+```

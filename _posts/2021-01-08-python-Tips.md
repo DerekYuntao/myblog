@@ -36,6 +36,16 @@ aa(i_start: slicing_step: i_end)
 
 ** Do remeber it clearly or it will make mistakes!! **
 
+## Sort N-D numpy array based on one column 
+e.g. sorting a 2-cloumn array based on value of the first column by `np.argsort`
+```python
+Z1=np.transpose(np.vstack((precp_Z1, d18Op_Z1)))
+Z2=np.transpose(np.vstack((precp_Z2, d18Op_Z2)))
+
+Z1_sort = HS1_Z1[np.argsort(Z1[:,0])]
+Z2_sort = LGM_Z2[np.argsort(Z2[:,0])]
+```
+
 ## Initializing a numpy array of string data
 The numpy string array is limited by its fixed length (default: length of 1). If the length of the strings are unsure or not equal, we can initialize the numpy string array by setting the data type as `dtype=object`:
 ```python
@@ -108,4 +118,42 @@ with open("need_files.txt", "r") as f:
 [Writing mathematical expressions](https://matplotlib.org/stable/tutorials/text/mathtext.html)
 
 
+## seaborn CDF plot interacted with matplotlib
+seaborn CDF subplots in a double y axis figrue 
 
+```python
+fig = plt.figure()
+ax1 = fig.add_subplot(1,2,1)
+ax1 = sns.distplot(precp_LGM_Z1,
+             kde_kws={'cumulative':'True', 'linestyle':'--', 'color':'blue'}, hist=False, ax=ax1)
+ax1 = sns.distplot(precp_HS1_Z1,
+             kde_kws={'cumulative':'True', 'linestyle':'--', 'color':'red'}, hist=False, ax=ax1)
+ax1.set_xlim([0, 35])
+ax1.set_ylim([0, 1])
+ax12 = ax1.twinx()
+ax12.plot(LGM_Z1_draw[:,0], LGM_Z1_draw[:,1], color='blue')
+ax12.plot(HS1_Z1_draw[:,0], HS1_Z1_draw[:,1], color='red')
+ax12.set_ylim([-16, 0])
+ax1.set_xlabel('mm/day')
+ax1.set_ylabel('CDF')
+ax1.set_title('(a) E Brazil', fontweight='bold')
+
+ax2 = fig.add_subplot(1,2,2)
+ax2 = sns.distplot(precp_LGM_Z2,
+             kde_kws={'cumulative':'True', 'linestyle':'--', 'color':'blue'}, hist=False, ax=ax2)
+ax2 = sns.distplot(precp_HS1_Z2,
+             kde_kws={'cumulative':'True', 'linestyle':'--', 'color':'red'}, hist=False, ax=ax2)
+ax2.set_xlim([0, 35])
+ax2.set_ylim([0, 1])
+ax2.set_ylabel('')
+ax2.set_xlabel('mm/day')
+ax22 = ax2.twinx()
+c1 = ax22.plot(LGM_Z2_draw[:,0], LGM_Z2_draw[:,1], color='blue')
+ax22.plot(HS1_Z2_draw[:,0], HS1_Z2_draw[:,1], color='red')
+ax22.set_ylim([-16, 0])
+ax22.set_ylabel('$\delta^{18}O_p$ (permil)')
+ax2.set_title('(b) W Amazon', fontweight='bold')
+```
+
+reference:
+ <https://www.it-swarm.cn/zh/python/%E4%BD%BF%E7%94%A8seaborn-python%E7%BB%98%E5%88%B6cdf-%E7%B4%AF%E7%A7%AF%E7%9B%B4%E6%96%B9%E5%9B%BE/826499323/>
