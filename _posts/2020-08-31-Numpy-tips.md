@@ -35,6 +35,18 @@ print(x2)
 [ 0.   2.5  5.   7.5 10. ]
 ```
 
+***Note*: In numpy and NCL, rule of slicing array is: **
+
+aa[i_start: i_end: slicing_step]
+
+aa(i_start: i_end: slicing_step)
+
+** But in MATLAB, it is different: **
+
+aa(i_start: slicing_step: i_end)
+
+** Do remeber it clearly or it will make mistakes!! **
+
 ## e.g. 3  The power of *range*
 ```python
 z1 = np.array(range(2,21,2))
@@ -93,7 +105,7 @@ x=[0.08604006 1.5        4.         5.        ]
 ```python
 x = np.random.rand(10)  # 10 random elements uniformly distributed in [0,1]
 x1 = x[2:5]             # Elements 2 thru 5 (not including 5, indexing starts at 0)
-x2 = x[:4]              # Elements thru 4 (not including 4, indexing starts at 0)
+x2 = x[:4]              # Elements thru 4 (not including index 4, indexing starts at 0)
 x3 = x[7:]              # Elements 7 to end (indexing starts at 0)
 xlast = x[-1]           # The last element (i.e., index=length-1)
 xslice = x[0:10:2]      # Slicing the array every 2 elements
@@ -244,7 +256,7 @@ x = np.random.rand(nx)
 y = np.random.rand(ny)
 
 # Compute the outer product in one line
-Z = x[:,None]*y[None,:]     # x[:,None] has shape (nx,  1);  y[None,:] has shape ( 1, ny)
+Z = x[:,None]*y[None,:]     # x[:,None] has shape (nx, 1); y[None,:] has shape (1, ny)
 print('Z shape = '+ str(np.shape(Z)))
 
 #output
@@ -314,3 +326,46 @@ Z2=np.transpose(np.vstack((precp_Z2, d18Op_Z2)))
 Z1_sort = HS1_Z1[np.argsort(Z1[:,0])]
 Z2_sort = LGM_Z2[np.argsort(Z2[:,0])]
 ```
+
+**e.g. 14 np.around, np.floor, np.ceil**
+rounding:
+`np.around(a, decimals=0, out=None)`
+decimals 要舍入的小数位数。 默认值为0。 如果为负，整数将四舍五入到小数点左侧的位置
+```python
+data = np.array([-0.732, 4.6, 9.4, 7.449, 10.455, 11.555])
+ 
+around1 = np.around(data)
+print(around1)  # [ -1.   5.   9.   7.  10.  12.]
+ 
+around2 = np.around(n, decimals=1)
+print(around2)  # [ -0.7   4.6   9.4   7.4  10.5  11.6]
+ 
+around3 = np.around(n, decimals=-1)
+print(around3)  # [ -0.   0.  10.  10.  10.  10.]
+```
+
+flooring: take the integer of a number downward
+`np.floor(a)`
+
+ceiling: take the integer of a number upward
+`np.ceil(a)`
+
+```python
+data = np.array([-2.8, 2.1, 3.])
+np.floor(data)    # [-3., 2., 3.]
+np.ceil(data)   # [-2., 3., 3.]
+```
+
+**e.g. 15 read and save txt file in numpy**
+e.g.
+```python
+Andes_loc = np.zeros((len(Andes_lat),2), dtype='int')
+Andes_loc[:,0] = Andes_lon
+Andes_loc[:,1] = Andes_lat
+# output index
+np.savetxt('Andes_locidx.txt', Andes_loc, fmt='%d')
+
+# read data into an array
+locIdx = np.loadtxt('Andes_locidx.txt', Andes_loc, fmt='%d')
+```
+

@@ -14,16 +14,16 @@ tags:
 [python-float8,float16,float32,float64和float128可以包含多少位数？](https://bugjia.net/200527/779405.html)
 
 ```python
->>> np.finfo(np.float16).precision
-3
->>> np.finfo(np.float32).precision
-6
->>> np.finfo(np.float64).precision
-15
->>> np.finfo(np.float128).precision
+np.finfo(np.float16).precision
+# 3
+np.finfo(np.float32).precision
+# 6
+np.finfo(np.float64).precision
+# 15
+np.finfo(np.float128).precision
 ```
 
-## Numpy slicing array
+## Numpy slicing array (important!)
 ***Note*: In numpy and NCL, rule of slicing array is: **
 
 aa[i_start: i_end: slicing_step]
@@ -105,9 +105,21 @@ with open("need_files.txt") as fp:
 with open("need_files.txt", "r") as f:
     data = f.readlines()
     print(data)
-    need_data = []
-    need_data.append(i) for i in data[i][:-1]
+need_data = []
+need_data.append(i) for i in data[i][:-1]
 ```
+
+## Read and write data in numpy 
+```python
+Andes_loc = np.zeros((len(Andes_lat),2), dtype='int')
+Andes_loc[:,0] = Andes_lon
+Andes_loc[:,1] = Andes_lat
+# output index
+np.savetxt('Andes_locidx.txt', Andes_loc, fmt='%d')
+
+# read data into an array
+locIdx = np.loadtxt('Andes_locidx.txt', Andes_loc, fmt='%d')
+``` 
 
 ## Matplotlib colors
 [List of named colors](https://matplotlib.org/stable/gallery/color/named_colors.html)
@@ -117,6 +129,27 @@ with open("need_files.txt", "r") as f:
 ## Matplotlib special characters
 [Writing mathematical expressions](https://matplotlib.org/stable/tutorials/text/mathtext.html)
 
+## Matplotlib unaligned subplot (GridSpec) & double Y axis & bar plot
+e.g. 
+```python
+import matplotlib.gridspec as gridspec
+
+bar_width = 0.4
+fig = plt.figure(figsize=(10,14))
+gs = gridspec.GridSpec(4, 3)   # subplot in 4*3 settings
+ax1 = fig.add_subplot(gs[0,0])  
+c1 = ax1.bar(x=range(NM-1), height=Total_zone1[:-1], color='blue', alpha=0.6, width=bar_width)
+c2 = ax1.bar(x=np.arange(NM-1)+bar_width, height=Total_zone1[:-1], color='red', alpha=0.6, width=bar_width)
+ax12 = ax1.twinx()
+c12 = ax12.bar(NM-1, height=Total_zone1[-1], color='blue', alpha=0.6, width=bar_width)
+c22 = ax12.bar(NM-1+bar_width, height=Total_zone1[-1], color='red', alpha=0.6, width=bar_width)
+```    
+Reference:
+<https://matplotlib.org/stable/gallery/subplots_axes_and_figures/align_labels_demo.html#sphx-glr-gallery-subplots-axes-and-figures-align-labels-demo-py>
+
+## Matplotlib broken Y axis
+<https://matplotlib.org/2.0.2/examples/pylab_examples/broken_axis.html>
+<https://blog.csdn.net/Forrest97/article/details/113746307>
 
 ## seaborn CDF plot interacted with matplotlib
 seaborn CDF subplots in a double y axis figrue 
@@ -154,6 +187,5 @@ ax22.set_ylim([-16, 0])
 ax22.set_ylabel('$\delta^{18}O_p$ (permil)')
 ax2.set_title('(b) W Amazon', fontweight='bold')
 ```
-
 reference:
  <https://www.it-swarm.cn/zh/python/%E4%BD%BF%E7%94%A8seaborn-python%E7%BB%98%E5%88%B6cdf-%E7%B4%AF%E7%A7%AF%E7%9B%B4%E6%96%B9%E5%9B%BE/826499323/>
