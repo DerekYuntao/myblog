@@ -147,6 +147,16 @@ c22 = ax12.bar(NM-1+bar_width, height=Total_zone1[-1], color='red', alpha=0.6, w
 Reference:
 <https://matplotlib.org/stable/gallery/subplots_axes_and_figures/align_labels_demo.html#sphx-glr-gallery-subplots-axes-and-figures-align-labels-demo-py>
 
+## Matplotlib: change blank size and subplot space
+    subplots_adjust(left=None, bottom=None, right=None, top=None,wspace=None,hspace=None)
+wspace：horizontal space between each subplot
+hspace：vertical space between each subplot 
+
+```python
+fig.tight_layout() #调整整体空白
+plt.subplots_adjust(wspace =0, hspace =0) 
+``` 
+
 ## Matplotlib broken Y axis
 <https://matplotlib.org/2.0.2/examples/pylab_examples/broken_axis.html>
 <https://blog.csdn.net/Forrest97/article/details/113746307>
