@@ -16,4 +16,4 @@ Thus, kg/m2/s = 1mm/s or  86400 mm/day.
 
 Actually, surface precipitation is from precipating water vapor within an air column. If we integrate it from surface to the top of the atmosphere per unit time, the unit becomes kg/m2/s.
 
-Last update: 06/13/2021 
+Last update: 06/13/2021
