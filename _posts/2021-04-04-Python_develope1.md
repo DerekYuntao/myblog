@@ -650,7 +650,8 @@ print(mystr.rjust(30, '_'))  # _________Welcome to this blog!
 print(mystr.center(30, '_'))  # ____Welcome to this blog!_____
 ```
 
-## List
+## 13 Container
+- **List**
 - 判断元素是否存在: in/not in
 e.g.
 
@@ -728,7 +729,7 @@ e.g.
         print(i)
 ```      
 
-## Tuple
+- **Tuple**
 ⼀个元组可以像一个列表那样存储多个数据，数据可以是不同的数据类型，但是元组内的数据元素是不能修改的, 因此元组数据只⽀持查找和访问。
 但是如果元组⾥⾯有列表，那么修改元组中列表元素⾥⾯的数据则是可以的。
 如果定义的元组只有⼀个数据，那么这个数据后⾯必须添加一个逗号，否则数据类型为这个唯一的数据元素数据类型。
@@ -742,7 +743,7 @@ num2 = (100)
 print(type(num2)) # int
 ```
 
-## Dictionary
+- **Dictionary**
 字典⾥的数据是以键值对形式出现，字典数据和数据顺序没有关系，即字典不⽀持下标，后期⽆论数据如何变化，只需要按照对应的键的名字就可以查找到数据。
 - 字典的遍历
 e.g.
@@ -761,7 +762,7 @@ for key, value in dlist.items():
     print(f'{key} = {value}')
 ```
 
-## Set 
+- **Set**
 集合可以去掉重复数据, 且无序不支持下标索引。
 由于集合有去重功能，如果向集合内追加(add)的数据是当前集合已有数据，则不进行任何操作。
 update() 追加的数据是序列。
@@ -795,7 +796,7 @@ print(idel) # abc
 print(a3) # {'b', 100, 200, 10, 'a', 20, 'c'}
 ```
 
-## Public operations
+- **Public operations**
 
 | Operator |  Operation                     |  Supported container   |
 | :------: | :--------------------------:| :--------------------------: |
@@ -830,7 +831,7 @@ tup = ('Hi',)
 print(tup*3) # ('Hi', 'Hi', 'Hi')
 ```
 
-## Public method
+- **Public method**
 len(); del or del(); max(); min(); range(start,end,step)  **range()生成的序列不包含end
 enumerate() 用于将一个可遍历的数据对象(列表、元组或字符串)组合为一个索引序列，同时列出数据元素和下标，一般与 for 循环搭配使用
 
@@ -846,7 +847,7 @@ for idx, char in enumerate(list1, start=1):
     # Index: 3; element: c
 ```
 
-## Comprehensions
+## 14 Comprehensions
 推导式可简化代码
 
 - 列列表推导式
@@ -885,7 +886,7 @@ result = {key: value for key, value in counts.items() if value >= 200}
 print(result) # {'MBP': 268, 'DELL': 201}
 ```
 
-## python function 
+## 15 python function 
 函数是将一段具有独立功能的代码块**封装**起来并命名，调用这个名称即可完成对应的需求。
 在开发过程中，函数可以实现高效的代码重用。
 
@@ -922,3 +923,170 @@ def print_lines(num):
 
 print_lines(5)
 ```    
+
+变量作用域是变量生效的范围，包括局部变量和全局变量。
+局部变量：定义在函数体内部且仅在函数内部生效的变量。函数内部临时保存数据，当函数调用完成后，销毁局部变量。
+全局变量：在函数体内外都能生效的变量。
+
+在实际开发中，一个程序常由多个函数组成，并且多个函数共享某些数据。那么如何在函数体内部修改全局变量？
+- Way1: 共用全局变量
+e.g.
+```python
+a = 0
+
+def test1():
+    # modify global variable
+    global a
+    a = 10
+
+def test2():
+    print(a)
+
+test1()
+test2()
+```
+
+- Way2: 返回值作为参数传递
+e.g.
+```python
+def test1():
+    return 10
+
+def test2(num):
+    print(num)
+
+result = test1()
+test2(result)
+```
+
+**多个返回值**
+e.g.
+```python
+def test1():
+    return 1
+    return 2
+result = test1()
+print(result)   # 1 只执行了第一个return，因为return退出当前函数，导致下方的代码不执行
+
+def test2():
+    return 1,2  # 正确的多个return值的写法，返回多个数据默认元组类型
+result = test2()
+print(result)
+```
+
+**位置参数**：调用函数时根据函数定义的参数位置来传递参数。
+**关键字参数**：函数调用通过“键=值”的形式指定，可以让函数调用更清晰，同时不要求参数的顺序。
+**缺省参数**：也称默认参数，用于定义函数时为参数提供默认值，调用函数时可以不传该默认参数的值。所有位置参数必须出现在默认参数前，包括函数定义和调用。函数调用时，如果为缺省参数被传值则修改默认参数值；否则使用这个默认值。
+**不定长参数**：也称可变参数，用于不确定调用的时候会传递几个参数(不传参也可以)的场景。
+可用包裹(packing)位置参数，或者包裹关键字参数，来进行参数传递，会显得非常方便。传入的所有参数都会被args变量按照位置打包为一个tuple。还可用包裹关键字传递。这都是**组包**的过程。
+
+
+e.g. 
+```python
+# 位置参数
+def welcome(name, mon, day):
+    print(f'Hi {name}! Today is {mon}.{day}. Welcome!')
+
+# 缺省参数
+def welcome2(name, mon, day=28):
+    print(f'Hi {name}! Today is {mon}.{day}. Welcome!')
+
+# 包裹位置传递
+def pakg(*args):
+    print(args)
+
+# 包裹关键字传递
+def pakg2(**kwargs):
+    print(kwargs)
+
+# 位置参数
+welcome('Jack', 'Jul', 28)
+# 关键字参数
+welcome(day=28, name='Jack', mon='Jul')
+# 缺省参数
+welcome2('Jack', 'Jul')  # Hi Jack! Today is Jul.28. Welcome!
+welcome2('Jack', 'Jul', 30)  # Hi Jack! Today is Jul.30. Welcome!
+# 包裹位置传递
+pakg('Jack', 'Jul', 28)  # ('Jack', 'Jul', 28)
+# 包裹关键字传递
+pakg2(name='Jack', day=28, mon='Jul')  # {'name': 'Jack', 'day': 28, 'mon': 'Jul'}
+```
+
+**拆包**
+e.g. 字典拆包取出来的是key
+```python
+dict1 = {'name': 'Jack', 'day': 28}
+a, b = dict1
+print(a) # name
+print(b) # day
+print(dict1[a]) # Jack
+print(dict1[b]) # 28
+```
+
+**交换变量值**
+e.g. 交换a=1 and b=2 
+```python
+# Way1: 引入第三个变量
+a, b = 1, 2
+c = 0
+c = a
+a = b
+b = c
+
+print(a, b)  # 2 1
+
+# Way2: 
+a, b = 1, 2
+a, b = b, a
+print(a, b)  # 2 1
+```
+
+**引用**
+在python中值是靠引用来传递的。可以用id()来判断两个变量是否为同一个值的引用。 可以将id值理解为那块内存的地址标识。**不可变类型与可变类型的引用结果有本质的差别！**
+e.g.
+```python
+## int引用
+a = 1
+b = a
+print(b) # 1
+print(id(a), id(b))  # 140720565232016 140720565232016 内存地址相同
+a = 2
+print(b) # 1,说明int类型为不可变类型
+print(id(a), id(b))  # 140720565232048 140720565232016 内存地址不同
+b = 3
+print(a) # 2
+print(id(a), id(b))  # 140720565232048 140720565232080 内存地址不同
+
+## list引用
+a = [10, 20]
+b = a
+print(id(a), id(b))  # 2217640153480 2217640153480 内存地址相同
+a.append(30)
+print(b)  # [10, 20, 30], 列表为可变类型
+print(id(a), id(b))  # 2217640153480 2217640153480 内存地址相同
+
+## 引用作为实参
+def test1(a):
+    print(a)
+    print(id(a))
+    a += a
+    print(a)
+    print(id(a))
+
+# int：计算前后id值不同
+b = 100
+test1(b)
+# list：计算前后id值相同
+c = [11, 22]
+test1(c)
+```
+
+**可变和不可变类型**
+可变类型：list; dict; set
+不可变类型：int; float; string; tuple
+
+**lumbuda function**
+
+
+
+
