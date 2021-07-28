@@ -1085,7 +1085,127 @@ test1(c)
 可变类型：list; dict; set
 不可变类型：int; float; string; tuple
 
-**lumbuda function**
+**lambda function 匿名函数**
+如果一个函数仅有一个返回值，并且一句代码即可写成，则可以使用lambda简化代码。另外lambuda相比def可以节约内存空间。
+lambda表达式的参数可有可无。lambda函数能接收任何数量的参数但只能返回一个表达式的值。
+
+    function_name = lambda parameters: expressions 
+
+e.g. no parameter
+```python
+def func1():
+    return 100
+print(func1)  # <function func1 at 0x0000014C26D80B88>
+print(func1())  # 100
+
+func2 = lambda: 100  # no parameter list
+print(func2)  # func2 is the name address of the lambda function: <function <lambda> at 0x0000014C26D9E8B8>
+print(func2())  # call lambda function: 100 
+```
+
+e.g. add two numbers with input parameters
+```python
+# Way1:
+def func1(a, b):
+    return a+b
+print(func1(1,2)) 
+
+# Way2:
+func2 = lambda a,b: a+b
+print(func2(1,2))
+
+# Way3:
+print((lambda a,b: a+b)(1,2))
+```
+
+e.g. defualt parameters  默认/缺省参数
+```python
+print((lambda a,b,c=100: a+b+c)(10,20))  # 130
+print((lambda a,b,c=200: a+b+c)(10,20))  # 230
+```
+
+e.g. variable parameters 可变参数
+```python
+func1 = lambda *args: args
+print(func1('Jack',100))  # ('Jack', 100)
+
+func2 = lambda **kwargs: kwargs
+print(func2(name='Jack', score=100))  # {'name': 'Jack', 'score': 100}
+```
+
+e.g. if statment in a lambda function
+```python
+func1 = lambda a,b: a if a > b else b
+print(func1(20,10))  # 20
+```
+
+e.g. sorting by key values
+```python
+stu = [
+{'name': 'Tom', 'age': 20},
+{'name': 'Derek', 'age': 19},
+{'name': 'Jack', 'age': 22}]
+
+func1 = lambda x: x['name']
+print(func1(stu[1]))  # Rose
+stu.sort(key=func1)
+print(stu)  # [{'name': 'Derek', 'age': 19}, {'name': 'Jack', 'age': 22}, {'name': 'Tom', 'age': 20}]
+
+stu.sort(key=func1, reverse=True)
+print(stu)  # [{'name': 'Tom', 'age': 20}, {'name': 'Jack', 'age': 22}, {'name': 'Derek', 'age': 19}]
+```
+
+**高阶函数**
+把函数作为另外一个函数的形式参数传⼊，这样的函数称为高阶函数，高阶函数是函数式编程的体现。函数式编程就是这种高度抽象的编程范式。
+函数式编程大量使用函数，减少了代码的重复，因此程序比较短，开发速度较快，函数灵活性高。
+
+e.g. add numbers
+```python
+def sum_num(a, b, f):
+    return f(a) + f(b)
+
+print(sum_num(-1,2,abs))  # 先求绝对值再求和: 3
+print(sum_num(2.9,3.1,round))  # 先四舍五入再求和: 6
+```
+
+**内置高阶函数**
+`map(func, list)`，将传入的函数变量func作用到list变量的每个元素中，并将结果组成迭代器地址(Python3)返回。 
+
+e.g. 计算list序列中各个元素的2次方
+```python
+list1 = [1, 2, 3, 4, 5]
+def func1(x):
+    return x**2
+
+result = map(func1, list1)
+print(result)  # 内存地址： <map object at 0x0000018192FF7D48>
+print(list(result))  # [1, 4, 9, 16, 25]
+```
+
+`reduce(func(x,y)，lst)`，其中func必须输入两个参数。每次func计算的结果继续和序列的下一个元素做累积计算。
+e.g. 计算list序列中各个数字的累加
+```python
+import functools
+list1 = [1, 2, 3, 4, 5]
+def func(a, b):
+    return a + b
+result = functools.reduce(func, list1)
+print(result) # 15
+```
+
+`filter(func, lst)` 用于过滤序列中不符合条件的元素, 返回一个 filter对象。可用list()转换为列表。
+e.g. 筛选序列中的偶数
+```python
+list1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+def func1(x):
+    return x%2 == 0
+
+result = filter(func1, list1)
+print(result)  # <filter object at 0x00000188D2847E88>
+print(list(result))  # [2, 4, 6, 8, 10]
+```
+
 
 
 
