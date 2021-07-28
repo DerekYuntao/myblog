@@ -885,5 +885,36 @@ result = {key: value for key, value in counts.items() if value >= 200}
 print(result) # {'MBP': 268, 'DELL': 201}
 ```
 
+## python function 
+函数是将一段具有独立功能的代码块**封装**起来并命名，调用这个名称即可完成对应的需求。
+在开发过程中，函数可以实现高效的代码重用。
 
+def function name(parameters):
+    code block
 
+**python函数必须先定义后使用。根据需求，输入参数可有可无**
+
+形参：函数定义时书写的输入参数(非真实数据)
+实参：函数调⽤用时书写的输入参数(真实数据)
+
+### 函数说明文档
+def function name(parameters):
+    """ 函数说明文档 """
+    code block
+
+查看函数说明文档
+help(function name)    
+
+e.g. print 5 lines
+```python
+def print_line():
+    print('-' * 20)
+
+def print_lines(num):
+    i = 0
+    while i < num:
+        print_line()
+        i += 1
+
+print_lines(5)
+```    
