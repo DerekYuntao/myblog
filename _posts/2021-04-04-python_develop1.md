@@ -185,8 +185,8 @@ print(type(f))
 |    %G    |      %f和%E的简写      |
 |    %%    |         百分数        |
 
-- %06d，表示输出的整数显示位数，不足位数的左侧以0补全，超出当前位数则以原样的数据输出
-- %.2f，表示小数点后显示的小数位数
+- %06d 表示输出的整数显示位数，不足位数的左侧以0补全，超出当前位数则以原样的数据输出
+- %.2f 表示小数点后显示的小数位数
 
 **格式化字符串除了%s，在3.6+的python版本还可以写为更简单的`f'{表达式}'`**
 e.g.
@@ -201,10 +201,10 @@ student_id = 1
 print('My ID is %4d' %(student_id))
 
 # My name is Tom and will be 19 next year
-print('My name is%s and will be%d next year' %(name, age + 1))
+print('My name is %s and will be %d next year' %(name, age + 1))
 
 # 强大的%s: My name is Tom and will be 19 next year
-print('My name is%s and will be%s next year' %(name, age + 1))
+print('My name is %s and will be %s next year' %(name, age + 1))
 
 # 高效的f{}: My name is Tom and will be 19 next year
 print(f'My name is {name} and will be {age + 1} next year')
@@ -212,7 +212,7 @@ print(f'My name is {name} and will be {age + 1} next year')
 # print a value in percentage
 value = 0.20009
 # precp_MWF:20.0%
-print("precp_MWF" + ":" + " %.1f%%" %(value*100)
+print("precp_MWF" + ":" + " %.1f%%" %(value*100))
 ```
 
 **结束符**
@@ -307,13 +307,13 @@ a = b = 10
 
 | 运算符 |  实例                       |
 | :------: | :--------------------------:|
-| +=     | c += a 等价于 c = c + a    |
-| -=     | c -= a 等价于 c = c- a     |
-| *=     | c *= a 等价于 c = c * a    |
-| /=     | c /= a 等价于 c = c / a    |
-| //=    | c //= a 等价于 c = c // a  |
-| %=     | c %= a 等价于 c = c % a    |
-| **=    | c ** = a 等价于 c = c ** a |
+| +=     | c += a is c = c + a    |
+| -=     | c -= a is c = c- a     |
+| *=     | c *= a is c = c * a    |
+| /=     | c /= a is c = c / a    |
+| //=    | c //= a is c = c // a  |
+| %=     | c %= a is c = c % a    |
+| **=    | c ** = a is c = c ** a |
 
  优先级:
  1. 先算复合赋值运算符右侧的表达式
@@ -553,17 +553,19 @@ name = "abcdefg"
 print(name[2:5:1]) # cde
 print(name[::2]) # aceg
 print(name[:-1]) # abcdef
+print(name[-1]) #g
 print(name[-4:-1]) # def
 print(name[::-1]) # gfedcba #reverse
 ```
 
 - Find string
     string.find(⼦串, 开始下标, 结束下标)
+检测某个⼦串是否包含在字符串中，是则返回此⼦串开始的位置下标，否则返回-1    
 
 rfind()：与find()功能相同，但查找⽅方向为右侧开始
 rindex()：与index()功能相同，但查找⽅方向为右侧开始
 count()：返回某个⼦串在字符串中出现的次数
-
+- index 类似
 e.g. 
 
 ```python
@@ -586,7 +588,7 @@ repstr = mystr.replace("and","to", 1)
 print(repstr)  # Welcome to this blog to have a good time and enjoy!
 print(mystr)   # Welcome to this blog and have a good time and enjoy!
 ```
-*从上例注意到，字符串本身并没有被修改，除非赋值给一个新的变量，这说明**字符串是不可变的数据类型**
+*重要：上例中字符串本身并没有被修改，除非赋值给一个新的变量，这说明**字符串是不可变的数据类型**
 
 - Split string
     string.split(分割字符, num)
@@ -689,6 +691,7 @@ del alist  # no alist anymore
 alist = ['a', 'b', 'c']  
 alist_del = alist.pop(0)
 print(alist_del)  # a
+print(alist)  # ['b', 'c']
 
 alist.remove('b')
 print(alist)  # ['c']
@@ -745,6 +748,7 @@ print(type(num2)) # int
 e.g.
 
 ```python
+dlist = {}  # null dictionary
 dlist = {'name': 'Lucky', 'age': 2, 'gender': 'male'}
 for key in dlist.keys():
     print(key)
@@ -752,16 +756,134 @@ for key in dlist.keys():
 for item in dlist.items():
     print(item)
 
+# important
 for key, value in dlist.items():
     print(f'{key} = {value}')
 ```
 
+## Set 
+集合可以去掉重复数据, 且无序不支持下标索引。
+由于集合有去重功能，如果向集合内追加(add)的数据是当前集合已有数据，则不进行任何操作。
+update() 追加的数据是序列。
+创建集合使⽤用{} 或set(), 但是如果创建空集合只能用set(),因为{}只能创建空字典。
 
+remove() 删除集合中的指定数据，如果数据不存在则报错
+discard() 删除集合中的指定数据，如果数据不存在也不会报错
+pop() **随机删除**集合中的某个数据，并返回这个数据
 
+e.g.
+```python
+a1 = set()
+print(type(a1)) # set
+a2 = {}
+print(type(a2)) # dict
 
-In Past Climate Variability in South America and Surrounding Regions
+a3 = {10, 20, 100}
+print(a3)  # {100, 10, 20} 不是{10, 20, 100}, 这体现了集合的无序性
+a3.add(100)
+print(a3)  # {100, 10, 20}
+a3.add('abc')
+print(a3) # {100, 10, 20, 'abc'}
+a3.update([100, 200, 'ab'])
+print(a3) # {100, 200, 10, 'ab', 'abc', 20}
+a3.update('abc')
+print(a3) # {'abc', 'a', 100, 'b', 200, 10, 'ab', 'c', 20}
+a3.remove('ab')
+print(a3) # {'abc', 'b', 100, 200, 10, 'a', 20, 'c'}
+idel = a3.pop()
+print(idel) # abc
+print(a3) # {'b', 100, 200, 10, 'a', 20, 'c'}
+```
 
+## Public operations
 
+| Operator |  Operation                     |  Supported container   |
+| :------: | :--------------------------:| :--------------------------: |
+| +     | merge    | string; list; tumple |
+| *     | copy    | string; list; tumple |
+| in/not in     | whether elements exist  | string; list; tumple; dict; set |
+
+e.g.
+```python
+# add
+# string
+str1 = 'a'
+str2 = 'b'
+str3 = str1 + str2
+print(str3) # ab
+# list
+list1 = [1, 2]
+list2 = [3, 4]
+list3 = list1 + list2
+print(list3) # [1, 2, 3, 4]
+# tumple
+t1 = (1, 2)
+t2 = (3, 4)
+t3 = t1 + t2
+print(t3) # (1, 2, 3, 4)
+
+# copy
+print('/'*10) # //////////
+list1 = [10]
+print(list1*10) # [10, 10, 10, 10, 10, 10, 10, 10, 10, 10]
+tup = ('Hi',)
+print(tup*3) # ('Hi', 'Hi', 'Hi')
+```
+
+## Public method
+len(); del or del(); max(); min(); range(start,end,step)  **range()生成的序列不包含end
+enumerate() 用于将一个可遍历的数据对象(列表、元组或字符串)组合为一个索引序列，同时列出数据元素和下标，一般与 for 循环搭配使用
+
+e.g.
+```python
+list1 = ['a', 'b', 'c', 'd', 'e']
+for i in enumerate(list1):
+    print(i)   # (0, 'a') (1, 'b') (2, 'c')
+for idx, char in enumerate(list1, start=1):
+    print(f'Index: {idx}; element: {char}') 
+    # Index: 1; element: a 
+    # Index: 2; element: b
+    # Index: 3; element: c
+```
+
+## Comprehensions
+推导式可简化代码
+
+- 列列表推导式
+[xx for xx in range()]
+- 字典推导式
+{xx1: xx2 for ... in ...}
+- 集合推导式
+{xx for xx in ...}
+
+e.g.
+```python
+list1 = [i for i in range(10)]
+print(list1)  # [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+# 创建0-10的偶数列表
+list1 = [i for i in range(10) if i % 2 == 0]
+print(list1)  # [0, 2, 4, 6, 8]
+
+# 创建如下列表：[(1, 0), (1, 1), (1, 2), (2, 0), (2, 1), (2, 2)]
+list1 = [(i, j) for i in range(1, 3) for j in range(3)]
+print(list1)
+
+# 创建字典
+dict1 = {i: i**2 for i in range(1, 5)}
+print(dict1)  # {1: 1, 2: 4, 3: 9, 4: 16}
+
+# 合并字典
+list1 = ['name', 'age', 'gender']
+list2 = ['Jack', 20, 'man']
+dict1 = {list1[i]: list2[i] for i in range(len(list1))}
+print(dict1)  # {'name': 'Jack', 'age': 20, 'gender': 'man'}
+
+# 提取数据 (大于等于200的字典数据)
+counts = {'MBP': 268, 'HP': 125, 'DELL': 201, 'Lenovo': 199, 'acer': 99}
+result = {key: value for key, value in counts.items() if value >= 200}
+print(result) # {'MBP': 268, 'DELL': 201}
+```
 
 
 
