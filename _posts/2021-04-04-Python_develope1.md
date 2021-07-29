@@ -8,6 +8,60 @@ tags:
  - python
 ---
 
+<!-- vscode-markdown-toc -->
+* 1. [1 PyCharm IDE](#PyCharmIDE)
+	* 1.1. [create project](#createproject)
+	* 1.2. [create code file](#createcodefile)
+	* 1.3. [run](#run)
+	* 1.4. [PyCharm settings](#PyCharmsettings)
+* 2. [2 Comments](#Comments)
+* 3. [3 variable](#variable)
+* 4. [4 Debug](#Debug)
+* 5. [5 Data type](#Datatype)
+* 6. [6 Print](#Print)
+* 7. [7 Input](#Input)
+* 8. [8 Data type conversion](#Datatypeconversion)
+* 9. [9 Operator](#Operator)
+	* 9.1. [算数运算符](#)
+	* 9.2. [复合赋值运算符](#-1)
+	* 9.3. [比较运算符](#-1)
+* 10. [10 IF statement](#IFstatement)
+* 11. [11 Loops](#Loops)
+	* 11.1. [**while**](#while)
+	* 11.2. [**for**](#for)
+	* 11.3. [**Exit loop**](#Exitloop)
+	* 11.4. [**循环和else的配合使用**](#else)
+* 12. [12 String](#String)
+* 13. [13 Container](#Container)
+	* 13.1. [**List**](#List)
+	* 13.2. [**Tuple**](#Tuple)
+	* 13.3. [**Dictionary**](#Dictionary)
+	* 13.4. [**Set**](#Set)
+* 14. [14 Advanced feature for containers](#Advancedfeatureforcontainers)
+	* 14.1. [**Iteration 迭代**](#Iteration)
+	* 14.2. [**Comprehensions 生成式/推导式**](#Comprehensions)
+	* 14.3. [**生成器**](#-1)
+	* 14.4. [**迭代器**](#-1)
+	* 14.5. [**Public method**](#Publicmethod)
+	* 14.6. [**Public operations**](#Publicoperations)
+* 15. [15 python function](#pythonfunction)
+	* 15.1. [**函数说明文档**](#-1)
+	* 15.2. [**作用域**](#-1)
+		* 15.2.1. [**多个返回值**](#-1)
+	* 15.3. [**参数传递**](#-1)
+	* 15.4. [**引用**](#-1)
+	* 15.5. [**高级特性**](#-1)
+	* 15.6. [**lambda function 匿名函数**](#lambdafunction)
+	* 15.7. [**高阶函数**](#-1)
+	* 15.8. [**装饰器**](#-1)
+	* 15.9. [**偏函数**](#-1)
+
+<!-- vscode-markdown-toc-config
+	numbering=true
+	autoSave=true
+	/vscode-markdown-toc-config -->
+<!-- /vscode-markdown-toc -->
+
 ## 1 PyCharm IDE
 PyCharm is a Python IDE, the integrated functions include：
 - Project管理
@@ -274,7 +328,7 @@ print(type(eval(str3)))  #tuple
 
 ## 9 Operator
 运算符分类:
-- 算数运算符
+### 算数运算符
 
 | 运算符 |  描述  | 实例                                               |
 | :----: | :----: | :------------------------------------------------:|
@@ -303,7 +357,7 @@ print(str1)
 a = b = 10
 ```
 
-- 复合赋值运算符
+### 复合赋值运算符
 
 | 运算符 |  实例                       |
 | :------: | :--------------------------:|
@@ -334,7 +388,7 @@ c *= 1 + 2
 print(c)
 ```
 
-- 比较运算符
+### 比较运算符
 比较运算符也称为关系运算符，通常用于判断。
 
 | 运算符| 描述| 
@@ -414,7 +468,7 @@ print(c)  #c=2
 ```
 
 ## 11 Loops
-**while**
+### **while**
     while 条件
         条件成立执行的代码
 e.g. accumulation of even numbers
@@ -440,11 +494,11 @@ while i <= 100:
 print(result)  # print 2550
 ```
 
-**for**
+### **for**
     for 临时变量 in 序列：
         重复执行的代码
 
-**Exit loop**
+### **Exit loop**
 - break: terminate the whole loop
 - continue: exit the current loop and continue to execute the next loop code
 
@@ -501,7 +555,7 @@ result:
 1*9=9 2*9=18 3*9=27 4*9=36 5*9=45 6*9=54 7*9=63 8*9=72 9*9=81  
 ```
 
-**循环和else的配合使用**
+### **循环和else的配合使用**
 循环可与else配合使用, else下⽅方缩进的代码是当循环正常结束之后要执⾏的代码，否则这部分代码不执行
 
     while 条件:
@@ -651,7 +705,7 @@ print(mystr.center(30, '_'))  # ____Welcome to this blog!_____
 ```
 
 ## 13 Container
-- **List**
+### **List**
 - 判断元素是否存在: in/not in
 e.g.
 
@@ -729,7 +783,7 @@ e.g.
         print(i)
 ```      
 
-- **Tuple**
+### **Tuple**
 ⼀个元组可以像一个列表那样存储多个数据，数据可以是不同的数据类型，但是元组内的数据元素是不能修改的, 因此元组数据只⽀持查找和访问。
 但是如果元组⾥⾯有列表，那么修改元组中列表元素⾥⾯的数据则是可以的。
 如果定义的元组只有⼀个数据，那么这个数据后⾯必须添加一个逗号，否则数据类型为这个唯一的数据元素数据类型。
@@ -743,7 +797,7 @@ num2 = (100)
 print(type(num2)) # int
 ```
 
-- **Dictionary**
+### **Dictionary**
 字典⾥的数据是以键值对形式出现，字典数据和数据顺序没有关系，即字典不⽀持下标，后期⽆论数据如何变化，只需要按照对应的键的名字就可以查找到数据。
 - 字典的遍历
 e.g.
@@ -762,7 +816,7 @@ for key, value in dlist.items():
     print(f'{key} = {value}')
 ```
 
-- **Set**
+### **Set**
 集合可以去掉重复数据, 且无序不支持下标索引。
 由于集合有去重功能，如果向集合内追加(add)的数据是当前集合已有数据，则不进行任何操作。
 update() 追加的数据是序列。
@@ -796,58 +850,27 @@ print(idel) # abc
 print(a3) # {'b', 100, 200, 10, 'a', 20, 'c'}
 ```
 
-- **Public operations**
-
-| Operator |  Operation                     |  Supported container   |
-| :------: | :--------------------------:| :--------------------------: |
-| +     | merge    | string; list; tumple |
-| *     | copy    | string; list; tumple |
-| in/not in     | whether elements exist  | string; list; tumple; dict; set |
-
+## 14 Advanced feature for containers
+### **Iteration 迭代**
+给定一个容器对象，可以通过for loop来遍历，这种遍历称为迭代。即迭代是访问集合元素的一种方式。str, list, tuple, dict, set都是可迭代对象。
+list这种数据类型有下标固然可以迭代，很多其他数据类型没有下标（e.g. dict and set），但只要是可迭代对象，无论有无下标都可以迭代。
+dict不是按照顺序存储的，因此迭代出的结果顺序很可能不一样。默认情况下，dict迭代的是key。如果要迭代value，可以用for value in dict.values()，如果要同时迭代key和value，可以用for k, v in d.items()。
+通过collections.abc模块的Iterable类型可判断一个对象是否是可迭代对象。
 e.g.
 ```python
-# add
-# string
-str1 = 'a'
-str2 = 'b'
-str3 = str1 + str2
-print(str3) # ab
-# list
-list1 = [1, 2]
-list2 = [3, 4]
-list3 = list1 + list2
-print(list3) # [1, 2, 3, 4]
-# tumple
-t1 = (1, 2)
-t2 = (3, 4)
-t3 = t1 + t2
-print(t3) # (1, 2, 3, 4)
-
-# copy
-print('/'*10) # //////////
-list1 = [10]
-print(list1*10) # [10, 10, 10, 10, 10, 10, 10, 10, 10, 10]
-tup = ('Hi',)
-print(tup*3) # ('Hi', 'Hi', 'Hi')
+from collections.abc import Iterable
+print(isinstance('abc', Iterable))  # True
+print(isinstance([1,2,3], Iterable))  # True
+print(isinstance({'name': 'Jack', 'age': 20}, Iterable))  # True
+print(isinstance(123, Iterable))  # False
 ```
-
-- **Public method**
-len(); del or del(); max(); min(); range(start,end,step)  **range()生成的序列不包含end
-enumerate() 用于将一个可遍历的数据对象(列表、元组或字符串)组合为一个索引序列，同时列出数据元素和下标，一般与 for 循环搭配使用
-
-e.g.
+e.g. 同时引用两个变量的迭代
 ```python
-list1 = ['a', 'b', 'c', 'd', 'e']
-for i in enumerate(list1):
-    print(i)   # (0, 'a') (1, 'b') (2, 'c')
-for idx, char in enumerate(list1, start=1):
-    print(f'Index: {idx}; element: {char}') 
-    # Index: 1; element: a 
-    # Index: 2; element: b
-    # Index: 3; element: c
-```
+for x, y in [(1, 1), (2, 4), (3, 9)]:
+    print(x, y)
+```    
 
-## 14 Comprehensions
+### **Comprehensions 生成式/推导式**
 推导式可简化代码
 
 - 列列表推导式
@@ -886,6 +909,61 @@ result = {key: value for key, value in counts.items() if value >= 200}
 print(result) # {'MBP': 268, 'DELL': 201}
 ```
 
+### **生成器**
+
+### **迭代器**
+
+### **Public method**
+len(); del or del(); max(); min(); range(start,end,step)  **range()生成的序列不包含end
+enumerate() 用于将一个可遍历的数据对象(列表、元组或字符串)组合为一个索引序列，同时列出数据元素和下标，一般与 for 循环搭配使用
+
+e.g.
+```python
+list1 = ['a', 'b', 'c', 'd', 'e']
+for i in enumerate(list1):
+    print(i)   # (0, 'a') (1, 'b') (2, 'c')
+for idx, char in enumerate(list1, start=1):
+    print(f'Index: {idx}; element: {char}') 
+    # Index: 1; element: a 
+    # Index: 2; element: b
+    # Index: 3; element: c
+```
+
+### **Public operations**
+
+| Operator |  Operation                     |  Supported container   |
+| :------: | :--------------------------:| :--------------------------: |
+| +     | merge    | string; list; tumple |
+| *     | copy    | string; list; tumple |
+| in/not in     | whether elements exist  | string; list; tumple; dict; set |
+
+e.g.
+```python
+# add
+# string
+str1 = 'a'
+str2 = 'b'
+str3 = str1 + str2
+print(str3) # ab
+# list
+list1 = [1, 2]
+list2 = [3, 4]
+list3 = list1 + list2
+print(list3) # [1, 2, 3, 4]
+# tumple
+t1 = (1, 2)
+t2 = (3, 4)
+t3 = t1 + t2
+print(t3) # (1, 2, 3, 4)
+
+# copy
+print('/'*10) # //////////
+list1 = [10]
+print(list1*10) # [10, 10, 10, 10, 10, 10, 10, 10, 10, 10]
+tup = ('Hi',)
+print(tup*3) # ('Hi', 'Hi', 'Hi')
+```
+
 ## 15 python function 
 函数是将一段具有独立功能的代码块**封装**起来并命名，调用这个名称即可完成对应的需求。
 在开发过程中，函数可以实现高效的代码重用。
@@ -900,7 +978,7 @@ def function name(parameters):
 形参：函数定义时书写的输入参数(非真实数据)
 实参：函数调⽤用时书写的输入参数(真实数据)
 
-### 函数说明文档
+### **函数说明文档**
 ```python
 def function name(parameters):
     """ 函数说明文档 """
@@ -924,12 +1002,13 @@ def print_lines(num):
 print_lines(5)
 ```    
 
+### **作用域**
 变量作用域是变量生效的范围，包括局部变量和全局变量。
 局部变量：定义在函数体内部且仅在函数内部生效的变量。函数内部临时保存数据，当函数调用完成后，销毁局部变量。
 全局变量：在函数体内外都能生效的变量。
 
 在实际开发中，一个程序常由多个函数组成，并且多个函数共享某些数据。那么如何在函数体内部修改全局变量？
-- Way1: 共用全局变量
+Way1: 共用全局变量
 e.g.
 ```python
 a = 0
@@ -946,7 +1025,7 @@ test1()
 test2()
 ```
 
-- Way2: 返回值作为参数传递
+Way2: 返回值作为参数传递
 e.g.
 ```python
 def test1():
@@ -959,7 +1038,7 @@ result = test1()
 test2(result)
 ```
 
-**多个返回值**
+#### **多个返回值**
 e.g.
 ```python
 def test1():
@@ -974,6 +1053,7 @@ result = test2()
 print(result)
 ```
 
+### **参数传递**
 **位置参数**：调用函数时根据函数定义的参数位置来传递参数。
 **关键字参数**：函数调用通过“键=值”的形式指定，可以让函数调用更清晰，同时不要求参数的顺序。
 **缺省参数**：也称默认参数，用于定义函数时为参数提供默认值，调用函数时可以不传该默认参数的值。所有位置参数必须出现在默认参数前，包括函数定义和调用。函数调用时，如果为缺省参数被传值则修改默认参数值；否则使用这个默认值。
@@ -1023,25 +1103,7 @@ print(dict1[a]) # Jack
 print(dict1[b]) # 28
 ```
 
-**交换变量值**
-e.g. 交换a=1 and b=2 
-```python
-# Way1: 引入第三个变量
-a, b = 1, 2
-c = 0
-c = a
-a = b
-b = c
-
-print(a, b)  # 2 1
-
-# Way2: 
-a, b = 1, 2
-a, b = b, a
-print(a, b)  # 2 1
-```
-
-**引用**
+### **引用**
 在python中值是靠引用来传递的。可以用id()来判断两个变量是否为同一个值的引用。 可以将id值理解为那块内存的地址标识。**不可变类型与可变类型的引用结果有本质的差别！**
 e.g.
 ```python
@@ -1085,7 +1147,29 @@ test1(c)
 可变类型：list; dict; set
 不可变类型：int; float; string; tuple
 
-**lambda function 匿名函数**
+**交换变量值**
+e.g. 交换a=1 and b=2 
+```python
+# Way1: 引入第三个变量
+a, b = 1, 2
+c = 0
+c = a
+a = b
+b = c
+
+print(a, b)  # 2 1
+
+# Way2: 
+a, b = 1, 2
+a, b = b, a
+print(a, b)  # 2 1
+```
+
+### **高级特性**
+
+
+
+### **lambda function 匿名函数**
 如果一个函数仅有一个返回值，并且一句代码即可写成，则可以使用lambda简化代码。另外lambuda相比def可以节约内存空间。
 lambda表达式的参数可有可无。lambda函数能接收任何数量的参数但只能返回一个表达式的值。
 
@@ -1155,7 +1239,7 @@ stu.sort(key=func1, reverse=True)
 print(stu)  # [{'name': 'Tom', 'age': 20}, {'name': 'Jack', 'age': 22}, {'name': 'Derek', 'age': 19}]
 ```
 
-**高阶函数**
+### **高阶函数**
 把函数作为另外一个函数的形式参数传⼊，这样的函数称为高阶函数，高阶函数是函数式编程的体现。函数式编程就是这种高度抽象的编程范式。
 函数式编程大量使用函数，减少了代码的重复，因此程序比较短，开发速度较快，函数灵活性高。
 
@@ -1206,7 +1290,6 @@ print(result)  # <filter object at 0x00000188D2847E88>
 print(list(result))  # [2, 4, 6, 8, 10]
 ```
 
+### **装饰器**
 
-
-
-
+### **偏函数**
