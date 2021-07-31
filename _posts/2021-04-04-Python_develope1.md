@@ -74,13 +74,11 @@ PyCharm is a Python IDE, the integrated functions include：
 ### create project
     [Create New Project] -- 选择项目根目录和解释器版本 -- [Create]
 
-
 ### create code file
     项目根目录或根目录内部任意位置 — 右键 -- [New] -- [Python File]
 
 ### run
     文件打开状态 -- 空白位置 — 右键 -- Run 
-
 
 ### PyCharm settings
     [file] -- [Settings]/[Default Settings]
