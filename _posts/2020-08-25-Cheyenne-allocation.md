@@ -25,7 +25,9 @@ The Globally Accessible Data Environment is centralized disk storage that is acc
 Log in to CIS with two-factor authentication:
 <https://guide.duo.com/append-mode>
 
-Log in to help center:
+Log in to help center and request center:  
+<https://ithelp.ucar.edu/plugins/servlet/desk/site/global>
+
 <https://helpdesk.ucar.edu/plugins/servlet/desk/portal/3>
 
 Log in to resource allocation system:
@@ -37,4 +39,4 @@ NCAR account manager:
 Reference:
 https://www2.cisl.ucar.edu/resources/computational-systems/cheyenne
 
-Last updata: 08/25/2020
+Last updata: 05/31/2022

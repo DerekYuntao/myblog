@@ -10,6 +10,10 @@ tags:
 
 https://www.jianshu.com/p/b4a41caa0c8d
 
+[**Atm S 552 Objective Analysis**](https://atmos.uw.edu/~breth/classes/AS552/)
+
+[**Python for neural data analysis**](https://mark-kramer.github.io/Case-Studies-Python/intro.html)
+
 [**Climate Modeling Alliance**](https://github.com/CliMA)
 
 An alliance of scientists, engineers and applied mathematicians, dedicated to pioneering a new, data-informed approach to climate modeling. Most of the models are written in Julia.
@@ -69,6 +73,8 @@ The model accounts for glacier geometry (including contributory branches) and in
 [**cyzzym000的博客**](https://blog.csdn.net/cyzzym000)
 
 [**ZMonster's Blog**](https://www.zmonster.me/categories.html)   NLP & code & web   
+
+[**Signals and Systems with Python**](https://xiuchuanz.com/2020/02/Signals_and_Systems_w_Python/)
 
 **Axes 和 GeoAxes 大小不一致的问题解决方案**
 mpl_toolkits.axes_grid1:
