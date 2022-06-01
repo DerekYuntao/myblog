@@ -6,22 +6,24 @@ title: About Me
 
 # About me
 
-Welcome to <font color=Blue>**Parallel Universe of Yuntao**</font>. This is my technical blog.
+Welcome to **<font color=yellow>Parallel Universe of Yuntao</font>**. This is my technical blog.
 
-CV:
+-**My CV:**
 
-2019-Now: Ph.D. candidate at the Ohio State University, atmospheric science program.
+**2019-Now**: Ph.D. candidate, research assitant at the Ohio State University, atmospheric science program.
 
-Research area: Climate dynamics, stable water isotope physics (cloud, moisture and precipitation), Paleoclimate modeling/simulation
-
+**Research areas of interest**: Climate dynamics; stable water isotope physics (clouds, moisture and precipitation); Paleoclimate modeling/simulation.
 I would also like to advance my skills on python software development, data science and machine learning. 
-The most intersting thing is to accumulate every progress I make.
 
-Be free to contact me if you have any questions or comments!
-contact:
-<bao.291@osu.edu>
+Please click [Linkedin](https://www.linkedin.com/in/yuntao-bao-5663771bb/) for more detailed CV.
+
+
+**Be free to contact me for any questions or comments!**
+
+contact: **<bao.291@osu.edu>**
 
 ``` python
+print('The most intersting thing is to accumulate every progress I make.')
 print("It's a far way to be in shape. Step by step...")
 print("Be halthy and positive")
 ```
