@@ -8,7 +8,7 @@ title: About Me
 
 Welcome to **<font color=yellow>Parallel Universe of Yuntao</font>**. This is my technical blog.
 
--**My CV:**
+- **My CV:**
 
 **2019-Now**: Ph.D. candidate, research assitant at the Ohio State University, atmospheric science program.
 
@@ -18,9 +18,9 @@ I would also like to advance my skills on python software development, data scie
 Please click [Linkedin](https://www.linkedin.com/in/yuntao-bao-5663771bb/) for more detailed CV.
 
 
-**Be free to contact me for any questions or comments!**
+- **Be free to contact me for any questions or  comments!**
 
-contact: **<bao.291@osu.edu>**
+  contact: **<bao.291@osu.edu>**
 
 ``` python
 print('The most intersting thing is to accumulate every progress I make.')
