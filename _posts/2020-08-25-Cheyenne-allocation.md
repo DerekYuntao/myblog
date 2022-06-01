@@ -30,7 +30,7 @@ Log in to help center and request center:
 
 <https://helpdesk.ucar.edu/plugins/servlet/desk/portal/3>
 
-Log in to resource allocation system:
+Log in to resource allocation system:  
 <https://xras-submit.ucar.edu/login>
 
 NCAR account manager:
