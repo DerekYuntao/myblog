@@ -20,7 +20,7 @@ Please click [Linkedin](https://www.linkedin.com/in/yuntao-bao-5663771bb/) for m
 
 - **Be free to contact me for any questions or  comments!**
 
-  contact: **<bao.291@osu.edu>**
+contact: **<bao.291@osu.edu>**
 
 ``` python
 print('The most intersting thing is to accumulate every progress I make.')
