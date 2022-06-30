@@ -28,7 +28,7 @@ simplify(expr3)  # simplify expression with respect to x
 ```
 
 result:
-$$Rd*Rv*T**3*(-Cp*Rv*T*g*sigma + L*Rd*g*sigma - Rd*x**2*(Cp*Rv*T**2 + L**2*qvc) - x*(Cp*Rd*Rv*T**2*sigma + Cp*Rv*T*g - L**2*Rd*epsilon*qvc + L**2*Rd*qvc*sigma - L*Rd*g))$$
+$$ Rd*Rv*T^3*(-Cp*Rv*T*g*sigma + L*Rd*g*sigma - Rd*x^2*(Cp*Rv*T^2 + L^2*qvc) - x*(Cp*Rd*Rv*T^2*sigma + Cp*Rv*T*g - L**2*Rd*epsilon*qvc + L**2*Rd*qvc*sigma - L*Rd*g)) $$
 
 Note, in the code, $\gamma$ is set to x!
 
