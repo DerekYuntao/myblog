@@ -9,7 +9,7 @@ tags:
 ---
 
 References:
-[How to use Glob() function to find files recursively in Python?](https://www.geeksforgeeks.org/how-to-use-glob-function-to-find-files-recursively-in-python/)
+[How to use Glob() function to find files recursively in Python?](https://www.geeksforgeeks.org/how-to-use-glob-function-to-find-files-recursively-in-python/), [How to create directory os.mkdir() in Python?](https://www.scaler.com/topics/create-directory-in-python/)
 
 
 ```python
