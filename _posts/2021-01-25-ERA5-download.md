@@ -16,8 +16,10 @@ tags:
 
 ## Presettings
 **Step1: install and  Climate Data Store(CDS) API on Windows
+```powershell
     conda config --add channels conda-forge
     conda install cdsapi
+```    
 
 **Step2: 
 login to CDS and 
@@ -138,6 +140,9 @@ This process will be repeated each month as new ERA5 data are released, overwrit
 reference:
 <https://confluence.ecmwf.int/pages/viewpage.action?pageId=124752178>
 <https://confluence.ecmwf.int/pages/viewpage.action?pageId=171414041>
+
+Useful links:
+<https://confluence.ecmwf.int/display/CKB/Climate+Data+Store+%28CDS%29+API+Keywords>
 
 Last update: 01/25/2021
 
