@@ -34,4 +34,7 @@ Then restart jupyter notebook and change the kernel!
 conda install -c conda-forge matplotlib
 ```
 
+**How to invoke the specified environment in Jupyter notebook?**
+<https://blog.csdn.net/YJ_tech_fan/article/details/104201053>
+
 Last update: 11/04/2022
