@@ -373,3 +373,36 @@ np.savetxt('Andes_locidx.txt', Andes_loc, fmt='%d')
 locIdx = np.loadtxt('Andes_locidx.txt', Andes_loc, fmt='%d')
 ```
 
+**e.g. 16 replicate arrays**
+e.g.
+```python
+# For one dimensional array:
+aa = [1,2,3,4]
+
+bb = np.tile(aa,3)  # [1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4]
+cc=np.repeat(aa,3)  # [1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4]
+
+# For N dimensional array: [time, lat, lon]. 
+monClim_d18Ov = np.tile(monClim_d18Ov0, (20,1,1,1))  # repeat/tile seasonal climatology of each month for 20 times: Jan, Feb,..., Nov, Dec, Jan, Feb, ...
+yrClim_d18Ov = np.repeat(yrClim_d18Ov0, 12, axis=0)  # repeat annual mean for 12 times, so all 12 month for each year will have the same value
+```
+
+**e.g. 17 Check if elements of an array exist elements of another array: np.isin()**
+e.g.
+```python
+time_TES_monlist = [str(Tm[6:].decode("utf-8")) for Tm in time_TES_all]   # extract months
+# calculate monthly climatology
+monList = ['01','02','03','04','05','06','07','08','09','10','11','12']
+Isinmon = []
+for im in monList:
+    Isinmon.append(np.isin(time_TES_monlist, im))
+```
+
+**e.g. 18 Sets processing**
+e.g.
+```python
+aa = [1,2,3,4]
+bb = [3,4,5,6]
+print(set(aa)&set(bb))  # intersection {3,4}
+print(set(aa)^set(bb))  # complement {1, 2, 5, 6, 7}
+```
