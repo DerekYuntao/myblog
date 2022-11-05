@@ -8,6 +8,7 @@ tags:
  - python
 ---
 
+```powershell
 conda create --name climlab-env python=3.9
 
 conda info --env
@@ -17,14 +18,20 @@ conda activate climlab-env
 conda install -c conda-forge climlab
 
 conda deactivate climlab-env
+```
 
 If jupyter notebook cannot find the new environment, one can do this:
+
+```powershell
 conda install -n climlab-env ipykernel
 
 python -m ipykernel install --name climlab-env
+```
 
-Then restart jupyter notebook and change the kernel
+Then restart jupyter notebook and change the kernel!
 
+```powershell
 conda install -c conda-forge matplotlib
+```
 
 Last update: 11/04/2022
