@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Creat conda environment and install climlab"
+title: "Manage conda environment and install climlab"
 date: 2022-11-04
 description: How to manage conda environment and install climlab
 share: true
