@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "Tips for NCO"
+title: "Tips for NCO/CDO"
 date: 2021-02-19
-description:  Some frequently used tips for NCO
+description:  Some frequently used tips for NCO/CDO
 share: true
 tags:
  - Linux
