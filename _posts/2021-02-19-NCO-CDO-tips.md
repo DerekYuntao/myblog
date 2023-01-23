@@ -43,4 +43,14 @@ e.g.
 
     ncdiff -v SST_cpl /glade/p/cesmdata/cseg/inputdata/atm/cam/sst/sst_HadOIBl_bc_1x1_2000climo_c180511.nc PHC_WOA_SST5m_1deg.nc OBS_sst_climo_diff.nc
 
-Last update: 02/19/2021    
+## Change longitude range from 0~360 to -180~180 ##
+
+    cdo sellonlatbox,-180,180,-90,90 infile.nc outfile.nc
+
+## Time mean: climatology
+
+    ncwa -a time,bnds b.e13.Bi1850C5.f19_g16.05.pop.h.TEMP.ltm.040001-049912_0.nc b.e13.Bi1850C5.f19_g16.05.pop.h.TEMP.ltm.040001-049912.nc
+
+    cdo timmean b.e13.Bi1850C5.f19_g16.05.pop.h.TEMP.040001-049912.nc b.e13.Bi1850C5.f19_g16.05.pop.h.TEMP.ltm.040001-049912.nc
+
+Last update: 01/23/2023    
