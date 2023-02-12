@@ -77,6 +77,6 @@ if __name__ == "__main__":
 
 ```     
 
-If you want to contiune interpolate data in pressure level to pure sigma level, see: [Model data interpolation from pressure level to sigma level](https://novarizark.github.io/2018/01/28/decoupling-cesm/)
+If you want to contiune interpolate data in pressure level to pure sigma level, see: [Model data interpolation from pressure level to sigma level](https://derekyuntao.github.io/jekyll-clean-dark/2023/02/Interpolation-Plev2sigma/)
 
 Last updated: 02/12/2023
