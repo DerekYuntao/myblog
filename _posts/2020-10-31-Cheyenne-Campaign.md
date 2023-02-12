@@ -50,6 +50,11 @@ After entering password and authorized can enter the Campaign storage.
 cd /glade/campaign/univ/...
 ```
 
+**Copy directroy from Campaign to Cheyenne:**
+ ```powershell
+ cp -r Camdirec /glade/scratch/...
+ ```
+
 **Migrate data between Campaign and Cheyenne scratch:**
 Use the common command cp, mv, and et.al.
 
@@ -64,4 +69,4 @@ tmux attach
 Reference:
 https://www2.cisl.ucar.edu/user-support/training/library/migrating-files-from-hpss
 
-Last updata: 10/31/2020
+Last updata: 02/12/2023

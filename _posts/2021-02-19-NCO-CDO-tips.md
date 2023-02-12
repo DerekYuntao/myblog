@@ -37,7 +37,7 @@ Create netCDF out.nc identical to in.nc except the attribute _FillValue is chang
     ncks -F -d z_t,1 b.e13.Bi1850C5CN.f19_g16.alpha01b.09.pop.h.TEMP.050001-060312.nc  b.e13.Bi1850C5CN.f19_g16.alpha01b.09.pop.h.potenSST5m.050001-060312.nc
 
 ## Calculate difference for variables between two NC files: ncdiff ##
-subtracts variables in file2 from the corresponding variables (those with the same name) in file1 and stores the results in output file3. 
+Subtracts variables in file2 from the corresponding variables (those with the same name) in file1 and stores the results in output file3. 
 The difference variables must be the same name in two NC files.
 e.g.
 
