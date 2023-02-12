@@ -2,15 +2,23 @@
 layout: post
 title: "CESM data interpolation from hybrid-sigma level to pressure level"
 date: 2023-02-12
-description: A self-defined NCL function to convert numerical time to calendar
+description: A self-defined python function for model vertical interpolation
 share: true
 tags:
  - python
+ - CESM
 ---
 
 The python code below shows how to interpolate a data from CESM hybrid sigma level to pressure level.
 
 ```python
+"""
+Created on Wed Nov 16 2022
+
+@author: Yuntao Bao
+contact: bao.291@osu.edu
+"""
+
 import numpy as np
 import netCDF4 as nc4
 import xarray as xr
@@ -20,12 +28,11 @@ def interp_hybsigma2lev(lev_from, lev_to, datain):
     print('Start linear interpolation:')
     new_data = np.zeros((nt,nlev,ny,nx), dtype='float32')
     for t in range(nt):
-        if t%20 == 0:
-            print('OK', t)
+        print('OK', t)
         for j in range(ny):
             for i in range(nx):
                 new_data[t,:,j,i] = np.interp(lev_to , lev_from[t,:,j,i], datain[t,:,j,i])    
-return new_data
+    return new_data
 
 if __name__ == "__main__":
     # modify here to change the variable
@@ -38,9 +45,9 @@ if __name__ == "__main__":
     P0 = 1000
 
     # input data file with a variable to be interpolated
-    fin = 'f.e13.Fi1850C5.f02_f02.cam.h0.'+var+'.reshample.nc'
+    fin = 'f.e13.Fi1850C5.f02_f02.cam.h0.'+var+'.nc'
     # input data file with a variable 'surface pressure'
-    fps = ps_dir + 'f.e13.Fi1850C5.f02_f02.cam.h0.PS.reshample.nc'
+    fps = ps_dir + 'f.e13.Fi1850C5.f02_f02.cam.h0.PS.nc'
 
     dsdat = nc4.Dataset(fin)
     dsps = nc4.Dataset(fps)
@@ -69,5 +76,7 @@ if __name__ == "__main__":
     print('End linear interpolation')
 
 ```     
+
+If you want to contiune interpolate data in pressure level to pure sigma level, see: [Model data interpolation from pressure level to sigma level](https://novarizark.github.io/2018/01/28/decoupling-cesm/)
 
 Last updated: 02/12/2023
